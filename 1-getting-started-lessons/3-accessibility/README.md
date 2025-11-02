@@ -1,330 +1,330 @@
-# Creating Accessible Webpages
+# Создание доступных веб-страниц
 
-![All About Accessibility](../../sketchnotes/webdev101-a11y.png)
-> Sketchnote by [Tomomi Imura](https://twitter.com/girlie_mac)
+![Все о доступности](../../sketchnotes/webdev101-a11y.png)
+> Скетчноут от [Tomomi Imura](https://twitter.com/girlie_mac)
 
 ```mermaid
 journey
-    title Your Accessibility Learning Adventure
-    section Foundation
-      Understanding Users: 5: You
-      Testing Tools: 4: You
-      POUR Principles: 5: You
-    section Build Skills
-      Semantic HTML: 4: You
-      Visual Design: 5: You
-      ARIA Techniques: 4: You
-    section Master Practice
-      Keyboard Navigation: 5: You
-      Form Accessibility: 4: You
-      Real-world Testing: 5: You
+  title Ваше приключение в изучении доступности
+  section Основы
+    Понимание пользователей: 5: Вы
+    Инструменты тестирования: 4: Вы
+    Принципы POUR: 5: Вы
+  section Развитие навыков
+    Семантический HTML: 4: Вы
+    Визуальный дизайн: 5: Вы
+    Техники ARIA: 4: Вы
+  section Освоение практики
+    Навигация с клавиатуры: 5: Вы
+    Доступность форм: 4: Вы
+    Тестирование в реальных условиях: 5: Вы
 ```
 
-## Pre-Lecture Quiz
-[Pre-lecture quiz](https://ff-quizzes.netlify.app/web/)
+## Квиз перед лекцией
+[Квиз перед лекцией](https://ff-quizzes.netlify.app/web/)
 
-> The power of the Web is in its universality. Access by everyone regardless of disability is an essential aspect.
+> Сила Сети в ее универсальности. Доступ для всех, независимо от ограниченных возможностей, является ее неотъемлемым аспектом.
 >
-> \- Sir Timothy Berners-Lee, W3C Director and inventor of the World Wide Web
+> \- Сэр Тимоти Бернерс-Ли, директор W3C и изобретатель Всемирной паутины
 
-Here's something that might surprise you: when you build accessible websites, you're not just helping people with disabilities—you're actually making the web better for everyone!
+Вот что может вас удивить: когда вы создаете доступные веб-сайты, вы не просто помогаете людям с ограниченными возможностями — вы на самом деле делаете интернет лучше для всех!
 
-Ever notice those curb cuts at street corners? They were originally designed for wheelchairs, but now they help people with strollers, delivery workers with dollies, travelers with rolling luggage, and cyclists too. That's exactly how accessible web design works—solutions that help one group often end up benefiting everyone. Pretty cool, right?
+Вы когда-нибудь замечали пандусы на углах улиц? Изначально они были разработаны для инвалидных колясок, но теперь они помогают людям с колясками, курьерам с тележками, путешественникам с чемоданами на колесиках и велосипедистам. Именно так работает доступный веб-дизайн — решения, которые помогают одной группе, часто приносят пользу всем. Круто, правда?
 
-In this lesson, we're going to explore how to create websites that truly work for everyone, no matter how they browse the web. You'll discover practical techniques that are already built into web standards, get hands-on with testing tools, and see how accessibility makes your sites more usable for all users.
+В этом уроке мы рассмотрим, как создавать веб-сайты, которые действительно работают для всех, независимо от того, как они просматривают веб-страницы. Вы откроете для себя практические методы, которые уже встроены в веб-стандарты, поработаете с инструментами тестирования и увидите, как доступность делает ваши сайты более удобными для всех пользователей.
 
-By the end of this lesson, you'll have the confidence to make accessibility a natural part of your development workflow. Ready to explore how thoughtful design choices can open up the web to billions of users? Let's dive in!
+К концу этого урока у вас появится уверенность, чтобы сделать доступность естественной частью вашего рабочего процесса разработки. Готовы узнать, как продуманные дизайнерские решения могут открыть доступ к вебу для миллиардов пользователей? Давайте начнем!
 
 ```mermaid
 mindmap
-  root((Web Accessibility))
-    Users
-      Screen readers
-      Keyboard navigation
-      Voice control
-      Magnification
-    Technologies
-      HTML semantics
-      ARIA attributes
-      CSS focus indicators
-      Keyboard events
-    Benefits
-      Wider audience
-      Better SEO
-      Legal compliance
-      Universal design
-    Testing
-      Automated tools
-      Manual testing
-      User feedback
-      Real assistive tech
+  root((Веб-доступность))
+  Пользователи
+    Экранные ридеры
+    Навигация с клавиатуры
+    Голосовое управление
+    Увеличение
+  Технологии
+    Семантика HTML
+    Атрибуты ARIA
+    CSS-индикаторы фокуса
+    События клавиатуры
+  Преимущества
+    Широкая аудитория
+    Улучшенное SEO
+    Соответствие законодательству
+    Универсальный дизайн
+  Тестирование
+    Автоматизированные инструменты
+    Ручное тестирование
+    Обратная связь от пользователей
+    Реальные ассистивные технологии
 ```
 
-> You can take this lesson on [Microsoft Learn](https://docs.microsoft.com/learn/modules/web-development-101/accessibility/?WT.mc_id=academic-77807-sagibbon)!
+> Вы можете пройти этот урок на [Microsoft Learn](https://docs.microsoft.com/learn/modules/web-development-101/accessibility/?WT.mc_id=academic-77807-sagibbon)!
 
-## Understanding Assistive Technologies
+## Понимание ассистивных технологий
 
-Before we jump into coding, let's take a moment to understand how people with different abilities actually experience the web. This isn't just theory—understanding these real-world navigation patterns will make you a much better developer!
+Прежде чем мы перейдем к кодированию, давайте уделим немного времени тому, чтобы понять, как люди с различными способностями на самом деле воспринимают веб. Это не просто теория — понимание этих реальных паттернов навигации сделает вас гораздо лучшим разработчиком!
 
-Assistive technologies are pretty amazing tools that help people with disabilities interact with websites in ways that might surprise you. Once you get the hang of how these technologies work, creating accessible web experiences becomes way more intuitive. It's like learning to see your code through someone else's eyes.
+Ассистивные технологии — это довольно удивительные инструменты, которые помогают людям с ограниченными возможностями взаимодействовать с веб-сайтами способами, которые могут вас удивить. Как только вы поймете, как работают эти технологии, создание доступных веб-интерфейсов станет намного интуитивнее. Это как научиться видеть свой код глазами другого человека.
 
-### Screen readers
+### Экранные ридеры
 
-[Screen readers](https://en.wikipedia.org/wiki/Screen_reader) are pretty sophisticated pieces of technology that convert digital text into speech or braille output. While they're primarily used by people with visual impairments, they're also super helpful for users with learning disabilities like dyslexia.
+[Экранные ридеры](https://ru.wikipedia.org/wiki/Программа_экранного_доступа) — это довольно сложные технологии, которые преобразуют цифровой текст в речь или вывод на шрифт Брайля. Хотя они в основном используются людьми с нарушениями зрения, они также очень полезны для пользователей с трудностями в обучении, такими как дислексия.
 
-I like to think of a screen reader as having a really smart narrator reading a book to you. It reads content aloud in a logical order, announces interactive elements like "button" or "link," and provides keyboard shortcuts for jumping around a page. But here's the thing—screen readers can only work their magic if we build websites with proper structure and meaningful content. That's where you come in as a developer!
+Мне нравится думать об экранном ридере как об очень умном рассказчике, который читает вам книгу. Он читает контент вслух в логическом порядке, объявляет интерактивные элементы, такие как «кнопка» или «ссылка», и предоставляет сочетания клавиш для перемещения по странице. Но вот в чем дело — экранные ридеры могут творить свою магию только в том случае, если мы создаем веб-сайты с правильной структурой и осмысленным контентом. Именно здесь вы, как разработчик, вступаете в игру!
 
-**Popular screen readers across platforms:**
-- **Windows**: [NVDA](https://www.nvaccess.org/about-nvda/) (free and most popular), [JAWS](https://webaim.org/articles/jaws/), [Narrator](https://support.microsoft.com/windows/complete-guide-to-narrator-e4397a0d-ef4f-b386-d8ae-c172f109bdb1/?WT.mc_id=academic-77807-sagibbon) (built-in)
-- **macOS/iOS**: [VoiceOver](https://support.apple.com/guide/voiceover/welcome/10) (built-in and very capable)
-- **Android**: [TalkBack](https://support.google.com/accessibility/android/answer/6283677) (built-in)
-- **Linux**: [Orca](https://wiki.gnome.org/Projects/Orca) (free and open-source)
+**Популярные экранные ридеры на разных платформах:**
+- **Windows**: [NVDA](https://www.nvaccess.org/about-nvda/) (бесплатный и самый популярный), [JAWS](https://webaim.org/articles/jaws/), [Экранный диктор](https://support.microsoft.com/windows/complete-guide-to-narrator-e4397a0d-ef4f-b386-d8ae-c172f109bdb1/?WT.mc_id=academic-77807-sagibbon) (встроенный)
+- **macOS/iOS**: [VoiceOver](https://support.apple.com/guide/voiceover/welcome/10) (встроенный и очень функциональный)
+- **Android**: [TalkBack](https://support.google.com/accessibility/android/answer/6283677) (встроенный)
+- **Linux**: [Orca](https://wiki.gnome.org/Projects/Orca) (бесплатный и с открытым исходным кодом)
 
-**How screen readers navigate web content:**
+**Как экранные ридеры перемещаются по веб-контенту:**
 
-Screen readers provide multiple navigation methods that make browsing efficient for experienced users:
-- **Sequential reading**: Reads content from top to bottom, like following a book
-- **Landmark navigation**: Jump between page sections (header, nav, main, footer)
-- **Heading navigation**: Skip between headings to understand page structure
-- **Link lists**: Generate a list of all links for quick access
-- **Form controls**: Navigate directly between input fields and buttons
+Экранные ридеры предоставляют несколько методов навигации, которые делают просмотр эффективным для опытных пользователей:
+- **Последовательное чтение**: Читает контент сверху вниз, как при чтении книги
+- **Навигация по ориентирам**: Переход между разделами страницы (шапка, навигация, основной контент, подвал)
+- **Навигация по заголовкам**: Переход между заголовками для понимания структуры страницы
+- **Списки ссылок**: Создание списка всех ссылок для быстрого доступа
+- **Элементы управления формы**: Прямой переход между полями ввода и кнопками
 
-> 💡 **Here's something that blew my mind**: 68% of screen reader users navigate primarily by headings ([WebAIM Survey](https://webaim.org/projects/screenreadersurvey9/#finding)). This means your heading structure is like a roadmap for users—when you get it right, you're literally helping people find their way around your content faster!
+> 💡 **Вот что меня поразило**: 68% пользователей экранных ридеров перемещаются в основном по заголовкам ([Опрос WebAIM](https://webaim.org/projects/screenreadersurvey9/#finding)). Это означает, что структура ваших заголовков — это как дорожная карта для пользователей. Когда вы делаете ее правильно, вы буквально помогаете людям быстрее ориентироваться в вашем контенте!
 
-### Building your testing workflow
+### Создание вашего рабочего процесса тестирования
 
-Here's some good news—effective accessibility testing doesn't have to be overwhelming! You'll want to combine automated tools (they're fantastic at catching obvious issues) with some hands-on testing. Here's a systematic approach that I've found catches the most issues without eating up your entire day:
+Вот хорошая новость — эффективное тестирование доступности не должно быть сложным! Вам нужно будет сочетать автоматизированные инструменты (они отлично справляются с выявлением очевидных проблем) с некоторым ручным тестированием. Вот систематический подход, который, как я обнаружил, выявляет большинство проблем, не отнимая у вас весь день:
 
-**Essential manual testing workflow:**
+**Основной рабочий процесс ручного тестирования:**
 
 ```mermaid
 flowchart TD
-    A[🚀 Start Testing] --> B{⌨️ Keyboard Navigation}
-    B --> C[Tab through all interactive elements]
-    C --> D{🎧 Screen Reader Testing}
-    D --> E[Test with NVDA/VoiceOver]
-    E --> F{🔍 Zoom Testing}
-    F --> G[Zoom to 200% and test functionality]
-    G --> H{🎨 Color/Contrast Check}
-    H --> I[Verify all text meets contrast ratios]
-    I --> J{👁️ Focus Management}
-    J --> K[Ensure focus indicators are visible]
-    K --> L[✅ Testing Complete]
-    
-    style A fill:#e3f2fd
-    style L fill:#e8f5e8
-    style B fill:#fff3e0
-    style D fill:#f3e5f5
-    style F fill:#e0f2f1
-    style H fill:#fce4ec
-    style J fill:#e8eaf6
+  A[🚀 Начать тестирование] --> B{⌨️ Навигация с клавиатуры}
+  B --> C[Проход по всем интерактивным элементам с помощью Tab]
+  C --> D{🎧 Тестирование с экранным ридером}
+  D --> E[Тестирование с NVDA/VoiceOver]
+  E --> F{🔍 Тестирование масштабирования}
+  F --> G[Увеличение до 200% и проверка функциональности]
+  G --> H{🎨 Проверка цвета/контраста}
+  H --> I[Проверка соответствия всего текста коэффициентам контрастности]
+  I --> J{👁️ Управление фокусом}
+  J --> K[Убедиться, что индикаторы фокуса видны]
+  K --> L[✅ Тестирование завершено]
+
+  style A fill:#e3f2fd
+  style L fill:#e8f5e8
+  style B fill:#fff3e0
+  style D fill:#f3e5f5
+  style F fill:#e0f2f1
+  style H fill:#fce4ec
+  style J fill:#e8eaf6
 ```
 
-**Step-by-step testing checklist:**
-1. **Keyboard navigation**: Use only Tab, Shift+Tab, Enter, Space, and Arrow keys
-2. **Screen reader testing**: Enable NVDA, VoiceOver, or Narrator and navigate with eyes closed
-3. **Zoom testing**: Test at 200% and 400% zoom levels
-4. **Color contrast verification**: Check all text and UI components
-5. **Focus indicator testing**: Ensure all interactive elements have visible focus states
+**Пошаговый чек-лист для тестирования:**
+1. **Навигация с клавиатуры**: Используйте только Tab, Shift+Tab, Enter, Пробел и клавиши со стрелками
+2. **Тестирование с экранным ридером**: Включите NVDA, VoiceOver или Экранный диктор и перемещайтесь с закрытыми глазами
+3. **Тестирование масштабирования**: Проверьте при увеличении 200% и 400%
+4. **Проверка цветового контраста**: Проверьте весь текст и компоненты пользовательского интерфейса
+5. **Тестирование индикатора фокуса**: Убедитесь, что все интерактивные элементы имеют видимые состояния фокуса
 
-✅ **Start with Lighthouse**: Open your browser's DevTools, run a Lighthouse accessibility audit, then use the results to guide your manual testing focus areas.
+✅ **Начните с Lighthouse**: Откройте инструменты разработчика в вашем браузере, запустите аудит доступности Lighthouse, а затем используйте результаты, чтобы направить ваше ручное тестирование на конкретные области.
 
-### Zoom and magnification tools
+### Инструменты масштабирования и увеличения
 
-You know how you sometimes pinch to zoom on your phone when text is too small, or squint at your laptop screen in bright sunlight? Many users rely on magnification tools to make content readable every single day. This includes people with low vision, older adults, and anyone who's ever tried to read a website outdoors.
+Знаете, как вы иногда увеличиваете масштаб на телефоне, когда текст слишком мелкий, или щуритесь на экран ноутбука при ярком солнечном свете? Многие пользователи ежедневно полагаются на инструменты увеличения, чтобы сделать контент читаемым. К ним относятся люди с плохим зрением, пожилые люди и все, кто когда-либо пытался читать веб-сайт на улице.
 
-Modern zoom technologies have evolved beyond just making things bigger. Understanding how these tools work will help you create responsive designs that remain functional and attractive at any magnification level.
+Современные технологии масштабирования вышли за рамки простого увеличения. Понимание того, как работают эти инструменты, поможет вам создавать адаптивные дизайны, которые остаются функциональными и привлекательными при любом уровне увеличения.
 
-**Modern browser zoom capabilities:**
-- **Page zoom**: Scales all content proportionally (text, images, layout) - this is the preferred method
-- **Text-only zoom**: Increases font size while maintaining original layout
-- **Pinch-to-zoom**: Mobile gesture support for temporary magnification
-- **Browser support**: All modern browsers support zoom up to 500% without breaking functionality
+**Возможности масштабирования современных браузеров:**
+- **Масштабирование страницы**: Пропорционально масштабирует весь контент (текст, изображения, макет) - это предпочтительный метод
+- **Масштабирование только текста**: Увеличивает размер шрифта, сохраняя исходный макет
+- **Жест "щипок для увеличения"**: Поддержка жестов на мобильных устройствах для временного увеличения
+- **Поддержка браузерами**: Все современные браузеры поддерживают увеличение до 500% без нарушения функциональности
 
-**Specialized magnification software:**
-- **Windows**: [Magnifier](https://support.microsoft.com/windows/use-magnifier-to-make-things-on-the-screen-easier-to-see-414948ba-8b1c-d3bd-8615-0e5e32204198) (built-in), [ZoomText](https://www.freedomscientific.com/training/zoomtext/getting-started/)
-- **macOS/iOS**: [Zoom](https://www.apple.com/accessibility/mac/vision/) (built-in with advanced features)
+**Специализированное программное обеспечение для увеличения:**
+- **Windows**: [Экранная лупа](https://support.microsoft.com/windows/use-magnifier-to-make-things-on-the-screen-easier-to-see-414948ba-8b1c-d3bd-8615-0e5e32204198) (встроенная), [ZoomText](https://www.freedomscientific.com/training/zoomtext/getting-started/)
+- **macOS/iOS**: [Масштаб](https://www.apple.com/accessibility/mac/vision/) (встроенный с расширенными функциями)
 
-> ⚠️ **Design Consideration**: WCAG requires that content remain functional when zoomed to 200%. At this level, horizontal scrolling should be minimal, and all interactive elements should remain accessible.
+> ⚠️ **Рекомендация по дизайну**: WCAG требует, чтобы контент оставался функциональным при увеличении до 200%. На этом уровне горизонтальная прокрутка должна быть минимальной, и все интерактивные элементы должны оставаться доступными.
 
-✅ **Test your responsive design**: Zoom your browser to 200% and 400%. Does your layout adapt gracefully? Can you still access all functionality without excessive scrolling?
+✅ **Проверьте свой адаптивный дизайн**: Увеличьте масштаб в браузере до 200% и 400%. Адаптируется ли ваш макет плавно? Можете ли вы по-прежнему получить доступ ко всей функциональности без чрезмерной прокрутки?
 
-## Modern Accessibility Testing Tools
+## Современные инструменты для тестирования доступности
 
-Now that you understand how people navigate the web with assistive technologies, let's explore the tools that help you build and test accessible websites.
+Теперь, когда вы понимаете, как люди перемещаются по вебу с помощью ассистивных технологий, давайте рассмотрим инструменты, которые помогут вам создавать и тестировать доступные веб-сайты.
 
-Think of it like this: automated tools are great at catching obvious issues (like missing alt text), while hands-on testing helps you ensure your site feels good to use in the real world. Together, they give you confidence that your sites work for everyone.
+Думайте об этом так: автоматизированные инструменты отлично справляются с выявлением очевидных проблем (например, отсутствующий альтернативный текст), в то время как ручное тестирование помогает убедиться, что ваш сайт удобен в использовании в реальных условиях. Вместе они дают вам уверенность в том, что ваши сайты работают для всех.
 
-### Color contrast testing
+### Тестирование цветового контраста
 
-Here's some good news: color contrast is one of the most common accessibility issues, but it's also one of the easiest to fix. Good contrast benefits everyone—from users with visual impairments to people trying to read their phones at the beach.
+Вот хорошая новость: цветовой контраст — одна из самых распространенных проблем доступности, но также и одна из самых простых для исправления. Хороший контраст приносит пользу всем — от пользователей с нарушениями зрения до людей, пытающихся читать на своих телефонах на пляже.
 
-**WCAG contrast requirements:**
+**Требования WCAG к контрасту:**
 
-| Text Type | WCAG AA (Minimum) | WCAG AAA (Enhanced) |
+| Тип текста | WCAG AA (Минимум) | WCAG AAA (Улучшенный) |
 |-----------|-------------------|---------------------|
-| **Normal text** (under 18pt) | 4.5:1 contrast ratio | 7:1 contrast ratio |
-| **Large text** (18pt+ or 14pt+ bold) | 3:1 contrast ratio | 4.5:1 contrast ratio |
-| **UI components** (buttons, form borders) | 3:1 contrast ratio | 3:1 contrast ratio |
+| **Обычный текст** (менее 18pt) | Коэффициент контрастности 4.5:1 | Коэффициент контрастности 7:1 |
+| **Крупный текст** (18pt+ или 14pt+ жирный) | Коэффициент контрастности 3:1 | Коэффициент контрастности 4.5:1 |
+| **Компоненты UI** (кнопки, рамки форм) | Коэффициент контрастности 3:1 | Коэффициент контрастности 3:1 |
 
-**Essential testing tools:**
-- [Colour Contrast Analyser](https://www.tpgi.com/color-contrast-checker/) - Desktop app with color picker
-- [WebAIM Contrast Checker](https://webaim.org/resources/contrastchecker/) - Web-based with instant feedback
-- [Stark](https://www.getstark.co/) - Design tool plugin for Figma, Sketch, Adobe XD
-- [Accessible Colors](https://accessible-colors.com/) - Find accessible color palettes
+**Основные инструменты для тестирования:**
+- [Colour Contrast Analyser](https://www.tpgi.com/color-contrast-checker/) - Настольное приложение с пипеткой
+- [WebAIM Contrast Checker](https://webaim.org/resources/contrastchecker/) - Веб-инструмент с мгновенной обратной связью
+- [Stark](https://www.getstark.co/) - Плагин для инструментов дизайна Figma, Sketch, Adobe XD
+- [Accessible Colors](https://accessible-colors.com/) - Поиск доступных цветовых палитр
 
-✅ **Build better color palettes**: Start with your brand colors and use contrast checkers to create accessible variations. Document these as your design system's accessible color tokens.
+✅ **Создавайте лучшие цветовые палитры**: Начните с цветов вашего бренда и используйте инструменты проверки контраста для создания доступных вариаций. Задокументируйте их как доступные цветовые токены вашей дизайн-системы.
 
-### Comprehensive accessibility auditing
+### Комплексный аудит доступности
 
-The most effective accessibility testing combines multiple approaches. No single tool catches everything, so building a testing routine with various methods ensures thorough coverage.
+Наиболее эффективное тестирование доступности сочетает в себе несколько подходов. Ни один инструмент не выявляет все, поэтому создание рутины тестирования с использованием различных методов обеспечивает тщательное покрытие.
 
-**Browser-based testing (built into DevTools):**
-- **Chrome/Edge**: Lighthouse accessibility audit + Accessibility panel
-- **Firefox**: Accessibility Inspector with detailed tree view
-- **Safari**: Audit tab in Web Inspector with VoiceOver simulation
+**Тестирование в браузере (встроено в DevTools):**
+- **Chrome/Edge**: Аудит доступности Lighthouse + панель Accessibility
+- **Firefox**: Accessibility Inspector с подробным древовидным представлением
+- **Safari**: Вкладка Audit в Web Inspector с симуляцией VoiceOver
 
-**Professional testing extensions:**
-- [axe DevTools](https://www.deque.com/axe/devtools/) - Industry-standard automated testing
-- [WAVE](https://wave.webaim.org/extension/) - Visual feedback with error highlighting
-- [Accessibility Insights](https://accessibilityinsights.io/) - Microsoft's comprehensive testing suite
+**Профессиональные расширения для тестирования:**
+- [axe DevTools](https://www.deque.com/axe/devtools/) - Стандарт индустрии для автоматизированного тестирования
+- [WAVE](https://wave.webaim.org/extension/) - Визуальная обратная связь с подсветкой ошибок
+- [Accessibility Insights](https://accessibilityinsights.io/) - Комплексный набор для тестирования от Microsoft
 
-**Command-line and CI/CD integration:**
-- [axe-core](https://github.com/dequelabs/axe-core) - JavaScript library for automated testing
-- [Pa11y](https://pa11y.org/) - Command-line accessibility testing tool
-- [Lighthouse CI](https://github.com/GoogleChrome/lighthouse-ci) - Automated accessibility scoring
+**Интеграция с командной строкой и CI/CD:**
+- [axe-core](https://github.com/dequelabs/axe-core) - JavaScript-библиотека для автоматизированного тестирования
+- [Pa11y](https://pa11y.org/) - Инструмент для тестирования доступности из командной строки
+- [Lighthouse CI](https://github.com/GoogleChrome/lighthouse-ci) - Автоматизированная оценка доступности
 
-> 🎯 **Testing Goal**: Aim for a Lighthouse accessibility score of 95+ as your baseline. Remember, automated tools only catch about 30-40% of accessibility issues—manual testing is still essential!
+> 🎯 **Цель тестирования**: Стремитесь к оценке доступности Lighthouse 95+ в качестве базового уровня. Помните, что автоматизированные инструменты выявляют только около 30-40% проблем доступности — ручное тестирование по-прежнему необходимо!
 
-### 🧠 **Testing Skills Check: Ready to Find Issues?**
+### 🧠 **Проверка навыков тестирования: Готовы находить проблемы?**
 
-**Let's see how you're feeling about accessibility testing:**
-- Which testing method seems most approachable to you right now?
-- Can you imagine using keyboard-only navigation for a full day?
-- What's one accessibility barrier you've personally experienced online?
+**Давайте посмотрим, как вы относитесь к тестированию доступности:**
+- Какой метод тестирования кажется вам наиболее доступным прямо сейчас?
+- Можете ли вы представить себе использование только клавиатурной навигации в течение целого дня?
+- С каким барьером доступности вы лично сталкивались в интернете?
 
 ```mermaid
-pie title "Accessibility Issues Caught by Different Methods"
-    "Automated Tools" : 35
-    "Manual Testing" : 40
-    "User Feedback" : 25
+pie title "Проблемы доступности, выявляемые разными методами"
+  "Автоматизированные инструменты" : 35
+  "Ручное тестирование" : 40
+  "Обратная связь от пользователей" : 25
 ```
 
-> **Confidence booster**: Professional accessibility testers use this exact combination of methods. You're learning industry-standard practices!
+> **Для уверенности**: Профессиональные тестировщики доступности используют именно эту комбинацию методов. Вы изучаете стандартные практики индустрии!
 
-## Building Accessibility from the Ground Up
+## Создание доступности с нуля
 
-The key to accessibility success is building it into your foundation from day one. I know it's tempting to think "I'll add accessibility later," but that's like trying to add a ramp to a house after it's already built. Possible? Yes. Easy? Not really.
+Ключ к успеху в доступности — встраивать ее в основу с самого первого дня. Я знаю, что есть соблазн подумать: «Я добавлю доступность позже», но это все равно что пытаться добавить пандус к дому после того, как он уже построен. Возможно? Да. Легко? Не совсем.
 
-Think of accessibility like planning a house—it's much easier to include wheelchair accessibility in your initial architectural plans than to retrofit everything later.
+Думайте о доступности как о планировании дома — гораздо проще включить доступность для инвалидных колясок в ваши первоначальные архитектурные планы, чем переделывать все позже.
 
-### The POUR principles: Your accessibility foundation
+### Принципы POUR: ваша основа доступности
 
-The Web Content Accessibility Guidelines (WCAG) are built around four fundamental principles that spell out POUR. Don't worry—these aren't stuffy academic concepts! They're actually practical guidelines for making content that works for everyone.
+Руководство по обеспечению доступности веб-контента (WCAG) построено на четырех фундаментальных принципах, которые образуют акроним POUR. Не волнуйтесь — это не занудные академические концепции! На самом деле это практические рекомендации по созданию контента, который работает для всех.
 
-Once you get the hang of POUR, making accessibility decisions becomes way more intuitive. It's like having a mental checklist that guides your design choices. Let's break it down:
+Как только вы освоите POUR, принятие решений о доступности станет намного интуитивнее. Это как иметь мысленный чек-лист, который направляет ваши дизайнерские решения. Давайте разберем это:
 
 ```mermaid
 flowchart LR
-    A[🔍 PERCEIVABLE<br/>Can users sense it?] --> B[🎮 OPERABLE<br/>Can users use it?]
-    B --> C[📖 UNDERSTANDABLE<br/>Can users get it?]
-    C --> D[💪 ROBUST<br/>Does it work everywhere?]
-    
-    A1[Alt text<br/>Captions<br/>Contrast] --> A
-    B1[Keyboard access<br/>No seizures<br/>Time limits] --> B
-    C1[Clear language<br/>Predictable<br/>Error help] --> C
-    D1[Valid code<br/>Compatible<br/>Future-proof] --> D
-    
-    style A fill:#e1f5fe
-    style B fill:#e8f5e8
-    style C fill:#fff3e0
-    style D fill:#f3e5f5
+  A[🔍 ВОСПРИНИМАЕМЫЙ<br/>Могут ли пользователи это воспринять?] --> B[🎮 УПРАВЛЯЕМЫЙ<br/>Могут ли пользователи это использовать?]
+  B --> C[📖 ПОНЯТНЫЙ<br/>Могут ли пользователи это понять?]
+  C --> D[💪 НАДЕЖНЫЙ<br/>Работает ли это везде?]
+
+  A1[Альтернативный текст<br/>Субтитры<br/>Контраст] --> A
+  B1[Доступ с клавиатуры<br/>Отсутствие припадков<br/>Ограничения по времени] --> B
+  C1[Понятный язык<br/>Предсказуемость<br/>Помощь при ошибках] --> C
+  D1[Валидный код<br/>Совместимость<br/>Перспективность] --> D
+
+  style A fill:#e1f5fe
+  style B fill:#e8f5e8
+  style C fill:#fff3e0
+  style D fill:#f3e5f5
 ```
 
-**🔍 Perceivable**: Information must be presentable in ways users can perceive through their available senses
+**🔍 Воспринимаемый**: Информация должна быть представлена способами, которые пользователи могут воспринять с помощью доступных им органов чувств.
 
-- Provide text alternatives for non-text content (images, videos, audio)
-- Ensure sufficient color contrast for all text and UI components
-- Offer captions and transcripts for multimedia content
-- Design content that remains functional when resized up to 200%
-- Use multiple sensory characteristics (not just color) to convey information
+- Предоставляйте текстовые альтернативы для нетекстового контента (изображения, видео, аудио)
+- Обеспечьте достаточный цветовой контраст для всего текста и компонентов пользовательского интерфейса
+- Предлагайте субтитры и транскрипты для мультимедийного контента
+- Проектируйте контент, который остается функциональным при увеличении до 200%
+- Используйте несколько сенсорных характеристик (а не только цвет) для передачи информации
 
-**🎮 Operable**: All interface components must be operable through available input methods
+**🎮 Управляемый**: Все компоненты интерфейса должны быть управляемыми с помощью доступных методов ввода.
 
-- Make all functionality accessible via keyboard navigation
-- Provide users sufficient time to read and interact with content
-- Avoid content that causes seizures or vestibular disorders
-- Help users navigate efficiently with clear structure and landmarks
-- Ensure interactive elements have adequate target sizes (44px minimum)
+- Сделайте всю функциональность доступной с помощью навигации с клавиатуры
+- Предоставляйте пользователям достаточно времени для чтения и взаимодействия с контентом
+- Избегайте контента, который вызывает припадки или вестибулярные расстройства
+- Помогайте пользователям эффективно перемещаться с помощью четкой структуры и ориентиров
+- Убедитесь, что интерактивные элементы имеют достаточный размер цели (минимум 44px)
 
-**📖 Understandable**: Information and UI operation must be clear and comprehensible
+**📖 Понятный**: Информация и работа пользовательского интерфейса должны быть ясными и понятными.
 
-- Use clear, simple language appropriate for your audience
-- Ensure content appears and operates in predictable, consistent ways
-- Provide clear instructions and error messages for user input
-- Help users understand and correct mistakes in forms
-- Organize content with logical reading order and information hierarchy
+- Используйте ясный, простой язык, соответствующий вашей аудитории
+- Убедитесь, что контент появляется и работает предсказуемым, последовательным образом
+- Предоставляйте четкие инструкции и сообщения об ошибках для пользовательского ввода
+- Помогайте пользователям понимать и исправлять ошибки в формах
+- Организуйте контент с логическим порядком чтения и иерархией информации
 
-**💪 Robust**: Content must work reliably across different technologies and assistive devices
+**💪 Надежный**: Контент должен надежно работать на разных технологиях и ассистивных устройствах.
 
-- **Use valid, semantic HTML as your foundation**
-- **Ensure compatibility with current and future assistive technologies**
-- **Follow web standards and best practices for markup**
-- **Test across different browsers, devices, and assistive tools**
-- **Structure content so it degrades gracefully when advanced features aren't supported**
+- **Используйте валидный, семантический HTML в качестве основы**
+- **Обеспечьте совместимость с текущими и будущими ассистивными технологиями**
+- **Следуйте веб-стандартам и лучшим практикам для разметки**
+- **Тестируйте на разных браузерах, устройствах и ассистивных инструментах**
+- **Структурируйте контент так, чтобы он плавно деградировал, когда расширенные функции не поддерживаются**
 
-### 🎯 **POUR Principles Check: Making It Stick**
+### 🎯 **Проверка принципов POUR: закрепление материала**
 
-**Quick reflection on the foundations:**
-- Can you think of a website feature that fails each POUR principle?
-- Which principle feels most natural to you as a developer?
-- How might these principles improve design for everyone, not just disabled users?
+**Краткое размышление об основах:**
+- Можете ли вы придумать функцию веб-сайта, которая нарушает каждый из принципов POUR?
+- Какой принцип кажется вам наиболее естественным как разработчику?
+- Как эти принципы могут улучшить дизайн для всех, а не только для пользователей с ограниченными возможностями?
 
 ```mermaid
 quadrantChart
-    title POUR Principles Impact Matrix
-    x-axis Low Effort --> High Effort
-    y-axis Low Impact --> High Impact
-    quadrant-1 Quick Wins
-    quadrant-2 Major Projects
-    quadrant-3 Consider Later
-    quadrant-4 Strategic Focus
-    
-    Alt Text: [0.2, 0.9]
-    Color Contrast: [0.3, 0.8]
-    Semantic HTML: [0.4, 0.9]
-    Keyboard Nav: [0.6, 0.8]
-    ARIA Complex: [0.8, 0.7]
-    Screen Reader Testing: [0.7, 0.6]
+  title Матрица влияния принципов POUR
+  x-axis Низкие усилия --> Высокие усилия
+  y-axis Низкое влияние --> Высокое влияние
+  quadrant-1 Быстрые победы
+  quadrant-2 Крупные проекты
+  quadrant-3 Рассмотреть позже
+  quadrant-4 Стратегический фокус
+
+  Альтернативный текст: [0.2, 0.9]
+  Цветовой контраст: [0.3, 0.8]
+  Семантический HTML: [0.4, 0.9]
+  Навигация с клавиатуры: [0.6, 0.8]
+  Сложный ARIA: [0.8, 0.7]
+  Тестирование с экранным ридером: [0.7, 0.6]
 ```
 
-> **Remember**: Start with high-impact, low-effort improvements. Semantic HTML and alt text give you the biggest accessibility boost for the least effort!
+> **Помните**: Начинайте с улучшений с высоким влиянием и низкими усилиями. Семантический HTML и альтернативный текст дают вам самый большой прирост доступности при наименьших затратах!
 
-## Creating Accessible Visual Design
+## Создание доступного визуального дизайна
 
-Good visual design and accessibility go hand in hand. When you design with accessibility in mind, you often discover that these constraints lead to cleaner, more elegant solutions that benefit all users.
+Хороший визуальный дизайн и доступность идут рука об руку. Когда вы проектируете с учетом доступности, вы часто обнаруживаете, что эти ограничения приводят к более чистым и элегантным решениям, которые приносят пользу всем пользователям.
 
-Let's explore how to create visually appealing designs that work for everyone, regardless of their visual abilities or the conditions under which they're viewing your content.
+Давайте рассмотрим, как создавать визуально привлекательные дизайны, которые работают для всех, независимо от их зрительных способностей или условий, в которых они просматривают ваш контент.
 
-### Color and visual accessibility strategies
+### Стратегии цветовой и визуальной доступности
 
-Color is powerful for communication, but it should never be the only way you convey important information. Designing beyond color creates more robust, inclusive experiences that work in more situations.
+Цвет является мощным средством коммуникации, но он никогда не должен быть единственным способом передачи важной информации. Проектирование за пределами цвета создает более надежные, инклюзивные интерфейсы, которые работают в большем количестве ситуаций.
 
-**Design for color vision differences:**
+**Проектирование для различий в цветовом зрении:**
 
-Approximately 8% of men and 0.5% of women have some form of color vision difference (often called "color blindness"). The most common types are:
-- **Deuteranopia**: Difficulty distinguishing red and green
-- **Protanopia**: Red appears more dim
-- **Tritanopia**: Difficulty with blue and yellow (rare)
+Примерно 8% мужчин и 0.5% женщин имеют ту или иную форму нарушения цветового зрения (часто называемую "дальтонизмом"). Наиболее распространенные типы:
+- **Дейтеранопия**: Трудности с различением красного и зеленого
+- **Протанопия**: Красный цвет кажется более тусклым
+- **Тританопия**: Трудности с синим и желтым (редко)
 
-**Inclusive color strategies:**
+**Инклюзивные цветовые стратегии:**
 
 ```css
-/* ❌ Bad: Using only color to indicate status */
+/* ❌ Плохо: Использование только цвета для обозначения статуса */
 .error { color: red; }
 .success { color: green; }
 
-/* ✅ Good: Color plus icons and context */
+/* ✅ Хорошо: Цвет плюс иконки и контекст */
 .error {
   color: #d32f2f;
   border-left: 4px solid #d32f2f;
@@ -344,40 +344,40 @@ Approximately 8% of men and 0.5% of women have some form of color vision differe
 }
 ```
 
-**Beyond basic contrast requirements:**
-- Test your color choices with color blind simulators
-- Use patterns, textures, or shapes alongside color coding
-- Ensure interactive states remain distinguishable without color
-- Consider how your design looks in high contrast mode
+**Помимо базовых требований к контрасту:**
+- Проверяйте свои цветовые решения с помощью симуляторов дальтонизма
+- Используйте узоры, текстуры или формы наряду с цветовым кодированием
+- Убедитесь, что интерактивные состояния остаются различимыми без цвета
+- Учитывайте, как ваш дизайн выглядит в режиме высокой контрастности
 
-✅ **Test your color accessibility**: Use tools like [Coblis](https://www.color-blindness.com/coblis-color-blindness-simulator/) to see how your site appears to users with different types of color vision.
+✅ **Проверьте доступность ваших цветов**: Используйте инструменты, такие как [Coblis](https://www.color-blindness.com/coblis-color-blindness-simulator/), чтобы увидеть, как ваш сайт выглядит для пользователей с различными типами цветового зрения.
 
-### Focus indicators and interaction design
+### Индикаторы фокуса и дизайн взаимодействия
 
-Focus indicators are the digital equivalent of a cursor—they show keyboard users where they are on the page. Well-designed focus indicators enhance the experience for everyone by making interactions clear and predictable.
+Индикаторы фокуса — это цифровой эквивалент курсора: они показывают пользователям клавиатуры, где они находятся на странице. Хорошо продуманные индикаторы фокуса улучшают опыт для всех, делая взаимодействия ясными и предсказуемыми.
 
-**Modern focus indicator best practices:**
+**Современные лучшие практики для индикаторов фокуса:**
 
 ```css
-/* Enhanced focus styles that work across browsers */
+/* Улучшенные стили фокуса, работающие во всех браузерах */
 button:focus-visible {
   outline: 2px solid #0066cc;
   outline-offset: 2px;
   box-shadow: 0 0 0 4px rgba(0, 102, 204, 0.25);
 }
 
-/* Remove focus outline for mouse users, preserve for keyboard users */
+/* Убираем контур фокуса для пользователей мыши, сохраняем для пользователей клавиатуры */
 button:focus:not(:focus-visible) {
   outline: none;
 }
 
-/* Focus-within for complex components */
+/* Focus-within для сложных компонентов */
 .card:focus-within {
   box-shadow: 0 0 0 3px rgba(74, 144, 164, 0.5);
   border-color: #4A90A4;
 }
 
-/* Ensure focus indicators meet contrast requirements */
+/* Убедитесь, что индикаторы фокуса соответствуют требованиям контрастности */
 .custom-focus:focus-visible {
   outline: 3px solid #ffffff;
   outline-offset: 2px;
@@ -385,225 +385,225 @@ button:focus:not(:focus-visible) {
 }
 ```
 
-**Focus indicator requirements:**
-- **Visibility**: Must have at least 3:1 contrast ratio with surrounding elements
-- **Width**: Minimum 2px thickness around the entire element
-- **Persistence**: Should remain visible until focus moves elsewhere
-- **Distinction**: Must be visually different from other UI states
+**Требования к индикаторам фокуса:**
+- **Видимость**: Должен иметь коэффициент контрастности не менее 3:1 с окружающими элементами
+- **Ширина**: Минимальная толщина 2px вокруг всего элемента
+- **Постоянство**: Должен оставаться видимым до тех пор, пока фокус не переместится в другое место
+- **Отличие**: Должен визуально отличаться от других состояний пользовательского интерфейса
 
-> 💡 **Design Tip**: Great focus indicators often use a combination of outline, box-shadow, and color changes to ensure visibility across different backgrounds and contexts.
+> 💡 **Совет по дизайну**: Отличные индикаторы фокуса часто используют комбинацию контура, тени и изменения цвета, чтобы обеспечить видимость на разных фонах и в разных контекстах.
 
-✅ **Audit focus indicators**: Tab through your website and note which elements have clear focus indicators. Are any difficult to see or missing entirely?
+✅ **Проведите аудит индикаторов фокуса**: Пройдитесь по вашему сайту с помощью клавиши Tab и отметьте, какие элементы имеют четкие индикаторы фокуса. Есть ли такие, которые трудно увидеть или которые отсутствуют вовсе?
 
-### Semantic HTML: The foundation of accessibility
+### Семантический HTML: основа доступности
 
-Semantic HTML is like giving assistive technologies a GPS system for your website. When you use the right HTML elements for their intended purpose, you're basically providing screen readers, keyboards, and other tools with a detailed roadmap to help users navigate effectively.
+Семантический HTML — это как дать ассистивным технологиям GPS-систему для вашего сайта. Когда вы используете правильные HTML-элементы по их прямому назначению, вы, по сути, предоставляете экранным ридерам, клавиатурам и другим инструментам подробную дорожную карту, чтобы помочь пользователям эффективно перемещаться.
 
-Here's an analogy that really clicked for me: semantic HTML is the difference between a well-organized library with clear categories and helpful signs versus a warehouse where books are scattered randomly. Both places have the same books, but which one would you rather try to find something in? Exactly!
+Вот аналогия, которая мне очень помогла: семантический HTML — это разница между хорошо организованной библиотекой с четкими категориями и полезными указателями и складом, где книги разбросаны случайным образом. В обоих местах есть одни и те же книги, но в каком из них вы бы предпочли что-то искать? Именно!
 
 ```mermaid
 flowchart TD
-    A[🏠 HTML Document] --> B[📰 header]
-    A --> C[🧭 nav]
-    A --> D[📄 main]
-    A --> E[📋 footer]
-    
-    B --> B1[h1: Site Name<br/>Logo & branding]
-    C --> C1[ul: Navigation<br/>Primary links]
-    D --> D1[article: Content<br/>section: Subsections]
-    D --> D2[aside: Sidebar<br/>Related content]
-    E --> E1[nav: Footer links<br/>Copyright info]
-    
-    D1 --> D1a[h1: Page title<br/>h2: Major sections<br/>h3: Subsections]
-    
-    style A fill:#e3f2fd
-    style B fill:#e8f5e8
-    style C fill:#fff3e0
-    style D fill:#f3e5f5
-    style E fill:#e0f2f1
+  A[🏠 HTML-документ] --> B[📰 header]
+  A --> C[🧭 nav]
+  A --> D[📄 main]
+  A --> E[📋 footer]
+
+  B --> B1[h1: Название сайта<br/>Логотип и брендинг]
+  C --> C1[ul: Навигация<br/>Основные ссылки]
+  D --> D1[article: Контент<br/>section: Подразделы]
+  D --> D2[aside: Боковая панель<br/>Связанный контент]
+  E --> E1[nav: Ссылки в подвале<br/>Информация об авторских правах]
+
+  D1 --> D1a[h1: Заголовок страницы<br/>h2: Основные разделы<br/>h3: Подразделы]
+
+  style A fill:#e3f2fd
+  style B fill:#e8f5e8
+  style C fill:#fff3e0
+  style D fill:#f3e5f5
+  style E fill:#e0f2f1
 ```
 
-**Building blocks of accessible page structure:**
+**Строительные блоки доступной структуры страницы:**
 
 ```html
-<!-- Landmark elements provide page navigation structure -->
+<!-- Элементы-ориентиры обеспечивают структуру навигации по странице -->
 <header>
-  <h1>Your Site Name</h1>
-  <nav aria-label="Main navigation">
-    <ul>
-      <li><a href="/home">Home</a></li>
-      <li><a href="/about">About</a></li>
-      <li><a href="/services">Services</a></li>
-    </ul>
+  <h1>Название вашего сайта</h1>
+  <nav aria-label="Основная навигация">
+  <ul>
+    <li><a href="/home">Главная</a></li>
+    <li><a href="/about">О нас</a></li>
+    <li><a href="/services">Услуги</a></li>
+  </ul>
   </nav>
 </header>
 
 <main>
   <article>
-    <header>
-      <h1>Article Title</h1>
-      <p>Published on <time datetime="2024-10-14">October 14, 2024</time></p>
-    </header>
-    
-    <section>
-      <h2>First Section</h2>
-      <p>Content that relates to this section...</p>
-    </section>
-    
-    <section>
-      <h2>Second Section</h2>
-      <p>More related content...</p>
-    </section>
+  <header>
+    <h1>Заголовок статьи</h1>
+    <p>Опубликовано <time datetime="2024-10-14">14 октября 2024</time></p>
+  </header>
+
+  <section>
+    <h2>Первый раздел</h2>
+    <p>Контент, относящийся к этому разделу...</p>
+  </section>
+
+  <section>
+    <h2>Второй раздел</h2>
+    <p>Еще связанный контент...</p>
+  </section>
   </article>
-  
+
   <aside>
-    <h2>Related Links</h2>
-    <nav aria-label="Related articles">
-      <ul>
-        <li><a href="/related-1">First related article</a></li>
-        <li><a href="/related-2">Second related article</a></li>
-      </ul>
-    </nav>
+  <h2>Связанные ссылки</h2>
+  <nav aria-label="Связанные статьи">
+    <ul>
+    <li><a href="/related-1">Первая связанная статья</a></li>
+    <li><a href="/related-2">Вторая связанная статья</a></li>
+    </ul>
+  </nav>
   </aside>
 </main>
 
 <footer>
-  <p>&copy; 2024 Your Site Name. All rights reserved.</p>
-  <nav aria-label="Footer links">
-    <ul>
-      <li><a href="/privacy">Privacy Policy</a></li>
-      <li><a href="/contact">Contact Us</a></li>
-    </ul>
+  <p>&copy; 2024 Название вашего сайта. Все права защищены.</p>
+  <nav aria-label="Ссылки в подвале">
+  <ul>
+    <li><a href="/privacy">Политика конфиденциальности</a></li>
+    <li><a href="/contact">Связаться с нами</a></li>
+  </ul>
   </nav>
 </footer>
 ```
 
-**Why semantic HTML transforms accessibility:**
+**Почему семантический HTML преобразует доступность:**
 
-| Semantic Element | Purpose | Screen Reader Benefit |
+| Семантический элемент | Назначение | Преимущество для экранного ридера |
 |------------------|---------|----------------------|
-| `<header>` | Page or section header | "Banner landmark" - quick navigation to top |
-| `<nav>` | Navigation links | "Navigation landmark" - list of nav sections |
-| `<main>` | Primary page content | "Main landmark" - skip directly to content |
-| `<article>` | Self-contained content | Announces article boundaries |
-| `<section>` | Themed content groups | Provides content structure |
-| `<aside>` | Related sidebar content | "Complementary landmark" |
-| `<footer>` | Page or section footer | "Contentinfo landmark" |
+| `<header>` | Заголовок страницы или раздела | "Ориентир-баннер" - быстрый переход к верху |
+| `<nav>` | Навигационные ссылки | "Ориентир-навигация" - список навигационных разделов |
+| `<main>` | Основной контент страницы | "Основной ориентир" - переход непосредственно к контенту |
+| `<article>` | Самостоятельный контент | Объявляет границы статьи |
+| `<section>` | Тематические группы контента | Обеспечивает структуру контента |
+| `<aside>` | Связанный контент в боковой панели | "Дополнительный ориентир" |
+| `<footer>` | Подвал страницы или раздела | "Ориентир-информация о контенте" |
 
-**Screen reader superpowers with semantic HTML:**
-- **Landmark navigation**: Jump between major page sections instantly
-- **Heading outlines**: Generate a table of contents from your heading structure
-- **Element lists**: Create lists of all links, buttons, or form controls
-- **Context awareness**: Understand relationships between content sections
+**Суперспособности экранного ридера с семантическим HTML:**
+- **Навигация по ориентирам**: Мгновенный переход между основными разделами страницы
+- **Структура заголовков**: Создание оглавления из вашей структуры заголовков
+- **Списки элементов**: Создание списков всех ссылок, кнопок или элементов управления формы
+- **Осознание контекста**: Понимание связей между разделами контента
 
-> 🎯 **Quick Test**: Try navigating your site with a screen reader using landmark shortcuts (D for landmark, H for heading, K for link in NVDA/JAWS). Does the navigation make sense?
+> 🎯 **Быстрый тест**: Попробуйте перемещаться по вашему сайту с помощью экранного ридера, используя горячие клавиши для ориентиров (D для ориентира, H для заголовка, K для ссылки в NVDA/JAWS). Имеет ли навигация смысл?
 
-### 🏗️ **Semantic HTML Mastery Check: Building Strong Foundations**
+### 🏗️ **Проверка мастерства семантического HTML: создание прочных основ**
 
-**Let's evaluate your semantic understanding:**
-- Can you identify the landmarks on a webpage just by looking at the HTML?
-- How would you explain the difference between `<section>` and `<div>` to a friend?
-- What's the first thing you'd check if a screen reader user reported navigation problems?
+**Давайте оценим ваше понимание семантики:**
+- Можете ли вы определить ориентиры на веб-странице, просто взглянув на HTML?
+- Как бы вы объяснили разницу между `<section>` и `<div>` другу?
+- Что бы вы проверили в первую очередь, если бы пользователь экранного ридера сообщил о проблемах с навигацией?
 
 ```mermaid
 stateDiagram-v2
-    [*] --> UnsementicHTML: div soup
-    UnsementicHTML --> SemanticHTML: Add landmarks
-    SemanticHTML --> AccessibleHTML: Test with AT
-    AccessibleHTML --> [*]: User success!
-    
-    note right of UnsementicHTML
-        Screen readers lost
-        Keyboard nav broken
-    end note
-    
-    note right of AccessibleHTML
-        Clear navigation
-        Efficient browsing
-    end note
+  [*] --> НесемантическийHTML: суп из div
+  НесемантическийHTML --> СемантическийHTML: Добавить ориентиры
+  СемантическийHTML --> ДоступныйHTML: Тестировать с АТ
+  ДоступныйHTML --> [*]: Успех пользователя!
+
+  note right of НесемантическийHTML
+    Экранные ридеры потерялись
+    Навигация с клавиатуры сломана
+  end note
+
+  note right of ДоступныйHTML
+    Четкая навигация
+    Эффективный просмотр
+  end note
 ```
 
-> **Pro insight**: Good semantic HTML solves about 70% of accessibility issues automatically. Master this foundation and you're well on your way!
+> **Совет от профессионала**: Хороший семантический HTML автоматически решает около 70% проблем доступности. Освойте эту основу, и вы на верном пути!
 
-✅ **Audit your semantic structure**: Use the Accessibility panel in your browser's DevTools to view the accessibility tree and ensure your markup creates a logical structure.
+✅ **Проведите аудит вашей семантической структуры**: Используйте панель Accessibility в инструментах разработчика вашего браузера, чтобы просмотреть дерево доступности и убедиться, что ваша разметка создает логическую структуру.
 
-### Heading hierarchy: Creating a logical content outline
+### Иерархия заголовков: создание логической структуры контента
 
-Headings are absolutely crucial for accessible content—they're like the spine that holds everything together. Screen reader users rely heavily on headings to understand and navigate your content. Think of it as providing a table of contents for your page.
+Заголовки абсолютно необходимы для доступного контента — они как позвоночник, который держит все вместе. Пользователи экранных ридеров в значительной степени полагаются на заголовки для понимания и навигации по вашему контенту. Думайте об этом как о предоставлении оглавления для вашей страницы.
 
-**Here's the golden rule for headings:**
-Never skip levels. Always progress logically from `<h1>` to `<h2>` to `<h3>`, and so on. Remember making outlines in school? It's exactly the same principle—you wouldn't jump from "I. Main Point" straight to "C. Sub-sub-point" without a "A. Sub-point" in between, right?
+**Вот золотое правило для заголовков:**
+Никогда не пропускайте уровни. Всегда двигайтесь логически от `<h1>` к `<h2>`, затем к `<h3>` и так далее. Помните, как в школе составляли планы? Это тот же самый принцип — вы бы не перескочили от "I. Главный пункт" сразу к "C. Под-подпункт" без "A. Подпункт" между ними, верно?
 
-**Perfect heading structure example:**
+**Пример идеальной структуры заголовков:**
 
 ```html
-<!-- ✅ Excellent: Logical, hierarchical progression -->
+<!-- ✅ Отлично: Логическая, иерархическая последовательность -->
 <main>
-  <h1>Complete Guide to Web Accessibility</h1>
-  
+  <h1>Полное руководство по веб-доступности</h1>
+
   <section>
-    <h2>Understanding Screen Readers</h2>
-    <p>Introduction to screen reader technology...</p>
-    
-    <h3>Popular Screen Reader Software</h3>
-    <p>NVDA, JAWS, and VoiceOver comparison...</p>
-    
-    <h3>Testing with Screen Readers</h3>
-    <p>Step-by-step testing instructions...</p>
+  <h2>Понимание экранных ридеров</h2>
+  <p>Введение в технологию экранных ридеров...</p>
+
+  <h3>Популярное программное обеспечение для экранных ридеров</h3>
+  <p>Сравнение NVDA, JAWS и VoiceOver...</p>
+
+  <h3>Тестирование с экранными ридерами</h3>
+  <p>Пошаговые инструкции по тестированию...</p>
   </section>
-  
+
   <section>
-    <h2>Color and Contrast Guidelines</h2>
-    <p>Designing with sufficient contrast...</p>
-    
-    <h3>WCAG Contrast Requirements</h3>
-    <p>Understanding the different contrast levels...</p>
-    
-    <h3>Testing Tools and Techniques</h3>
-    <p>Tools for verifying contrast ratios...</p>
+  <h2>Руководство по цвету и контрасту</h2>
+  <p>Проектирование с достаточным контрастом...</p>
+
+  <h3>Требования WCAG к контрасту</h3>
+  <p>Понимание различных уровней контрастности...</p>
+
+  <h3>Инструменты и методы тестирования</h3>
+  <p>Инструменты для проверки коэффициентов контрастности...</p>
   </section>
 </main>
 ```
 
 ```html
-<!-- ❌ Problematic: Skipping levels, inconsistent structure -->
-<h1>Page Title</h1>
-<h3>Subsection</h3> <!-- Skipped h2 -->
-<h2>This should come before h3</h2>
-<h1>Another main heading?</h1> <!-- Multiple h1s -->
+<!-- ❌ Проблематично: Пропуск уровней, непоследовательная структура -->
+<h1>Заголовок страницы</h1>
+<h3>Подраздел</h3> <!-- Пропущен h2 -->
+<h2>Это должно идти перед h3</h2>
+<h1>Еще один главный заголовок?</h1> <!-- Несколько h1 -->
 ```
 
-**Heading best practices:**
-- **One `<h1>` per page**: Typically your main page title or primary content heading
-- **Logical progression**: Never skip levels (h1 → h2 → h3, not h1 → h3)
-- **Descriptive content**: Make headings meaningful when read out of context
-- **Visual styling with CSS**: Use CSS for appearance, HTML levels for structure
+**Лучшие практики для заголовков:**
+- **Один `<h1>` на страницу**: Обычно это основной заголовок вашей страницы или главный заголовок контента
+- **Логическая последовательность**: Никогда не пропускайте уровни (h1 → h2 → h3, а не h1 → h3)
+- **Описательное содержание**: Делайте заголовки осмысленными при чтении вне контекста
+- **Визуальное оформление с помощью CSS**: Используйте CSS для внешнего вида, а уровни HTML для структуры
 
-**Screen reader navigation statistics:**
-- 68% of screen reader users navigate by headings ([WebAIM Survey](https://webaim.org/projects/screenreadersurvey9/#finding))
-- Users expect to find a logical heading outline
-- Headings provide the fastest way to understand page structure
+**Статистика навигации с помощью экранного ридера:**
+- 68% пользователей экранных ридеров перемещаются по заголовкам ([Опрос WebAIM](https://webaim.org/projects/screenreadersurvey9/#finding))
+- Пользователи ожидают найти логическую структуру заголовков
+- Заголовки предоставляют самый быстрый способ понять структуру страницы
 
-> 💡 **Pro Tip**: Use browser extensions like "HeadingsMap" to visualize your heading structure. It should read like a well-organized table of contents.
+> 💡 **Совет от профессионала**: Используйте расширения для браузера, такие как "HeadingsMap", чтобы визуализировать структуру ваших заголовков. Она должна читаться как хорошо организованное оглавление.
 
-✅ **Test your heading structure**: Use a screen reader's heading navigation (H key in NVDA) to jump through your headings. Does the progression tell the story of your content logically?
+✅ **Проверьте структуру ваших заголовков**: Используйте навигацию по заголовкам в экранном ридере (клавиша H в NVDA), чтобы перемещаться по вашим заголовкам. Рассказывает ли последовательность логическую историю вашего контента?
 
-### Advanced visual accessibility techniques
+### Продвинутые техники визуальной доступности
 
-Beyond the basics of contrast and color, there are sophisticated techniques that help create truly inclusive visual experiences. These methods ensure your content works across different viewing conditions and assistive technologies.
+Помимо основ контраста и цвета, существуют сложные техники, которые помогают создавать по-настоящему инклюзивные визуальные впечатления. Эти методы гарантируют, что ваш контент работает в различных условиях просмотра и с различными ассистивными технологиями.
 
-**Essential visual communication strategies:**
+**Основные стратегии визуальной коммуникации:**
 
-- **Multi-modal feedback**: Combine visual, textual, and sometimes audio cues
-- **Progressive disclosure**: Present information in digestible chunks
-- **Consistent interaction patterns**: Use familiar UI conventions
-- **Responsive typography**: Scale text appropriately across devices
-- **Loading and error states**: Provide clear feedback for all user actions
+- **Мультимодальная обратная связь**: Сочетайте визуальные, текстовые и иногда звуковые сигналы
+- **Прогрессивное раскрытие**: Представляйте информацию удобоваримыми порциями
+- **Последовательные паттерны взаимодействия**: Используйте знакомые соглашения пользовательского интерфейса
+- **Адаптивная типографика**: Масштабируйте текст соответствующим образом на разных устройствах
+- **Состояния загрузки и ошибок**: Предоставляйте четкую обратную связь для всех действий пользователя
 
-**CSS utilities for enhanced accessibility:**
+**CSS-утилиты для улучшенной доступности:**
 
 ```css
-/* Screen reader only text - visually hidden but accessible */
+/* Текст только для экранных ридеров - визуально скрыт, но доступен */
 .sr-only {
   position: absolute;
   width: 1px;
@@ -616,7 +616,7 @@ Beyond the basics of contrast and color, there are sophisticated techniques that
   border: 0;
 }
 
-/* Skip link for keyboard navigation */
+/* Ссылка для пропуска для навигации с клавиатуры */
 .skip-link {
   position: absolute;
   top: -40px;
@@ -635,198 +635,198 @@ Beyond the basics of contrast and color, there are sophisticated techniques that
   top: 6px;
 }
 
-/* Reduced motion respect */
+/* Уважение к уменьшенному движению */
 @media (prefers-reduced-motion: reduce) {
   .skip-link {
-    transition: none;
+  transition: none;
   }
-  
+
   * {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
+  animation-duration: 0.01ms !important;
+  animation-iteration-count: 1 !important;
+  transition-duration: 0.01ms !important;
   }
 }
 
-/* High contrast mode support */
+/* Поддержка режима высокой контрастности */
 @media (prefers-contrast: high) {
   .button {
-    border: 2px solid;
+  border: 2px solid;
   }
 }
 ```
 
-> 🎯 **Accessibility Pattern**: The "skip link" is essential for keyboard users. It should be the first focusable element on your page and jump directly to the main content area.
+> 🎯 **Паттерн доступности**: "Ссылка для пропуска" необходима для пользователей клавиатуры. Она должна быть первым фокусируемым элементом на вашей странице и переходить непосредственно к основной области контента.
 
-✅ **Implement skip navigation**: Add skip links to your pages and test them by pressing Tab as soon as the page loads. They should appear and allow you to jump to main content.
+✅ **Реализуйте пропуск навигации**: Добавьте ссылки для пропуска на ваши страницы и протестируйте их, нажимая Tab сразу после загрузки страницы. Они должны появиться и позволить вам перейти к основному контенту.
 
-## Crafting Meaningful Link Text
+## Создание осмысленного текста ссылок
 
-Links are basically the highways of the web, but poorly written link text is like having road signs that just say "Place" instead of "Downtown Chicago." Not very helpful, right?
+Ссылки — это, по сути, магистрали веба, но плохо написанный текст ссылок — это как дорожные знаки, на которых просто написано «Место» вместо «Центр Чикаго». Не очень полезно, правда?
 
-Here's something that blew my mind when I first learned it: screen readers can extract all the links from a page and show them as one big list. Imagine if someone handed you a directory of every link on your page. Would each one make sense on its own? That's the test your link text needs to pass!
+Вот что меня поразило, когда я впервые это узнал: экранные ридеры могут извлекать все ссылки со страницы и показывать их в виде одного большого списка. Представьте, что кто-то дал вам каталог всех ссылок на вашей странице. Будет ли каждая из них иметь смысл сама по себе? Именно этот тест должен пройти текст вашей ссылки!
 
-### Understanding link navigation patterns
+### Понимание паттернов навигации по ссылкам
 
-Screen readers offer powerful link navigation features that rely on well-written link text:
+Экранные ридеры предлагают мощные функции навигации по ссылкам, которые полагаются на хорошо написанный текст ссылок:
 
-**Link navigation methods:**
-- **Sequential reading**: Links are read in context as part of content flow
-- **Link list generation**: All page links compiled into a searchable directory
-- **Quick navigation**: Jump between links using keyboard shortcuts (K in NVDA)
-- **Search functionality**: Find specific links by typing partial text
+**Методы навигации по ссылкам:**
+- **Последовательное чтение**: Ссылки читаются в контексте как часть потока контента
+- **Генерация списка ссылок**: Все ссылки на странице компилируются в каталог с возможностью поиска
+- **Быстрая навигация**: Переход между ссылками с помощью сочетаний клавиш (K в NVDA)
+- **Функциональность поиска**: Поиск конкретных ссылок по частичному вводу текста
 
-**Why context matters:**
-When screen reader users generate a link list, they see something like this:
-- "Download report"
-- "Learn more"
-- "Click here"
-- "Privacy policy"
-- "Click here"
+**Почему важен контекст:**
+Когда пользователи экранных ридеров генерируют список ссылок, они видят что-то вроде этого:
+- "Скачать отчет"
+- "Узнать больше"
+- "Нажмите здесь"
+- "Политика конфиденциальности"
+- "Нажмите здесь"
 
-Only two of these links provide useful information when read out of context!
+Только две из этих ссылок предоставляют полезную информацию при чтении вне контекста!
 
-> 📊 **User Impact**: Screen reader users scan link lists to understand page content quickly. Generic link text forces them to navigate back to each link's context, significantly slowing down their browsing experience.
+> 📊 **Влияние на пользователя**: Пользователи экранных ридеров сканируют списки ссылок, чтобы быстро понять содержание страницы. Общий текст ссылок заставляет их возвращаться к контексту каждой ссылки, что значительно замедляет их работу в интернете.
 
-### Common link text mistakes to avoid
+### Распространенные ошибки в тексте ссылок, которых следует избегать
 
-Understanding what doesn't work helps you recognize and fix accessibility issues in existing content.
+Понимание того, что не работает, помогает распознавать и исправлять проблемы доступности в существующем контенте.
 
-**❌ Generic link text that provides no context:**
+**❌ Общий текст ссылок, не предоставляющий контекста:**
 
 ```html
-<!-- Meaningless when read from a link list -->
-<p>Our sustainability efforts are detailed in our recent report. 
-   <a href="/sustainability-2024.pdf">Click here</a> to view it.</p>
+<!-- Бессмысленно при чтении из списка ссылок -->
+<p>Наши усилия в области устойчивого развития подробно описаны в нашем последнем отчете.
+   <a href="/sustainability-2024.pdf">Нажмите здесь</a>, чтобы просмотреть его.</p>
 
-<!-- Repeated generic text throughout the page -->
+<!-- Повторяющийся общий текст по всей странице -->
 <div class="article-card">
-  <h3>Web Accessibility Guide</h3>
-  <p>Learn the fundamentals...</p>
-  <a href="/accessibility-guide">Read more</a>
+  <h3>Руководство по веб-доступности</h3>
+  <p>Изучите основы...</p>
+  <a href="/accessibility-guide">Читать далее</a>
 </div>
 <div class="article-card">
-  <h3>Color Contrast Tips</h3>
-  <p>Improve your design...</p>
-  <a href="/color-contrast">Read more</a>
+  <h3>Советы по цветовому контрасту</h3>
+  <p>Улучшите свой дизайн...</p>
+  <a href="/color-contrast">Читать далее</a>
 </div>
 
-<!-- URLs as link text (difficult for screen readers to announce) -->
-<p>Visit https://www.w3.org/WAI/WCAG21/quickref/ for WCAG guidelines.</p>
+<!-- URL-адреса в качестве текста ссылок (трудно произносимы для экранных ридеров) -->
+<p>Посетите https://www.w3.org/WAI/WCAG21/quickref/ для ознакомления с рекомендациями WCAG.</p>
 
-<!-- Vague action words -->
-<a href="/contact">Go</a> | <a href="/about">See</a> | <a href="/help">View</a>
+<!-- Неопределенные слова-действия -->
+<a href="/contact">Перейти</a> | <a href="/about">Посмотреть</a> | <a href="/help">Просмотр</a>
 ```
 
-**Why these patterns fail:**
-- **"Click here"** tells users nothing about the destination
-- **"Read more"** repeated multiple times creates confusion
-- **Raw URLs** are difficult for screen readers to pronounce clearly
-- **Single words** like "Go" or "See" lack descriptive context
+**Почему эти паттерны не работают:**
+- **"Нажмите здесь"** ничего не говорит пользователям о месте назначения
+- **"Читать далее"**, повторенное несколько раз, создает путаницу
+- **Прямые URL-адреса** трудно произносить экранным ридерам
+- **Одиночные слова**, такие как "Перейти" или "Посмотреть", лишены описательного контекста
 
-### Writing excellent link text
+### Написание отличного текста ссылок
 
-Descriptive link text benefits everyone—sighted users can quickly scan links, and screen reader users understand destinations immediately.
+Описательный текст ссылок приносит пользу всем — зрячие пользователи могут быстро сканировать ссылки, а пользователи экранных ридеров сразу понимают, куда они ведут.
 
-**✅ Clear, descriptive link text examples:**
+**✅ Примеры ясного, описательного текста ссылок:**
 
 ```html
-<!-- Descriptive text that explains the destination -->
-<p>Our comprehensive <a href="/sustainability-2024.pdf">2024 sustainability report (PDF, 2.1MB)</a> details our environmental initiatives.</p>
+<!-- Описательный текст, объясняющий место назначения -->
+<p>Наш всеобъемлющий <a href="/sustainability-2024.pdf">отчет об устойчивом развитии за 2024 год (PDF, 2.1 МБ)</a> подробно описывает наши экологические инициативы.</p>
 
-<!-- Specific, unique link text for each card -->
+<!-- Конкретный, уникальный текст ссылки для каждой карточки -->
 <div class="article-card">
-  <h3>Web Accessibility Guide</h3>
-  <p>Learn the fundamentals of inclusive design...</p>
-  <a href="/accessibility-guide">Read our complete web accessibility guide</a>
+  <h3>Руководство по веб-доступности</h3>
+  <p>Изучите основы инклюзивного дизайна...</p>
+  <a href="/accessibility-guide">Прочитайте наше полное руководство по веб-доступности</a>
 </div>
 <div class="article-card">
-  <h3>Color Contrast Tips</h3>
-  <p>Improve your design with better color choices...</p>
-  <a href="/color-contrast">Explore color contrast best practices</a>
+  <h3>Советы по цветовому контрасту</h3>
+  <p>Улучшите свой дизайн с помощью лучших цветовых решений...</p>
+  <a href="/color-contrast">Изучите лучшие практики цветового контраста</a>
 </div>
 
-<!-- Meaningful text instead of raw URLs -->
-<p>The <a href="https://www.w3.org/WAI/WCAG21/quickref/">WCAG 2.1 Quick Reference guide</a> provides comprehensive accessibility guidelines.</p>
+<!-- Осмысленный текст вместо прямых URL-адресов -->
+<p><a href="https://www.w3.org/WAI/WCAG21/quickref/">Краткое справочное руководство WCAG 2.1</a> предоставляет исчерпывающие рекомендации по доступности.</p>
 
-<!-- Descriptive action links -->
-<a href="/contact">Contact our support team</a> | 
-<a href="/about">About our company</a> | 
-<a href="/help">Get help with your account</a>
+<!-- Описательные ссылки-действия -->
+<a href="/contact">Связаться с нашей службой поддержки</a> |
+<a href="/about">О нашей компании</a> |
+<a href="/help">Получить помощь по вашему аккаунту</a>
 ```
 
-**Link text best practices:**
-- **Be specific**: "Download the quarterly financial report" vs. "Download"
-- **Include file type and size**: "(PDF, 1.2MB)" for downloadable files
-- **Mention if links open externally**: "(opens in new window)" when appropriate
-- **Use active language**: "Contact us" vs. "Contact page"
-- **Keep it concise**: Aim for 2-8 words when possible
+**Лучшие практики для текста ссылок:**
+- **Будьте конкретны**: "Скачать квартальный финансовый отчет" вместо "Скачать"
+- **Указывайте тип и размер файла**: "(PDF, 1.2 МБ)" для загружаемых файлов
+- **Упоминайте, если ссылки открываются во внешнем окне**: "(откроется в новом окне)", когда это уместно
+- **Используйте активный язык**: "Связаться с нами" вместо "Страница контактов"
+- **Будьте кратки**: Старайтесь использовать 2-8 слов, когда это возможно
 
-### Advanced link accessibility patterns
+### Продвинутые паттерны доступности ссылок
 
-Sometimes visual design constraints or technical requirements need special solutions. Here are sophisticated techniques for common challenging scenarios:
+Иногда ограничения визуального дизайна или технические требования требуют особых решений. Вот сложные техники для распространенных сложных сценариев:
 
-**Using ARIA for enhanced context:**
+**Использование ARIA для улучшения контекста:**
 
 ```html
-<!-- When button text must be short but needs more context -->
-<a href="/report.pdf" 
-   aria-label="Download 2024 annual financial report, PDF format, 2.3MB">
-  Download Report
+<!-- Когда текст кнопки должен быть коротким, но требует большего контекста -->
+<a href="/report.pdf"
+   aria-label="Скачать годовой финансовый отчет за 2024 год, формат PDF, 2.3 МБ">
+  Скачать отчет
 </a>
 
-<!-- When the full context comes from surrounding content -->
-<h3 id="sustainability-heading">Sustainability Initiative</h3>
-<p>Our efforts to reduce environmental impact...</p>
-<a href="/sustainability-details" 
+<!-- Когда полный контекст исходит из окружающего контента -->
+<h3 id="sustainability-heading">Инициатива по устойчивому развитию</h3>
+<p>Наши усилия по снижению воздействия на окружающую среду...</p>
+<a href="/sustainability-details"
    aria-labelledby="sustainability-heading"
    aria-describedby="sustainability-summary">
-  Learn more
+  Узнать больше
 </a>
-<p id="sustainability-summary">Detailed breakdown of our 2024 environmental goals and achievements</p>
+<p id="sustainability-summary">Подробный разбор наших экологических целей и достижений на 2024 год</p>
 ```
 
-**Indicating file types and external destinations:**
+**Указание типов файлов и внешних ссылок:**
 
 ```html
-<!-- Method 1: Include information in visible link text -->
+<!-- Метод 1: Включить информацию в видимый текст ссылки -->
 <a href="/annual-report.pdf">
-  Download our 2024 annual report (PDF, 2.3MB)
+  Скачать наш годовой отчет за 2024 год (PDF, 2.3 МБ)
 </a>
 
-<!-- Method 2: Use screen reader-only text for file details -->
+<!-- Метод 2: Использовать текст только для экранных ридеров для деталей файла -->
 <a href="/annual-report.pdf">
-  Download our 2024 annual report
-  <span class="sr-only">(PDF format, 2.3MB)</span>
+  Скачать наш годовой отчет за 2024 год
+  <span class="sr-only">(формат PDF, 2.3 МБ)</span>
 </a>
 
-<!-- Method 3: External link indication -->
-<a href="https://example.com" 
-   target="_blank" 
+<!-- Метод 3: Указание на внешнюю ссылку -->
+<a href="https://example.com"
+   target="_blank"
    aria-describedby="external-link-warning">
-  Visit external resource
+  Посетить внешний ресурс
 </a>
 <span id="external-link-warning" class="sr-only">
-  (opens in new window)
+  (откроется в новом окне)
 </span>
 
-<!-- Method 4: Using CSS for visual indicators -->
+<!-- Метод 4: Использование CSS для визуальных индикаторов -->
 <a href="https://example.com" class="external-link">
-  External resource
+  Внешний ресурс
 </a>
 ```
 
 ```css
-/* Visual indicator for external links */
+/* Визуальный индикатор для внешних ссылок */
 .external-link::after {
   content: " ↗";
   font-size: 0.8em;
   color: #666;
 }
 
-/* Screen reader announcement for external links */
+/* Объявление для экранного ридера для внешних ссылок */
 .external-link::before {
-  content: "External link: ";
+  content: "Внешняя ссылка: ";
   position: absolute;
   left: -10000px;
   width: 1px;
@@ -835,665 +835,665 @@ Sometimes visual design constraints or technical requirements need special solut
 }
 ```
 
-> ⚠️ **Important**: When using `target="_blank"`, always inform users that the link opens in a new window or tab. Unexpected navigation changes can be disorienting.
+> ⚠️ **Важно**: При использовании `target="_blank"` всегда информируйте пользователей о том, что ссылка открывается в новом окне или вкладке. Неожиданные изменения навигации могут дезориентировать.
 
-✅ **Test your link context**: Use your browser's developer tools to generate a list of all links on your page. Can you understand each link's purpose without any surrounding context?
+✅ **Проверьте контекст ваших ссылок**: Используйте инструменты разработчика вашего браузера, чтобы сгенерировать список всех ссылок на вашей странице. Можете ли вы понять назначение каждой ссылки без окружающего контекста?
 
-## ARIA: Supercharging HTML Accessibility
+## ARIA: Прокачка доступности HTML
 
-[Accessible Rich Internet Applications (ARIA)](https://developer.mozilla.org/docs/Web/Accessibility/ARIA) is like having a universal translator between your complex web applications and assistive technologies. When HTML alone can't express everything your interactive components are doing, ARIA steps in to fill those gaps.
+[Accessible Rich Internet Applications (ARIA)](https://developer.mozilla.org/docs/Web/Accessibility/ARIA) — это как универсальный переводчик между вашими сложными веб-приложениями и ассистивными технологиями. Когда один только HTML не может выразить все, что делают ваши интерактивные компоненты, ARIA приходит на помощь, чтобы заполнить эти пробелы.
 
-I like to think of ARIA as adding helpful annotations to your HTML—kind of like stage directions in a play script that help actors understand their roles and relationships.
+Мне нравится думать об ARIA как о добавлении полезных аннотаций к вашему HTML — что-то вроде ремарок в сценарии пьесы, которые помогают актерам понять свои роли и отношения.
 
-**Here's the most important rule about ARIA**: Always use semantic HTML first, then add ARIA to enhance it. Think of ARIA as seasoning, not the main dish. It should clarify and enhance your HTML structure, never replace it. Get that foundation right first!
+**Вот самое важное правило об ARIA**: Всегда сначала используйте семантический HTML, а затем добавляйте ARIA для его улучшения. Думайте об ARIA как о приправе, а не об основном блюде. Он должен прояснять и улучшать вашу HTML-структуру, а не заменять ее. Сначала добейтесь правильной основы!
 
-### Strategic ARIA implementation
+### Стратегическое внедрение ARIA
 
-ARIA is powerful, but with power comes responsibility. Incorrect ARIA can make accessibility worse than no ARIA at all. Here's when and how to use it effectively:
+ARIA — мощный инструмент, но с силой приходит и ответственность. Неправильное использование ARIA может сделать доступность хуже, чем ее полное отсутствие. Вот когда и как его эффективно использовать:
 
-**✅ Use ARIA when:**
-- Creating custom interactive widgets (accordions, tabs, carousels)
-- Building dynamic content that changes without page reloads
-- Providing additional context for complex UI relationships
-- Indicating loading states or live content updates
-- Creating app-like interfaces with custom controls
+**✅ Используйте ARIA, когда:**
+- Создаете пользовательские интерактивные виджеты (аккордеоны, вкладки, карусели)
+- Создаете динамический контент, который изменяется без перезагрузки страницы
+- Предоставляете дополнительный контекст для сложных связей в пользовательском интерфейсе
+- Указываете состояния загрузки или обновления контента в реальном времени
+- Создаете интерфейсы, подобные приложениям, с пользовательскими элементами управления
 
-**❌ Avoid ARIA when:**
-- Standard HTML elements already provide the needed semantics
-- You're unsure how to implement it correctly
-- It duplicates information already provided by semantic HTML
-- You haven't tested with actual assistive technology
+**❌ Избегайте ARIA, когда:**
+- Стандартные HTML-элементы уже предоставляют необходимую семантику
+- Вы не уверены, как правильно его реализовать
+- Он дублирует информацию, уже предоставленную семантическим HTML
+- Вы не тестировали с реальными ассистивными технологиями
 
-> 🎯 **ARIA Golden Rule**: "Don't change semantics unless you absolutely have to, ensure keyboard accessibility always, and test with real assistive technology."
+> 🎯 **Золотое правило ARIA**: "Не изменяйте семантику, если это не абсолютно необходимо, всегда обеспечивайте доступность с клавиатуры и тестируйте с реальными ассистивными технологиями."
 
-**The five categories of ARIA:**
+**Пять категорий ARIA:**
 
-1. **Roles**: What is this element? (`button`, `tab`, `dialog`)
-2. **Properties**: What are its features? (`aria-required`, `aria-haspopup`)
-3. **States**: What's its current condition? (`aria-expanded`, `aria-checked`)
-4. **Landmarks**: Where is it in page structure? (`banner`, `navigation`, `main`)
-5. **Live regions**: How should changes be announced? (`aria-live`, `aria-atomic`)
+1. **Роли**: Что это за элемент? (`button`, `tab`, `dialog`)
+2. **Свойства**: Каковы его особенности? (`aria-required`, `aria-haspopup`)
+3. **Состояния**: Каково его текущее состояние? (`aria-expanded`, `aria-checked`)
+4. **Ориентиры**: Где он находится в структуре страницы? (`banner`, `navigation`, `main`)
+5. **Живые регионы**: Как должны объявляться изменения? (`aria-live`, `aria-atomic`)
 
-### Essential ARIA patterns for modern web apps
+### Основные паттерны ARIA для современных веб-приложений
 
-These patterns solve the most common accessibility challenges in interactive web applications:
+Эти паттерны решают наиболее распространенные проблемы доступности в интерактивных веб-приложениях:
 
-**Naming and describing elements:**
+**Именование и описание элементов:**
 
 ```html
-<!-- aria-label: Provides accessible name when visible text isn't sufficient -->
-<button aria-label="Close newsletter subscription dialog">×</button>
+<!-- aria-label: Предоставляет доступное имя, когда видимого текста недостаточно -->
+<button aria-label="Закрыть диалоговое окно подписки на рассылку">×</button>
 
-<!-- aria-labelledby: References existing text as the accessible name -->
+<!-- aria-labelledby: Ссылается на существующий текст как на доступное имя -->
 <section aria-labelledby="news-heading">
-  <h2 id="news-heading">Latest News</h2>
-  <!-- news content -->
+  <h2 id="news-heading">Последние новости</h2>
+  <!-- новостной контент -->
 </section>
 
-<!-- aria-describedby: Links to additional descriptive text -->
-<input type="password" 
-       aria-describedby="pwd-requirements pwd-strength"
-       required>
+<!-- aria-describedby: Ссылается на дополнительный описательный текст -->
+<input type="password"
+     aria-describedby="pwd-requirements pwd-strength"
+     required>
 <div id="pwd-requirements">
-  Password must contain at least 8 characters, including uppercase, lowercase, and numbers.
+  Пароль должен содержать не менее 8 символов, включая заглавные, строчные буквы и цифры.
 </div>
 <div id="pwd-strength" aria-live="polite">
-  <!-- Dynamic password strength indicator -->
+  <!-- Динамический индикатор надежности пароля -->
 </div>
 ```
 
-**Live regions for dynamic content:**
+**Живые регионы для динамического контента:**
 
 ```html
-<!-- Polite announcements (don't interrupt current speech) -->
+<!-- Вежливые объявления (не прерывают текущую речь) -->
 <div aria-live="polite" id="status-updates">
-  <!-- Status messages appear here -->
+  <!-- Сообщения о статусе появляются здесь -->
 </div>
 
-<!-- Assertive announcements (interrupt and announce immediately) -->
+<!-- Настойчивые объявления (прерывают и объявляют немедленно) -->
 <div aria-live="assertive" id="urgent-alerts">
-  <!-- Error messages and critical alerts -->
+  <!-- Сообщения об ошибках и критические оповещения -->
 </div>
 
-<!-- Loading states with live regions -->
+<!-- Состояния загрузки с живыми регионами -->
 <button id="submit-btn" aria-describedby="loading-status">
-  Submit Application
+  Отправить заявку
 </button>
 <div id="loading-status" aria-live="polite" aria-atomic="true">
-  <!-- "Processing your application..." appears here -->
+  <!-- "Обработка вашей заявки..." появляется здесь -->
 </div>
 ```
 
-**Interactive widget example (accordion):**
+**Пример интерактивного виджета (аккордеон):**
 
 ```html
 <div class="accordion">
   <h3>
-    <button aria-expanded="false" 
-            aria-controls="panel-1" 
-            id="accordion-trigger-1"
-            class="accordion-trigger">
-      Accessibility Guidelines
-    </button>
+  <button aria-expanded="false"
+      aria-controls="panel-1"
+      id="accordion-trigger-1"
+      class="accordion-trigger">
+    Руководство по доступности
+  </button>
   </h3>
-  <div id="panel-1" 
-       role="region"
-       aria-labelledby="accordion-trigger-1" 
-       hidden>
-    <p>WCAG 2.1 provides comprehensive guidelines...</p>
+  <div id="panel-1"
+     role="region"
+     aria-labelledby="accordion-trigger-1"
+     hidden>
+  <p>WCAG 2.1 предоставляет исчерпывающие рекомендации...</p>
   </div>
 </div>
 ```
 
 ```javascript
-// JavaScript to manage accordion state
+// JavaScript для управления состоянием аккордеона
 function toggleAccordion(trigger) {
   const panel = document.getElementById(trigger.getAttribute('aria-controls'));
   const isExpanded = trigger.getAttribute('aria-expanded') === 'true';
-  
-  // Toggle states
+
+  // Переключение состояний
   trigger.setAttribute('aria-expanded', !isExpanded);
   panel.hidden = isExpanded;
-  
-  // Announce change to screen readers
+
+  // Объявление об изменении для экранных ридеров
   const status = document.getElementById('status-updates');
-  status.textContent = isExpanded ? 'Section collapsed' : 'Section expanded';
+  status.textContent = isExpanded ? 'Раздел свернут' : 'Раздел развернут';
 }
 ```
 
-### ARIA implementation best practices
+### Лучшие практики внедрения ARIA
 
-ARIA is powerful but requires careful implementation. Following these guidelines helps ensure your ARIA enhances rather than hinders accessibility:
+ARIA — мощный инструмент, но требует осторожного внедрения. Соблюдение этих рекомендаций помогает гарантировать, что ARIA улучшает, а не ухудшает доступность:
 
-**🛡️ Core principles:**
+**🛡️ Основные принципы:**
 
 ```mermaid
 flowchart TD
-    A[🚀 Start with semantic HTML] --> B{Does HTML provide needed semantics?}
-    B -->|Yes| C[✅ Use HTML only]
-    B -->|No| D[Consider ARIA enhancement]
-    D --> E{Can you achieve it with simpler means?}
-    E -->|Yes| F[🔄 Simplify approach]
-    E -->|No| G[📝 Implement ARIA carefully]
-    G --> H[🧪 Test with real AT]
-    H --> I{Works as expected?}
-    I -->|No| J[🔧 Debug and fix]
-    I -->|Yes| K[✅ Success!]
-    J --> H
-    F --> C
-    
-    style A fill:#e3f2fd
-    style C fill:#e8f5e8
-    style K fill:#e8f5e8
-    style G fill:#fff3e0
-    style H fill:#f3e5f5
+  A[🚀 Начать с семантического HTML] --> B{Предоставляет ли HTML необходимую семантику?}
+  B -->|Да| C[✅ Использовать только HTML]
+  B -->|Нет| D[Рассмотреть улучшение с помощью ARIA]
+  D --> E{Можно ли достичь этого более простыми средствами?}
+  E -->|Да| F[🔄 Упростить подход]
+  E -->|Нет| G[📝 Внедрить ARIA осторожно]
+  G --> H[🧪 Тестировать с реальными АТ]
+  H --> I{Работает как ожидалось?}
+  I -->|Нет| J[🔧 Отладить и исправить]
+  I -->|Да| K[✅ Успех!]
+  J --> H
+  F --> C
+
+  style A fill:#e3f2fd
+  style C fill:#e8f5e8
+  style K fill:#e8f5e8
+  style G fill:#fff3e0
+  style H fill:#f3e5f5
 ```
 
-1. **Semantic HTML first**: Always prefer `<button>` over `<div role="button">`
-2. **Don't break semantics**: Never override existing HTML meaning (avoid `<h1 role="button">`)
-3. **Maintain keyboard accessibility**: All interactive ARIA elements must be fully keyboard accessible
-4. **Test with real users**: ARIA support varies significantly between assistive technologies
-5. **Start simple**: Complex ARIA implementations are more likely to have errors
+1. **Сначала семантический HTML**: Всегда предпочитайте `<button>` вместо `<div role="button">`
+2. **Не нарушайте семантику**: Никогда не переопределяйте существующее значение HTML (избегайте `<h1 role="button">`)
+3. **Поддерживайте доступность с клавиатуры**: Все интерактивные элементы ARIA должны быть полностью доступны с клавиатуры
+4. **Тестируйте с реальными пользователями**: Поддержка ARIA значительно различается между ассистивными технологиями
+5. **Начинайте с простого**: Сложные реализации ARIA с большей вероятностью содержат ошибки
 
-**🔍 Testing workflow:**
+**🔍 Рабочий процесс тестирования:**
 
 ```mermaid
 graph TD
-    A[Write ARIA code] --> B[Validate HTML]
-    B --> C[Test with keyboard only]
-    C --> D[Test with screen reader]
-    D --> E[Test across browsers]
-    E --> F{Issues found?}
-    F -->|Yes| G[Fix and re-test]
-    F -->|No| H[Implementation complete]
-    G --> B
+  A[Написать ARIA-код] --> B[Валидировать HTML]
+  B --> C[Тестировать только с клавиатуры]
+  C --> D[Тестировать с экранным ридером]
+  D --> E[Тестировать в разных браузерах]
+  E --> F{Найдены проблемы?}
+  F -->|Да| G[Исправить и повторно протестировать]
+  F -->|Нет| H[Внедрение завершено]
+  G --> B
 ```
 
-**🚫 Common ARIA mistakes to avoid:**
+**🚫 Распространенные ошибки ARIA, которых следует избегать:**
 
-- **Conflicting information**: Don't contradict HTML semantics
-- **Over-labeling**: Too much ARIA information overwhelms users
-- **Static ARIA**: Forgetting to update ARIA states when content changes
-- **Untested implementations**: ARIA that works in theory but fails in practice
-- **Missing keyboard support**: ARIA roles without corresponding keyboard interactions
+- **Противоречивая информация**: Не противоречьте семантике HTML
+- **Чрезмерная маркировка**: Слишком много информации ARIA перегружает пользователей
+- **Статический ARIA**: Забывание обновлять состояния ARIA при изменении контента
+- **Непротестированные реализации**: ARIA, который работает в теории, но не на практике
+- **Отсутствие поддержки клавиатуры**: Роли ARIA без соответствующих взаимодействий с клавиатурой
 
-> 💡 **Testing Resources**: Use tools like [accessibility-checker](https://www.npmjs.com/package/accessibility-checker) for automated ARIA validation, but always test with real screen readers for the complete experience.
+> 💡 **Ресурсы для тестирования**: Используйте инструменты, такие как [accessibility-checker](https://www.npmjs.com/package/accessibility-checker), для автоматической валидации ARIA, но всегда тестируйте с реальными экранными ридерами для получения полного опыта.
 
-### 🎭 **ARIA Skills Check: Ready for Complex Interactions?**
+### 🎭 **Проверка навыков ARIA: Готовы к сложным взаимодействиям?**
 
-**Gauge your ARIA confidence:**
-- When would you choose ARIA over semantic HTML? (Hint: almost never!)
-- Can you explain why `<div role="button">` is usually worse than `<button>`?
-- What's the most important thing to remember about ARIA testing?
+**Оцените свою уверенность в ARIA:**
+- Когда бы вы выбрали ARIA вместо семантического HTML? (Подсказка: почти никогда!)
+- Можете ли вы объяснить, почему `<div role="button">` обычно хуже, чем `<button>`?
+- Что самое важное нужно помнить о тестировании ARIA?
 
 ```mermaid
-pie title "Common ARIA Usage Patterns"
-    "Labels & Descriptions" : 40
-    "Live Regions" : 25
-    "Widget States" : 20
-    "Complex Controls" : 15
+pie title "Распространенные паттерны использования ARIA"
+  "Метки и описания" : 40
+  "Живые регионы" : 25
+  "Состояния виджетов" : 20
+  "Сложные элементы управления" : 15
 ```
 
-> **Key insight**: Most ARIA usage is for labeling and describing elements. Complex widget patterns are much less common than you might think!
+> **Ключевая мысль**: Большинство случаев использования ARIA связано с маркировкой и описанием элементов. Сложные паттерны виджетов встречаются гораздо реже, чем вы могли бы подумать!
 
-✅ **Learn from experts**: Study the [ARIA Authoring Practices Guide](https://w3c.github.io/aria-practices/) for battle-tested patterns and implementations of complex interactive widgets.
+✅ **Учитесь у экспертов**: Изучите [Руководство по практикам разработки ARIA](https://w3c.github.io/aria-practices/) для проверенных временем паттернов и реализаций сложных интерактивных виджетов.
 
-## Making Images and Media Accessible
+## Обеспечение доступности изображений и медиа
 
-Visual and audio content are essential parts of modern web experiences, but they can create barriers if not implemented thoughtfully. The goal is ensuring that the information and emotional impact of your media reaches every user. Once you get the hang of it, it becomes second nature.
+Визуальный и аудиоконтент являются неотъемлемой частью современных веб-интерфейсов, но они могут создавать барьеры, если не реализованы продуманно. Цель состоит в том, чтобы информация и эмоциональное воздействие ваших медиа достигали каждого пользователя. Как только вы освоите это, это станет второй натурой.
 
-Different types of media need different accessibility approaches. It's like cooking—you wouldn't treat a delicate fish the same way you'd treat a hearty steak. Understanding these distinctions helps you choose the right solution for each situation.
+Различные типы медиа требуют разных подходов к доступности. Это как в кулинарии — вы не будете обращаться с нежной рыбой так же, как с сытным стейком. Понимание этих различий поможет вам выбрать правильное решение для каждой ситуации.
 
-### Strategic image accessibility
+### Стратегическая доступность изображений
 
-Every image on your website serves a purpose. Understanding that purpose helps you write better alternative text and create more inclusive experiences.
+Каждое изображение на вашем сайте служит определенной цели. Понимание этой цели поможет вам писать лучший альтернативный текст и создавать более инклюзивные интерфейсы.
 
-**The four types of images and their alt text strategies:**
+**Четыре типа изображений и их стратегии альтернативного текста:**
 
-**Informative images** - convey important information:
+**Информативные изображения** - передают важную информацию:
 ```html
-<img src="chart.png" alt="Sales increased 25% from Q1 to Q2 2024">
+<img src="chart.png" alt="Продажи выросли на 25% с 1-го по 2-й квартал 2024 года">
 ```
 
-**Decorative images** - purely visual with no informational value:
+**Декоративные изображения** - чисто визуальные, без информационной ценности:
 ```html
 <img src="decorative-border.png" alt="" role="presentation">
 ```
 
-**Functional images** - serve as buttons or controls:
+**Функциональные изображения** - служат кнопками или элементами управления:
 ```html
 <button>
-  <img src="search-icon.svg" alt="Search">
+  <img src="search-icon.svg" alt="Поиск">
 </button>
 ```
 
-**Complex images** - charts, diagrams, infographics:
+**Сложные изображения** - диаграммы, графики, инфографика:
 ```html
-<img src="complex-chart.png" alt="Quarterly sales data" aria-describedby="chart-description">
+<img src="complex-chart.png" alt="Данные о квартальных продажах" aria-describedby="chart-description">
 <div id="chart-description">
-  <p>Detailed description: Sales data shows a steady increase across all quarters...</p>
+  <p>Подробное описание: Данные о продажах показывают стабильный рост во всех кварталах...</p>
 </div>
 ```
 
-### Video and audio accessibility
+### Доступность видео и аудио
 
-**Video requirements:**
-- **Captions**: Text version of spoken content and sound effects
-- **Audio descriptions**: Narration of visual elements for blind users
-- **Transcripts**: Full text version of all audio and visual content
+**Требования к видео:**
+- **Субтитры**: Текстовая версия устной речи и звуковых эффектов
+- **Аудиодескрипция**: Описание визуальных элементов для слепых пользователей
+- **Транскрипты**: Полная текстовая версия всего аудио и визуального контента
 
 ```html
 <video controls>
   <source src="video.mp4" type="video/mp4">
-  <track kind="captions" src="captions.vtt" srclang="en" label="English">
-  <track kind="descriptions" src="descriptions.vtt" srclang="en" label="Audio descriptions">
+  <track kind="captions" src="captions.vtt" srclang="en" label="Английский">
+  <track kind="descriptions" src="descriptions.vtt" srclang="en" label="Аудиодескрипция">
 </video>
 ```
 
-**Audio requirements:**
-- **Transcripts**: Text version of all spoken content
-- **Visual indicators**: For audio-only content, provide visual cues
+**Требования к аудио:**
+- **Транскрипты**: Текстовая версия всего устного контента
+- **Визуальные индикаторы**: Для аудиоконтента предоставляйте визуальные подсказки
 
-### Modern image techniques
+### Современные техники работы с изображениями
 
-**Using CSS for decorative images:**
+**Использование CSS для декоративных изображений:**
 ```css
 .hero-section {
   background-image: url('decorative-hero.jpg');
-  /* Decorative images in CSS don't need alt text */
+  /* Декоративным изображениям в CSS не нужен альтернативный текст */
 }
 ```
 
-**Responsive images with accessibility:**
+**Адаптивные изображения с учетом доступности:**
 ```html
 <picture>
   <source media="(min-width: 800px)" srcset="large-chart.png">
   <source media="(min-width: 400px)" srcset="medium-chart.png">
-  <img src="small-chart.png" alt="Website traffic increased 40% after accessibility improvements">
+  <img src="small-chart.png" alt="Трафик сайта увеличился на 40% после улучшений доступности">
 </picture>
 ```
 
-✅ **Test image accessibility**: Use a screen reader to navigate a page with images. Are you getting enough information to understand the content?
+✅ **Проверьте доступность изображений**: Используйте экранный ридер для навигации по странице с изображениями. Получаете ли вы достаточно информации, чтобы понять контент?
 
-## Keyboard navigation and focus management
+## Навигация с клавиатуры и управление фокусом
 
-Many users navigate the web entirely with their keyboards. This includes people with motor disabilities, power users who find keyboards faster than mice, and anyone whose mouse has stopped working. Making sure your site works well with keyboard input is essential and often makes your site more efficient for everyone.
+Многие пользователи перемещаются по вебу исключительно с помощью клавиатуры. К ним относятся люди с двигательными нарушениями, опытные пользователи, которые считают клавиатуру быстрее мыши, и все, у кого перестала работать мышь. Убедиться, что ваш сайт хорошо работает с клавиатурным вводом, необходимо и часто делает ваш сайт более эффективным для всех.
 
 ```mermaid
 flowchart LR
-    A[⌨️ Keyboard Navigation] --> B[Tab Order]
-    A --> C[Focus Indicators]
-    A --> D[Skip Links]
-    A --> E[Keyboard Shortcuts]
-    
-    B --> B1[Logical sequence<br/>All interactive elements<br/>No tab traps]
-    C --> C1[Visible outlines<br/>High contrast<br/>Clear boundaries]
-    D --> D1[Skip to main<br/>Skip to nav<br/>Bypass repetitive]
-    E --> E1[Escape to close<br/>Enter to activate<br/>Arrows in groups]
-    
-    style A fill:#e3f2fd
-    style B fill:#e8f5e8
-    style C fill:#fff3e0
-    style D fill:#f3e5f5
-    style E fill:#e0f2f1
+  A[⌨️ Навигация с клавиатуры] --> B[Порядок Tab]
+  A --> C[Индикаторы фокуса]
+  A --> D[Ссылки для пропуска]
+  A --> E[Горячие клавиши]
+
+  B --> B1[Логическая последовательность<br/>Все интерактивные элементы<br/>Нет ловушек для Tab]
+  C --> C1[Видимые контуры<br/>Высокий контраст<br/>Четкие границы]
+  D --> D1[Перейти к основному<br/>Перейти к навигации<br/>Пропустить повторяющееся]
+  E --> E1[Escape для закрытия<br/>Enter для активации<br/>Стрелки в группах]
+
+  style A fill:#e3f2fd
+  style B fill:#e8f5e8
+  style C fill:#fff3e0
+  style D fill:#f3e5f5
+  style E fill:#e0f2f1
 ```
 
-### Essential keyboard navigation patterns
+### Основные паттерны навигации с клавиатуры
 
-**Standard keyboard interactions:**
-- **Tab**: Move focus forward through interactive elements
-- **Shift + Tab**: Move focus backward
-- **Enter**: Activate buttons and links
-- **Space**: Activate buttons, check checkboxes
-- **Arrow keys**: Navigate within component groups (radio buttons, menus)
-- **Escape**: Close modals, dropdowns, or cancel operations
+**Стандартные взаимодействия с клавиатурой:**
+- **Tab**: Перемещает фокус вперед по интерактивным элементам
+- **Shift + Tab**: Перемещает фокус назад
+- **Enter**: Активирует кнопки и ссылки
+- **Пробел**: Активирует кнопки, устанавливает флажки
+- **Клавиши со стрелками**: Навигация внутри групп компонентов (радиокнопки, меню)
+- **Escape**: Закрывает модальные окна, выпадающие списки или отменяет операции
 
-### Focus management best practices
+### Лучшие практики управления фокусом
 
-**Visible focus indicators:**
+**Видимые индикаторы фокуса:**
 ```css
-/* Ensure focus is always visible */
+/* Убедитесь, что фокус всегда виден */
 button:focus-visible {
   outline: 2px solid #4A90A4;
   outline-offset: 2px;
 }
 
-/* Custom focus styles for different components */
+/* Пользовательские стили фокуса для разных компонентов */
 .card:focus-within {
   box-shadow: 0 0 0 3px rgba(74, 144, 164, 0.5);
 }
 ```
 
-**Skip links for efficient navigation:**
+**Ссылки для пропуска для эффективной навигации:**
 ```html
-<a href="#main-content" class="skip-link">Skip to main content</a>
-<a href="#navigation" class="skip-link">Skip to navigation</a>
+<a href="#main-content" class="skip-link">Перейти к основному контенту</a>
+<a href="#navigation" class="skip-link">Перейти к навигации</a>
 
 <nav id="navigation">
-  <!-- navigation content -->
+  <!-- навигационный контент -->
 </nav>
 <main id="main-content">
-  <!-- main content -->
+  <!-- основной контент -->
 </main>
 ```
 
-**Proper tab order:**
+**Правильный порядок табуляции:**
 ```html
-<!-- Use semantic HTML for natural tab order -->
+<!-- Используйте семантический HTML для естественного порядка табуляции -->
 <form>
-  <label for="name">Name:</label>
+  <label for="name">Имя:</label>
   <input type="text" id="name" tabindex="0">
-  
+
   <label for="email">Email:</label>
   <input type="email" id="email" tabindex="0">
-  
-  <button type="submit" tabindex="0">Submit</button>
+
+  <button type="submit" tabindex="0">Отправить</button>
 </form>
 ```
 
-### Focus trapping in modals
+### Захват фокуса в модальных окнах
 
-When opening modal dialogs, focus should be trapped within the modal:
+При открытии модальных диалоговых окон фокус должен быть заперт внутри модального окна:
 
 ```javascript
-// Modern focus trap implementation
+// Современная реализация захвата фокуса
 function trapFocus(element) {
   const focusableElements = element.querySelectorAll(
-    'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
+  'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
   );
-  
+
   const firstElement = focusableElements[0];
   const lastElement = focusableElements[focusableElements.length - 1];
 
   element.addEventListener('keydown', (e) => {
-    if (e.key === 'Tab') {
-      if (e.shiftKey && document.activeElement === firstElement) {
-        e.preventDefault();
-        lastElement.focus();
-      } else if (!e.shiftKey && document.activeElement === lastElement) {
-        e.preventDefault();
-        firstElement.focus();
-      }
+  if (e.key === 'Tab') {
+    if (e.shiftKey && document.activeElement === firstElement) {
+    e.preventDefault();
+    lastElement.focus();
+    } else if (!e.shiftKey && document.activeElement === lastElement) {
+    e.preventDefault();
+    firstElement.focus();
     }
-    
-    if (e.key === 'Escape') {
-      closeModal();
-    }
+  }
+
+  if (e.key === 'Escape') {
+    closeModal();
+  }
   });
-  
-  // Focus first element when modal opens
+
+  // Фокус на первом элементе при открытии модального окна
   firstElement.focus();
 }
 ```
 
-✅ **Test keyboard navigation**: Try navigating your website using only the Tab key. Can you reach all interactive elements? Is the focus order logical? Are focus indicators clearly visible?
+✅ **Проверьте навигацию с клавиатуры**: Попробуйте перемещаться по вашему сайту, используя только клавишу Tab. Можете ли вы добраться до всех интерактивных элементов? Логичен ли порядок фокуса? Четко ли видны индикаторы фокуса?
 
-## Form accessibility
+## Доступность форм
 
-Forms are critical for user interaction and require special attention to accessibility.
+Формы критически важны для взаимодействия с пользователем и требуют особого внимания к доступности.
 
-### Label and form control association
+### Связь метки и элемента управления формы
 
-**Every form control needs a label:**
+**Каждый элемент управления формы нуждается в метке:**
 ```html
-<!-- Explicit labeling (preferred) -->
-<label for="username">Username:</label>
+<!-- Явная маркировка (предпочтительно) -->
+<label for="username">Имя пользователя:</label>
 <input type="text" id="username" name="username" required>
 
-<!-- Implicit labeling -->
+<!-- Неявная маркировка -->
 <label>
-  Password:
+  Пароль:
   <input type="password" name="password" required>
 </label>
 
-<!-- Using aria-label when visual label isn't desired -->
-<input type="search" aria-label="Search products" placeholder="Search...">
+<!-- Использование aria-label, когда визуальная метка нежелательна -->
+<input type="search" aria-label="Поиск товаров" placeholder="Поиск...">
 ```
 
-### Error handling and validation
+### Обработка ошибок и валидация
 
-**Accessible error messages:**
+**Доступные сообщения об ошибках:**
 ```html
-<label for="email">Email Address:</label>
-<input type="email" id="email" name="email" 
-       aria-describedby="email-error" 
-       aria-invalid="true" required>
+<label for="email">Адрес электронной почты:</label>
+<input type="email" id="email" name="email"
+     aria-describedby="email-error"
+     aria-invalid="true" required>
 <div id="email-error" role="alert">
-  Please enter a valid email address
+  Пожалуйста, введите действительный адрес электронной почты
 </div>
 ```
 
-**Form validation best practices:**
-- Use `aria-invalid` to indicate invalid fields
-- Provide clear, specific error messages
-- Use `role="alert"` for important error announcements
-- Show errors both immediately and on form submission
+**Лучшие практики валидации форм:**
+- Используйте `aria-invalid` для обозначения неверных полей
+- Предоставляйте четкие, конкретные сообщения об ошибках
+- Используйте `role="alert"` для важных сообщений об ошибках
+- Показывайте ошибки как немедленно, так и при отправке формы
 
-### Fieldsets and grouping
+### Наборы полей и группировка
 
-**Group related form controls:**
+**Группируйте связанные элементы управления формы:**
 ```html
 <fieldset>
-  <legend>Shipping Address</legend>
-  <label for="street">Street Address:</label>
+  <legend>Адрес доставки</legend>
+  <label for="street">Улица:</label>
   <input type="text" id="street" name="street">
-  
-  <label for="city">City:</label>
+
+  <label for="city">Город:</label>
   <input type="text" id="city" name="city">
 </fieldset>
 
 <fieldset>
-  <legend>Preferred Contact Method</legend>
+  <legend>Предпочтительный способ связи</legend>
   <input type="radio" id="contact-email" name="contact" value="email">
-  <label for="contact-email">Email</label>
-  
+  <label for="contact-email">Электронная почта</label>
+
   <input type="radio" id="contact-phone" name="contact" value="phone">
-  <label for="contact-phone">Phone</label>
+  <label for="contact-phone">Телефон</label>
 </fieldset>
 ```
 
-## Your Accessibility Journey: Key Takeaways
+## Ваш путь к доступности: ключевые выводы
 
-Congratulations! You've just gained the foundational knowledge to create truly inclusive web experiences. This is pretty exciting stuff! Web accessibility isn't just about checking compliance boxes—it's about recognizing the diverse ways people interact with digital content and designing for that amazing complexity.
+Поздравляем! Вы только что получили базовые знания для создания по-настоящему инклюзивных веб-интерфейсов. Это очень захватывающе! Веб-доступность — это не просто проставление галочек в чек-листах соответствия, это признание разнообразия способов взаимодействия людей с цифровым контентом и проектирование с учетом этой удивительной сложности.
 
-You're now part of a growing community of developers who understand that great design works for everyone. Welcome to the club!
+Теперь вы являетесь частью растущего сообщества разработчиков, которые понимают, что отличный дизайн работает для всех. Добро пожаловать в клуб!
 
-**🎯 Your accessibility toolkit now includes:**
+**🎯 Ваш набор инструментов для доступности теперь включает:**
 
-| Core Principle | Implementation | Impact |
+| Основной принцип | Реализация | Влияние |
 |----------------|----------------|---------|
-| **Semantic HTML Foundation** | Use proper HTML elements for their intended purpose | Screen readers can navigate efficiently, keyboards work automatically |
-| **Inclusive Visual Design** | Sufficient contrast, meaningful color use, visible focus indicators | Clear for everyone in any lighting condition |
-| **Descriptive Content** | Meaningful link text, alt text, headings | Users understand content without visual context |
-| **Keyboard Accessibility** | Tab order, keyboard shortcuts, focus management | Motor accessibility and power user efficiency |
-| **ARIA Enhancement** | Strategic use to fill semantic gaps | Complex applications work with assistive technologies |
-| **Comprehensive Testing** | Automated tools + manual verification + real user testing | Catch issues before they impact users |
+| **Основа из семантического HTML** | Использование правильных HTML-элементов по их прямому назначению | Экранные ридеры могут эффективно перемещаться, клавиатура работает автоматически |
+| **Инклюзивный визуальный дизайн** | Достаточный контраст, осмысленное использование цвета, видимые индикаторы фокуса | Ясно для всех при любом освещении |
+| **Описательный контент** | Осмысленный текст ссылок, альтернативный текст, заголовки | Пользователи понимают контент без визуального контекста |
+| **Доступность с клавиатуры** | Порядок табуляции, горячие клавиши, управление фокусом | Доступность для людей с двигательными нарушениями и эффективность для опытных пользователей |
+| **Улучшение с помощью ARIA** | Стратегическое использование для заполнения семантических пробелов | Сложные приложения работают с ассистивными технологиями |
+| **Комплексное тестирование** | Автоматизированные инструменты + ручная проверка + тестирование с реальными пользователями | Выявление проблем до того, как они повлияют на пользователей |
 
-**🚀 Your next steps:**
+**🚀 Ваши следующие шаги:**
 
-1. **Build accessibility into your workflow**: Make testing a natural part of your development process
-2. **Learn from real users**: Seek out feedback from people who use assistive technologies
-3. **Stay current**: Accessibility techniques evolve with new technologies and standards
-4. **Advocate for inclusion**: Share your knowledge and make accessibility a team priority
+1. **Встройте доступность в свой рабочий процесс**: Сделайте тестирование естественной частью вашего процесса разработки
+2. **Учитесь у реальных пользователей**: Ищите обратную связь от людей, которые используют ассистивные технологии
+3. **Будьте в курсе**: Техники доступности развиваются вместе с новыми технологиями и стандартами
+4. **Выступайте за инклюзивность**: Делитесь своими знаниями и сделайте доступность приоритетом команды
 
-> 💡 **Remember**: Accessibility constraints often lead to innovative, elegant solutions that benefit everyone. Curb cuts, captions, and voice controls all started as accessibility features and became mainstream improvements.
+> 💡 **Помните**: Ограничения доступности часто приводят к инновационным, элегантным решениям, которые приносят пользу всем. Пандусы, субтитры и голосовое управление — все это начиналось как функции доступности и стало улучшениями для массового пользователя.
 
-**The business case is crystal clear**: Accessible websites reach more users, rank better in search engines, have lower maintenance costs, and avoid legal risks. But honestly? The real reason to care about accessibility goes so much deeper. Accessible websites embody the best values of the web—openness, inclusivity, and the idea that everyone deserves equal access to information.
+**Бизнес-обоснование кристально ясно**: Доступные веб-сайты охватывают больше пользователей, лучше ранжируются в поисковых системах, имеют более низкие затраты на обслуживание и избегают юридических рисков. Но, честно говоря, настоящая причина заботиться о доступности гораздо глубже. Доступные веб-сайты воплощают лучшие ценности веба — открытость, инклюзивность и идею о том, что каждый заслуживает равного доступа к информации.
 
-You're now equipped to build the inclusive web of the future. Every accessible site you create makes the internet a more welcoming place for everyone. That's pretty amazing when you think about it!
+Теперь вы вооружены для создания инклюзивного веба будущего. Каждый доступный сайт, который вы создаете, делает интернет более гостеприимным местом для всех. Это довольно удивительно, если задуматься!
 
-## Additional Resources
+## Дополнительные ресурсы
 
-Continue your accessibility learning journey with these essential resources:
+Продолжайте свое обучение доступности с этими важными ресурсами:
 
-**📚 Official Standards and Guidelines:**
-- [WCAG 2.1 Guidelines](https://www.w3.org/WAI/WCAG21/quickref/) - The official accessibility standard with quick reference
-- [ARIA Authoring Practices Guide](https://w3c.github.io/aria-practices/) - Comprehensive patterns for interactive widgets
-- [WebAIM Guidelines](https://webaim.org/) - Practical, beginner-friendly accessibility guidance
+**📚 Официальные стандарты и руководства:**
+- [Руководство WCAG 2.1](https://www.w3.org/WAI/WCAG21/quickref/) - Официальный стандарт доступности с кратким справочником
+- [Руководство по практикам разработки ARIA](https://w3c.github.io/aria-practices/) - Комплексные паттерны для интерактивных виджетов
+- [Руководства WebAIM](https://webaim.org/) - Практическое, понятное для начинающих руководство по доступности
 
-**🛠️ Tools and Testing Resources:**
-- [axe DevTools](https://www.deque.com/axe/devtools/) - Industry-standard accessibility testing
-- [A11y Project Checklist](https://www.a11yproject.com/checklist/) - Step-by-step accessibility verification
-- [Accessibility Insights](https://accessibilityinsights.io/) - Microsoft's comprehensive testing suite
-- [Color Oracle](https://colororacle.org/) - Color blindness simulator for design testing
+**🛠️ Инструменты и ресурсы для тестирования:**
+- [axe DevTools](https://www.deque.com/axe/devtools/) - Стандарт индустрии для тестирования доступности
+- [Чек-лист проекта A11y](https://www.a11yproject.com/checklist/) - Пошаговая проверка доступности
+- [Accessibility Insights](https://accessibilityinsights.io/) - Комплексный набор для тестирования от Microsoft
+- [Color Oracle](https://colororacle.org/) - Симулятор дальтонизма для тестирования дизайна
 
-**🎓 Learning and Community:**
-- [WebAIM Screen Reader Survey](https://webaim.org/projects/screenreadersurvey9/) - Real user preferences and behaviors
-- [Inclusive Components](https://inclusive-components.design/) - Modern accessible component patterns
-- [A11y Coffee](https://a11y.coffee/) - Quick accessibility tips and insights
-- [Web Accessibility Initiative (WAI)](https://www.w3.org/WAI/) - W3C's comprehensive accessibility resources
+**🎓 Обучение и сообщество:**
+- [Опрос пользователей экранных ридеров WebAIM](https://webaim.org/projects/screenreadersurvey9/) - Предпочтения и поведение реальных пользователей
+- [Инклюзивные компоненты](https://inclusive-components.design/) - Современные паттерны доступных компонентов
+- [A11y Coffee](https://a11y.coffee/) - Краткие советы и идеи по доступности
+- [Инициатива по веб-доступности (WAI)](https://www.w3.org/WAI/) - Комплексные ресурсы по доступности от W3C
 
-**🎥 Hands-on Learning:**
-- [Accessibility Developer Guide](https://www.accessibility-developer-guide.com/) - Practical implementation guidance
-- [Deque University](https://dequeuniversity.com/) - Professional accessibility training courses
+**🎥 Практическое обучение:**
+- [Руководство для разработчиков по доступности](https://www.accessibility-developer-guide.com/) - Практическое руководство по внедрению
+- [Университет Deque](https://dequeuniversity.com/) - Профессиональные курсы по доступности
 
-## GitHub Copilot Agent Challenge 🚀
+## Задание для агента GitHub Copilot 🚀
 
-Use the Agent mode to complete the following challenge:
+Используйте режим агента для выполнения следующего задания:
 
-**Description:** Create an accessible modal dialog component that demonstrates proper focus management, ARIA attributes, and keyboard navigation patterns.
+**Описание:** Создайте доступный компонент модального диалогового окна, который демонстрирует правильное управление фокусом, атрибуты ARIA и паттерны навигации с клавиатуры.
 
-**Prompt:** Build a complete modal dialog component with HTML, CSS, and JavaScript that includes: proper focus trapping, ESC key to close, click outside to close, ARIA attributes for screen readers, and visible focus indicators. The modal should contain a form with proper labels and error handling. Ensure the component meets WCAG 2.1 AA standards.
+**Запрос:** Создайте полный компонент модального диалогового окна с HTML, CSS и JavaScript, который включает: правильный захват фокуса, закрытие по клавише ESC, закрытие по клику вне окна, атрибуты ARIA для экранных ридеров и видимые индикаторы фокуса. Модальное окно должно содержать форму с правильными метками и обработкой ошибок. Убедитесь, что компонент соответствует стандартам WCAG 2.1 AA.
 
 
-## 🚀 Challenge
+## 🚀 Задание
 
-Take this HTML and rewrite it to be as accessible as possible, given the strategies you learned.
+Возьмите этот HTML и перепишите его, чтобы он был максимально доступным, учитывая изученные вами стратегии.
 
 ```html
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Turtle Ipsum - The World's Premier Turtle Fan Club</title>
-    <link href='../assets/style.css' rel='stylesheet' type='text/css'>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Turtle Ipsum - The World's Premier Turtle Fan Club</title>
+  <link href='../assets/style.css' rel='stylesheet' type='text/css'>
   </head>
   <body>
-    <header class="site-header">
-      <h1 class="site-title">Turtle Ipsum</h1>
-      <p class="site-subtitle">The World's Premier Turtle Fan Club</p>
-    </header>
-    
-    <nav class="main-nav" aria-label="Main navigation">
-      <h2 class="nav-header">Resources</h2>
-      <ul class="nav-list">
-        <li><a href="https://www.youtube.com/watch?v=CMNry4PE93Y">"I like turtles" video</a></li>
-        <li><a href="https://en.wikipedia.org/wiki/Turtle">Basic turtle information</a></li>
-        <li><a href="https://en.wikipedia.org/wiki/Turtles_(chocolate)">Chocolate turtles candy</a></li>
-      </ul>
+  <header class="site-header">
+    <h1 class="site-title">Turtle Ipsum</h1>
+    <p class="site-subtitle">The World's Premier Turtle Fan Club</p>
+  </header>
+
+  <nav class="main-nav" aria-label="Main navigation">
+    <h2 class="nav-header">Resources</h2>
+    <ul class="nav-list">
+    <li><a href="https://www.youtube.com/watch?v=CMNry4PE93Y">"I like turtles" video</a></li>
+    <li><a href="https://en.wikipedia.org/wiki/Turtle">Basic turtle information</a></li>
+    <li><a href="https://en.wikipedia.org/wiki/Turtles_(chocolate)">Chocolate turtles candy</a></li>
+    </ul>
+  </nav>
+
+  <main class="main-content">
+    <article>
+    <h1>Welcome to Turtle Ipsum</h1>
+    <p class="intro">
+      <a href="/about">Learn more about our turtle community</a> and discover fascinating facts about these amazing creatures.
+    </p>
+    <p class="article-text">
+      Turtle ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+    </p>
+    </article>
+  </main>
+
+  <footer class="footer">
+    <section class="newsletter-signup">
+    <h2>Stay Updated</h2>
+    <button type="button" onclick="showNewsletterForm()">Sign up for turtle news</button>
+    </section>
+
+    <nav class="footer-nav" aria-label="Footer navigation">
+    <h2>Site Pages</h2>
+    <ul>
+      <li><a href="../">Home</a></li>
+      <li><a href="../semantic">Semantic HTML example</a></li>
+    </ul>
     </nav>
-    
-    <main class="main-content">
-      <article>
-        <h1>Welcome to Turtle Ipsum</h1>
-        <p class="intro">
-          <a href="/about">Learn more about our turtle community</a> and discover fascinating facts about these amazing creatures.
-        </p>
-        <p class="article-text">
-          Turtle ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-        </p>
-      </article>
-    </main>
-    
-    <footer class="footer">
-      <section class="newsletter-signup">
-        <h2>Stay Updated</h2>
-        <button type="button" onclick="showNewsletterForm()">Sign up for turtle news</button>
-      </section>
-      
-      <nav class="footer-nav" aria-label="Footer navigation">
-        <h2>Site Pages</h2>
-        <ul>
-          <li><a href="../">Home</a></li>
-          <li><a href="../semantic">Semantic HTML example</a></li>
-        </ul>
-      </nav>
-      
-      <p class="footer-copyright">&copy; 2024 Instrument. All rights reserved.</p>
-    </footer>
+
+    <p class="footer-copyright">&copy; 2024 Instrument. All rights reserved.</p>
+  </footer>
   </body>
 </html>
 ```
 
-**Key improvements made:**
-- Added proper semantic HTML structure
-- Fixed heading hierarchy (single h1, logical progression)
-- Added meaningful link text instead of "click here"
-- Included proper ARIA labels for navigation
-- Added lang attribute and proper meta tags
-- Used button element for interactive elements
-- Structured footer content with proper landmarks
+**Ключевые улучшения:**
+- Добавлена правильная семантическая структура HTML
+- Исправлена иерархия заголовков (один h1, логическая последовательность)
+- Добавлен осмысленный текст ссылок вместо "нажмите здесь"
+- Включены правильные метки ARIA для навигации
+- Добавлен атрибут lang и правильные мета-теги
+- Использован элемент button для интерактивных элементов
+- Структурирован контент подвала с правильными ориентирами
 
-## Post-Lecture Quiz
-[Post-lecture quiz](https://ff-quizzes.netlify.app/web/en/)
+## Квиз после лекции
+[Квиз после лекции](https://ff-quizzes.netlify.app/web/en/)
 
-## Review & Self Study
+## Обзор и самостоятельное изучение
 
-Many governments have laws regarding accessibility requirements. Read up on your home country's accessibility laws. What is covered, and what isn't? An example is [this government web site](https://accessibility.blog.gov.uk/).
+Во многих странах существуют законы, касающиеся требований к доступности. Изучите законы о доступности в вашей стране. Что они охватывают, а что нет? Примером может служить [этот правительственный веб-сайт](https://accessibility.blog.gov.uk/).
 
-## Assignment
- 
-[Analyze a non-accessible web site](assignment.md)
+## Задание
 
-Credits: [Turtle Ipsum](https://github.com/Instrument/semantic-html-sample) by Instrument
+[Проанализируйте недоступный веб-сайт](assignment.md)
+
+Благодарности: [Turtle Ipsum](https://github.com/Instrument/semantic-html-sample) от Instrument
 
 ---
 
-## 🚀 Your Accessibility Mastery Timeline
+## 🚀 Ваш путь к мастерству в доступности
 
-### ⚡ **What You Can Do in the Next 5 Minutes**
-- [ ] Install axe DevTools extension in your browser
-- [ ] Run a Lighthouse accessibility audit on your favorite website
-- [ ] Try navigating any website using only the Tab key
-- [ ] Test your browser's built-in screen reader (Narrator/VoiceOver)
+### ⚡ **Что вы можете сделать в следующие 5 минут**
+- [ ] Установить расширение axe DevTools в вашем браузере
+- [ ] Запустить аудит доступности Lighthouse на вашем любимом сайте
+- [ ] Попробовать перемещаться по любому сайту, используя только клавишу Tab
+- [ ] Протестировать встроенный в ваш браузер экранный ридер (Экранный диктор/VoiceOver)
 
-### 🎯 **What You Can Accomplish This Hour**
-- [ ] Complete the post-lesson quiz and reflect on accessibility insights
-- [ ] Practice writing meaningful alt text for 10 different images
-- [ ] Audit a website's heading structure using HeadingsMap extension
-- [ ] Fix accessibility issues found in the challenge HTML
-- [ ] Test color contrast on your current project with WebAIM's tool
+### 🎯 **Что вы можете сделать за этот час**
+- [ ] Пройти квиз после лекции и поразмышлять о полученных знаниях в области доступности
+- [ ] Попрактиковаться в написании осмысленного альтернативного текста для 10 разных изображений
+- [ ] Провести аудит структуры заголовков сайта с помощью расширения HeadingsMap
+- [ ] Исправить проблемы доступности, найденные в HTML из задания
+- [ ] Проверить цветовой контраст на вашем текущем проекте с помощью инструмента WebAIM
 
-### 📅 **Your Week-Long Accessibility Journey**
-- [ ] Complete the assignment analyzing a non-accessible website
-- [ ] Set up your development environment with accessibility testing tools
-- [ ] Practice keyboard navigation on 5 different complex websites
-- [ ] Build a simple form with proper labels, error handling, and ARIA
-- [ ] Join an accessibility community (A11y Slack, WebAIM forum)
-- [ ] Watch real users with disabilities navigate websites (YouTube has great examples)
+### 📅 **Ваш недельный путь к доступности**
+- [ ] Выполнить задание по анализу недоступного веб-сайта
+- [ ] Настроить свою среду разработки с инструментами для тестирования доступности
+- [ ] Попрактиковаться в навигации с клавиатуры на 5 разных сложных сайтах
+- [ ] Создать простую форму с правильными метками, обработкой ошибок и ARIA
+- [ ] Присоединиться к сообществу по доступности (A11y Slack, форум WebAIM)
+- [ ] Посмотреть, как реальные пользователи с ограниченными возможностями перемещаются по сайтам (на YouTube есть отличные примеры)
 
-### 🌟 **Your Month-Long Transformation**
-- [ ] Integrate accessibility testing into your development workflow
-- [ ] Contribute to an open source project by fixing accessibility issues
-- [ ] Conduct usability testing with someone who uses assistive technology
-- [ ] Build an accessible component library for your team
-- [ ] Advocate for accessibility in your workplace or community
-- [ ] Mentor someone new to accessibility concepts
+### 🌟 **Ваша месячная трансформация**
+- [ ] Интегрировать тестирование доступности в ваш рабочий процесс разработки
+- [ ] Внести вклад в проект с открытым исходным кодом, исправив проблемы доступности
+- [ ] Провести юзабилити-тестирование с кем-то, кто использует ассистивные технологии
+- [ ] Создать библиотеку доступных компонентов для вашей команды
+- [ ] Продвигать доступность на вашем рабочем месте или в сообществе
+- [ ] Стать наставником для кого-то нового в концепциях доступности
 
-### 🏆 **Final Accessibility Champion Check-in**
+### 🏆 **Финальная проверка чемпиона по доступности**
 
-**Celebrate your accessibility journey:**
-- What's the most surprising thing you learned about how people use the web?
-- Which accessibility principle resonates most with your development style?
-- How has learning about accessibility changed your perspective on design?
-- What's the first accessibility improvement you want to make on a real project?
+**Отметьте свой путь к доступности:**
+- Что самое удивительное вы узнали о том, как люди используют веб?
+- Какой принцип доступности больше всего соответствует вашему стилю разработки?
+- Как изучение доступности изменило ваш взгляд на дизайн?
+- Какое первое улучшение доступности вы хотите внести в реальный проект?
 
 ```mermaid
 journey
-    title Your Accessibility Confidence Evolution
-    section Today
-      Overwhelmed: 3: You
-      Curious: 4: You
-      Motivated: 5: You
-    section This Week
-      Practicing: 4: You
-      Testing: 5: You
-      Understanding: 5: You
-    section Next Month
-      Advocating: 5: You
-      Leading: 5: You
-      Inclusive by Default: 5: You
+  title Эволюция вашей уверенности в доступности
+  section Сегодня
+    Перегружен: 3: Вы
+    Любопытен: 4: Вы
+    Мотивирован: 5: Вы
+  section На этой неделе
+    Практикуюсь: 4: Вы
+    Тестирую: 5: Вы
+    Понимаю: 5: Вы
+  section В следующем месяце
+    Продвигаю: 5: Вы
+    Лидирую: 5: Вы
+    Инклюзивность по умолчанию: 5: Вы
 ```
 
-> 🌍 **You're now an accessibility champion!** You understand that great web experiences work for everyone, regardless of how they access the web. Every accessible feature you build makes the internet more inclusive. The web needs developers like you who see accessibility not as a constraint, but as an opportunity to create better experiences for all users. Welcome to the movement! 🎉
+> 🌍 **Теперь вы — чемпион по доступности!** Вы понимаете, что отличные веб-интерфейсы работают для всех, независимо от того, как они получают доступ к вебу. Каждая доступная функция, которую вы создаете, делает интернет более инклюзивным. Вебу нужны такие разработчики, как вы, которые видят в доступности не ограничение, а возможность создавать лучшие интерфейсы для всех пользователей. Добро пожаловать в движение! 🎉

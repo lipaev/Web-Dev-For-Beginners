@@ -1,614 +1,614 @@
-# JavaScript Basics: Data Types
+# Основы JavaScript: Типы данных
 
-![JavaScript Basics - Data types](../../sketchnotes/webdev101-js-datatypes.png)
-> Sketchnote by [Tomomi Imura](https://twitter.com/girlie_mac)
+![Основы JavaScript - Типы данных](../../sketchnotes/webdev101-js-datatypes.png)
+> Скетчноут от [Томоми Имура](https://twitter.com/girlie_mac)
 
 ```mermaid
 journey
-    title Your JavaScript Data Types Adventure
-    section Foundation
-      Variables & Constants: 5: You
-      Declaration Syntax: 4: You
-      Assignment Concepts: 5: You
-    section Core Types
-      Numbers & Math: 4: You
-      Strings & Text: 5: You
-      Booleans & Logic: 4: You
-    section Apply Knowledge
-      Type Conversion: 4: You
-      Real-world Examples: 5: You
-      Best Practices: 5: You
+  title Ваше приключение в мир типов данных JavaScript
+  section Основы
+    Переменные и константы: 5: Вы
+    Синтаксис объявления: 4: Вы
+    Концепции присваивания: 5: Вы
+  section Основные типы
+    Числа и математика: 4: Вы
+    Строки и текст: 5: Вы
+    Логические значения и логика: 4: Вы
+  section Применение знаний
+    Преобразование типов: 4: Вы
+    Примеры из реальной жизни: 5: Вы
+    Лучшие практики: 5: Вы
 ```
 
-Data types are one of the fundamental concepts in JavaScript that you'll encounter in every program you write. Think of data types like the filing system used by ancient librarians in Alexandria – they had specific places for scrolls containing poetry, mathematics, and historical records. JavaScript organizes information in a similar way with different categories for different kinds of data.
+Типы данных — это одна из фундаментальных концепций в JavaScript, с которой вы столкнетесь в каждой программе, которую будете писать. Представьте типы данных как систему каталогизации, которую использовали древние библиотекари в Александрии — у них были определенные места для свитков с поэзией, математикой и историческими записями. JavaScript организует информацию похожим образом, используя разные категории для разных видов данных.
 
-In this lesson, we'll explore the core data types that make JavaScript work. You'll learn how to handle numbers, text, true/false values, and understand why choosing the correct type is essential for your programs. These concepts might seem abstract at first, but with practice, they'll become second nature.
+В этом уроке мы рассмотрим основные типы данных, которые заставляют JavaScript работать. Вы научитесь работать с числами, текстом, значениями истина/ложь и поймете, почему выбор правильного типа так важен для ваших программ. Эти концепции могут показаться абстрактными на первый взгляд, но с практикой они станут для вас второй натурой.
 
-Understanding data types will make everything else in JavaScript much clearer. Just as architects need to understand different building materials before constructing a cathedral, these fundamentals will support everything you build going forward.
+Понимание типов данных сделает все остальное в JavaScript намного понятнее. Точно так же, как архитекторам необходимо разбираться в различных строительных материалах перед возведением собора, эти основы будут поддерживать все, что вы будете создавать в будущем.
 
-## Pre-Lecture Quiz
-[Pre-lecture quiz](https://ff-quizzes.netlify.app/web/)
+## Тест перед лекцией
+[Тест перед лекцией](https://ff-quizzes.netlify.app/web/)
 
-This lesson covers the basics of JavaScript, the language that provides interactivity on the web.
+Этот урок охватывает основы JavaScript, языка, который обеспечивает интерактивность в вебе.
 
-> You can take this lesson on [Microsoft Learn](https://docs.microsoft.com/learn/modules/web-development-101-variables/?WT.mc_id=academic-77807-sagibbon)!
+> Вы можете пройти этот урок на [Microsoft Learn](https://docs.microsoft.com/learn/modules/web-development-101-variables/?WT.mc_id=academic-77807-sagibbon)!
 
-[![Variables](https://img.youtube.com/vi/JNIXfGiDWM8/0.jpg)](https://youtube.com/watch?v=JNIXfGiDWM8 "Variables in JavaScript")
+[![Переменные](https://img.youtube.com/vi/JNIXfGiDWM8/0.jpg)](https://youtube.com/watch?v=JNIXfGiDWM8 "Переменные в JavaScript")
 
-[![Data Types in JavaScript](https://img.youtube.com/vi/AWfA95eLdq8/0.jpg)](https://youtube.com/watch?v=AWfA95eLdq8 "Data Types in JavaScript")
+[![Типы данных в JavaScript](https://img.youtube.com/vi/AWfA95eLdq8/0.jpg)](https://youtube.com/watch?v=AWfA95eLdq8 "Типы данных в JavaScript")
 
-> 🎥 Click the images above for videos about variables and data types
+> 🎥 Нажмите на изображения выше, чтобы посмотреть видео о переменных и типах данных
 
-Let's start with variables and the data types that populate them!
+Давайте начнем с переменных и типов данных, которыми они заполняются!
 
 ```mermaid
 mindmap
-  root((JavaScript Data))
-    Variables
-      let myVar
-      const PI = 3.14
-      var oldStyle
-    Primitive Types
-      number
-        42
-        3.14
-        -5
-      string
-        "Hello"
-        'World'
-        `Template`
-      boolean
-        true
-        false
-      undefined
-      null
-    Operations
-      Arithmetic
-        + - * / %
-      String Methods
-        concatenation
-        template literals
-      Type Conversion
-        implicit
-        explicit
+  root((Данные в JavaScript))
+  Переменные
+    let myVar
+    const PI = 3.14
+    var oldStyle
+  Примитивные типы
+    number (число)
+    42
+    3.14
+    -5
+    string (строка)
+    "Привет"
+    'Мир'
+    `Шаблон`
+    boolean (логический)
+    true
+    false
+    undefined
+    null
+  Операции
+    Арифметические
+    + - * / %
+    Строковые методы
+    конкатенация
+    шаблонные литералы
+    Преобразование типов
+    неявное
+    явное
 ```
 
-## Variables
+## Переменные
 
-Variables are fundamental building blocks in programming. Like the labeled jars that medieval alchemists used to store different substances, variables let you store information and give it a descriptive name so you can reference it later. Need to remember someone's age? Store it in a variable called `age`. Want to track a user's name? Keep it in a variable called `userName`.
+Переменные — это фундаментальные строительные блоки в программировании. Подобно подписанным банкам, которые средневековые алхимики использовали для хранения различных веществ, переменные позволяют вам хранить информацию и давать ей описательное имя, чтобы вы могли ссылаться на нее позже. Нужно запомнить чей-то возраст? Сохраните его в переменной с именем `age`. Хотите отслеживать имя пользователя? Храните его в переменной `userName`.
 
-We'll focus on the modern approach to creating variables in JavaScript. The techniques you'll learn here represent years of language evolution and best practices developed by the programming community.
+Мы сосредоточимся на современном подходе к созданию переменных в JavaScript. Техники, которые вы здесь изучите, представляют собой годы эволюции языка и лучшие практики, разработанные сообществом программистов.
 
-Creating and **declaring** a variable has the following syntax **[keyword] [name]**. It's made up of the two parts:
+Создание и **объявление** переменной имеет следующий синтаксис **[ключевое слово] [имя]**. Он состоит из двух частей:
 
-- **Keyword**. Use `let` for variables that can change, or `const` for values that stay the same.
-- **The variable name**, this is a descriptive name you choose yourself.
+- **Ключевое слово**. Используйте `let` для переменных, которые могут изменяться, или `const` для значений, которые остаются неизменными.
+- **Имя переменной**, это описательное имя, которое вы выбираете сами.
 
-✅ The keyword `let` was introduced in ES6 and gives your variable a so called _block scope_. It's recommended that you use `let` or `const` instead of the older `var` keyword. We will cover block scopes more in depth in future parts.
+✅ Ключевое слово `let` было введено в ES6 и дает вашей переменной так называемую _блочную область видимости_. Рекомендуется использовать `let` или `const` вместо устаревшего ключевого слова `var`. Мы подробнее рассмотрим блочные области видимости в будущих уроках.
 
-### Task - working with variables
+### Задание - работа с переменными
 
-1. **Declare a variable**. Let's start by creating our first variable:
+1. **Объявите переменную**. Давайте начнем с создания нашей первой переменной:
 
-    ```javascript
-    let myVariable;
-    ```
+  ```javascript
+  let myVariable;
+  ```
 
-   **What this accomplishes:**
-   - This tells JavaScript to create a storage location called `myVariable`
-   - JavaScript allocates space in memory for this variable
-   - The variable currently has no value (undefined)
+   **Что это делает:**
+   - Это говорит JavaScript создать место для хранения под названием `myVariable`
+   - JavaScript выделяет место в памяти для этой переменной
+   - В настоящее время переменная не имеет значения (undefined)
 
-2. **Give it a value**. Now let's put something in our variable:
+2. **Присвойте ей значение**. Теперь давайте что-нибудь положим в нашу переменную:
 
-    ```javascript
-    myVariable = 123;
-    ```
+  ```javascript
+  myVariable = 123;
+  ```
 
-   **How assignment works:**
-   - The `=` operator assigns the value 123 to our variable
-   - The variable now contains this value instead of being undefined
-   - You can reference this value throughout your code using `myVariable`
+   **Как работает присваивание:**
+   - Оператор `=` присваивает значение 123 нашей переменной
+   - Теперь переменная содержит это значение, а не является undefined
+   - Вы можете ссылаться на это значение в своем коде, используя `myVariable`
 
-   > Note: the use of `=` in this lesson means we make use of an "assignment operator", used to set a value to a variable. It doesn't denote equality.
+   > Примечание: использование `=` в этом уроке означает, что мы используем "оператор присваивания", который используется для установки значения переменной. Он не обозначает равенство.
 
-3. **Do it the smart way**. Actually, let's combine those two steps:
+3. **Сделайте это по-умному**. На самом деле, давайте объединим эти два шага:
 
-    ```javascript
-    let myVariable = 123;
-    ```
+  ```javascript
+  let myVariable = 123;
+  ```
 
-    **This approach is more efficient:**
-    - You're declaring the variable and assigning a value in one statement
-    - This is the standard practice among developers
-    - It reduces code length while maintaining clarity
+  **Этот подход более эффективен:**
+  - Вы объявляете переменную и присваиваете ей значение в одном выражении
+  - Это стандартная практика среди разработчиков
+  - Это сокращает длину кода, сохраняя при этом ясность
 
-4. **Change your mind**. What if we want to store a different number?
+4. **Измените свое мнение**. Что, если мы хотим сохранить другое число?
 
    ```javascript
    myVariable = 321;
    ```
 
-   **Understanding reassignment:**
-   - The variable now contains 321 instead of 123
-   - The previous value is replaced – variables store only one value at a time
-   - This mutability is the key characteristic of variables declared with `let`
+   **Понимание переприсваивания:**
+   - Теперь переменная содержит 321 вместо 123
+   - Предыдущее значение заменяется — переменные хранят только одно значение за раз
+   - Эта изменяемость является ключевой характеристикой переменных, объявленных с помощью `let`
 
-   ✅ Try it! You can write JavaScript right in your browser. Open a browser window and navigate to Developer Tools. In the console, you will find a prompt; type `let myVariable = 123`, press return, then type `myVariable`. What happens? Note, you'll learn more about these concepts in subsequent lessons.
+   ✅ Попробуйте! Вы можете писать JavaScript прямо в своем браузере. Откройте окно браузера и перейдите в Инструменты разработчика. В консоли вы найдете приглашение; введите `let myVariable = 123`, нажмите return, затем введите `myVariable`. Что произойдет? Примечание: вы узнаете больше об этих концепциях в последующих уроках.
 
-### 🧠 **Variables Mastery Check: Getting Comfortable**
+### 🧠 **Проверка мастерства владения переменными: Осваиваемся**
 
-**Let's see how you're feeling about variables:**
-- Can you explain the difference between declaring and assigning a variable?
-- What happens if you try to use a variable before you declare it?
-- When would you choose `let` over `const` for a variable?
+**Давайте посмотрим, как вы относитесь к переменным:**
+- Можете ли вы объяснить разницу между объявлением и присваиванием переменной?
+- Что произойдет, если вы попытаетесь использовать переменную до ее объявления?
+- Когда бы вы выбрали `let` вместо `const` для переменной?
 
 ```mermaid
 stateDiagram-v2
-    [*] --> Declared: let myVar
-    Declared --> Assigned: myVar = 123
-    Assigned --> Reassigned: myVar = 456
-    Assigned --> [*]: Variable ready!
-    Reassigned --> [*]: Updated value
-    
-    note right of Declared
-        Variable exists but
-        has no value (undefined)
-    end note
-    
-    note right of Assigned
-        Variable contains
-        the value 123
-    end note
+  [*] --> Объявлена: let myVar
+  Объявлена --> Присвоено: myVar = 123
+  Присвоено --> Переприсвоено: myVar = 456
+  Присвоено --> [*]: Переменная готова!
+  Переприсвоено --> [*]: Значение обновлено
+
+  note right of Объявлена
+    Переменная существует, но
+    не имеет значения (undefined)
+  end note
+
+  note right of Присвоено
+    Переменная содержит
+    значение 123
+  end note
 ```
 
-> **Quick tip**: Think of variables as labeled storage boxes. You create the box (`let`), put something in it (`=`), and can later replace the contents if needed!
+> **Краткий совет**: Думайте о переменных как о подписанных коробках для хранения. Вы создаете коробку (`let`), кладете в нее что-то (`=`) и позже можете заменить содержимое при необходимости!
 
-## Constants
+## Константы
 
-Sometimes you need to store information that should never change during program execution. Think of constants like the mathematical principles that Euclid established in ancient Greece – once proven and documented, they remained fixed for all future reference.
+Иногда вам нужно хранить информацию, которая никогда не должна меняться во время выполнения программы. Думайте о константах как о математических принципах, которые Евклид установил в Древней Греции — однажды доказанные и задокументированные, они оставались неизменными для всех будущих ссылок.
 
-Constants work similarly to variables, but with an important restriction: once you assign their value, it cannot be changed. This immutability helps prevent accidental modifications to critical values in your program.
+Константы работают аналогично переменным, но с важным ограничением: как только вы присвоили им значение, его нельзя изменить. Эта неизменяемость помогает предотвратить случайные изменения критически важных значений в вашей программе.
 
-Declaration and initialization of a constant follows the same concepts as a variable, with the exception of the `const` keyword. Constants are typically declared with all uppercase letters.
+Объявление и инициализация константы следуют тем же концепциям, что и у переменной, за исключением ключевого слова `const`. Константы обычно объявляются заглавными буквами.
 
 ```javascript
 const MY_VARIABLE = 123;
 ```
 
-**Here's what this code does:**
-- **Creates** a constant named `MY_VARIABLE` with the value 123
-- **Uses** uppercase naming convention for constants
-- **Prevents** any future changes to this value
+**Вот что делает этот код:**
+- **Создает** константу с именем `MY_VARIABLE` и значением 123
+- **Использует** соглашение об именовании заглавными буквами для констант
+- **Предотвращает** любые будущие изменения этого значения
 
-Constants have two main rules:
+У констант есть два основных правила:
 
-- **You must give them a value right away** – no empty constants allowed!
-- **You can never change that value** – JavaScript will throw an error if you try. Let's see what I mean:
+- **Вы должны сразу присвоить им значение** — пустые константы не допускаются!
+- **Вы никогда не сможете изменить это значение** — JavaScript выдаст ошибку, если вы попытаетесь. Давайте посмотрим, что я имею в виду:
 
-   **Simple value** - The following is NOT allowed:
-   
-      ```javascript
-      const PI = 3;
-      PI = 4; // not allowed
-      ```
+   **Простое значение** - Следующее НЕ допускается:
 
-   **What you need to remember:**
-   - **Attempts** to reassign a constant will cause an error
-   - **Protects** important values from accidental changes
-   - **Ensures** the value remains consistent throughout your program
- 
-   **Object reference is protected** - The following is NOT allowed:
-   
-      ```javascript
-      const obj = { a: 3 };
-      obj = { b: 5 } // not allowed
-      ```
+    ```javascript
+    const PI = 3;
+    PI = 4; // не допускается
+    ```
 
-   **Understanding these concepts:**
-   - **Prevents** replacing the entire object with a new one
-   - **Protects** the reference to the original object
-   - **Maintains** the object's identity in memory
+   **Что вам нужно помнить:**
+   - **Попытки** переприсвоить константу вызовут ошибку
+   - **Защищает** важные значения от случайных изменений
+   - **Гарантирует**, что значение остается постоянным на протяжении всей вашей программы
 
-    **Object value is not protected** - The following IS allowed:
-    
-      ```javascript
-      const obj = { a: 3 };
-      obj.a = 5;  // allowed
-      ```
+   **Ссылка на объект защищена** - Следующее НЕ допускается:
 
-      **Breaking down what happens here:**
-      - **Modifies** the property value inside the object
-      - **Keeps** the same object reference
-      - **Demonstrates** that object contents can change while the reference stays constant
+    ```javascript
+    const obj = { a: 3 };
+    obj = { b: 5 } // не допускается
+    ```
 
-   > Note, a `const` means the reference is protected from reassignment. The value is not _immutable_ though and can change, especially if it's a complex construct like an object.
+   **Понимание этих концепций:**
+   - **Предотвращает** замену всего объекта новым
+   - **Защищает** ссылку на исходный объект
+   - **Сохраняет** идентичность объекта в памяти
 
-## Data Types
+  **Значение объекта не защищено** - Следующее ДОПУСКАЕТСЯ:
 
-JavaScript organizes information into different categories called data types. This concept mirrors how ancient scholars categorized knowledge – Aristotle distinguished between different types of reasoning, knowing that logical principles couldn't be applied uniformly to poetry, mathematics, and natural philosophy.
+    ```javascript
+    const obj = { a: 3 };
+    obj.a = 5;  // допускается
+    ```
 
-Data types matter because different operations work with different kinds of information. Just as you can't perform arithmetic on a person's name or alphabetize a mathematical equation, JavaScript requires the appropriate data type for each operation. Understanding this prevents errors and makes your code more reliable.
+    **Разберем, что здесь происходит:**
+    - **Изменяет** значение свойства внутри объекта
+    - **Сохраняет** ту же ссылку на объект
+    - **Демонстрирует**, что содержимое объекта может меняться, в то время как ссылка остается постоянной
 
-Variables can store many different types of values, like numbers and text. These various types of values are known as the **data type**. Data types are an important part of software development because it helps developers make decisions on how the code should be written and how the software should run. Furthermore, some data types have unique features that help transform or extract additional information in a value.
+   > Примечание: `const` означает, что ссылка защищена от переприсваивания. Однако значение не является _неизменяемым_ и может меняться, особенно если это сложная структура, такая как объект.
 
-✅ Data Types are also referred to as JavaScript data primitives, as they are the lowest-level data types that are provided by the language. There are 7 primitive data types: string, number, bigint, boolean, undefined, null and symbol. Take a minute to visualize what each of these primitives might represent. What is a `zebra`? How about `0`? `true`?
+## Типы данных
 
-### Numbers
+JavaScript организует информацию в различные категории, называемые типами данных. Эта концепция отражает то, как древние ученые классифицировали знания — Аристотель различал разные типы рассуждений, зная, что логические принципы нельзя применять одинаково к поэзии, математике и натурфилософии.
 
-Numbers are the most straightforward data type in JavaScript. Whether you're working with whole numbers like 42, decimals like 3.14, or negative numbers like -5, JavaScript handles them uniformly.
+Типы данных важны, потому что разные операции работают с разными видами информации. Точно так же, как вы не можете выполнять арифметические действия с именем человека или упорядочивать по алфавиту математическое уравнение, JavaScript требует соответствующий тип данных для каждой операции. Понимание этого предотвращает ошибки и делает ваш код более надежным.
 
-Remember our variable from earlier? That 123 we stored was actually a number data type:
+Переменные могут хранить много разных типов значений, таких как числа и текст. Эти различные типы значений известны как **тип данных**. Типы данных являются важной частью разработки программного обеспечения, поскольку они помогают разработчикам принимать решения о том, как должен быть написан код и как должно работать программное обеспечение. Кроме того, некоторые типы данных имеют уникальные особенности, которые помогают преобразовывать или извлекать дополнительную информацию из значения.
+
+✅ Типы данных также называют примитивами данных JavaScript, поскольку они являются самыми низкоуровневыми типами данных, предоставляемыми языком. Существует 7 примитивных типов данных: string, number, bigint, boolean, undefined, null и symbol. Потратьте минуту, чтобы представить, что может представлять каждый из этих примитивов. Что такое `зебра`? А как насчет `0`? `true`?
+
+### Числа (Numbers)
+
+Числа — это самый простой тип данных в JavaScript. Работаете ли вы с целыми числами, такими как 42, десятичными дробями, такими как 3.14, или отрицательными числами, такими как -5, JavaScript обрабатывает их единообразно.
+
+Помните нашу переменную из предыдущего раздела? То 123, которое мы сохранили, на самом деле было числовым типом данных:
 
 ```javascript
 let myVariable = 123;
 ```
 
-**Key characteristics:**
-- JavaScript automatically recognizes numeric values
-- You can perform mathematical operations with these variables
-- No explicit type declaration is required
+**Ключевые характеристики:**
+- JavaScript автоматически распознает числовые значения
+- Вы можете выполнять математические операции с этими переменными
+- Явное объявление типа не требуется
 
-Variables can store all types of numbers, including decimals or negative numbers. Numbers also can be used with arithmetic operators, covered in the [next section](#arithmetic-operators).
+Переменные могут хранить все типы чисел, включая десятичные или отрицательные. Числа также могут использоваться с арифметическими операторами, которые рассматриваются в [следующем разделе](#арифметические-операторы).
 
 ```mermaid
 flowchart LR
-    A["🔢 Numbers"] --> B["➕ Addition"]
-    A --> C["➖ Subtraction"]
-    A --> D["✖️ Multiplication"]
-    A --> E["➗ Division"]
-    A --> F["📊 Remainder %"]
-    
-    B --> B1["1 + 2 = 3"]
-    C --> C1["5 - 3 = 2"]
-    D --> D1["4 * 3 = 12"]
-    E --> E1["10 / 2 = 5"]
-    F --> F1["7 % 3 = 1"]
-    
-    style A fill:#e3f2fd
-    style B fill:#e8f5e8
-    style C fill:#fff3e0
-    style D fill:#f3e5f5
-    style E fill:#e0f2f1
-    style F fill:#fce4ec
+  A["🔢 Числа"] --> B["➕ Сложение"]
+  A --> C["➖ Вычитание"]
+  A --> D["✖️ Умножение"]
+  A --> E["➗ Деление"]
+  A --> F["📊 Остаток от деления %"]
+
+  B --> B1["1 + 2 = 3"]
+  C --> C1["5 - 3 = 2"]
+  D --> D1["4 * 3 = 12"]
+  E --> E1["10 / 2 = 5"]
+  F --> F1["7 % 3 = 1"]
+
+  style A fill:#e3f2fd
+  style B fill:#e8f5e8
+  style C fill:#fff3e0
+  style D fill:#f3e5f5
+  style E fill:#e0f2f1
+  style F fill:#fce4ec
 ```
 
-### Arithmetic Operators
+### Арифметические операторы
 
-Arithmetic operators allow you to perform mathematical calculations in JavaScript. These operators follow the same principles mathematicians have used for centuries – the same symbols that appeared in the works of scholars like Al-Khwarizmi, who developed algebraic notation.
+Арифметические операторы позволяют выполнять математические вычисления в JavaScript. Эти операторы следуют тем же принципам, которые математики использовали на протяжении веков — те же символы, которые появлялись в работах ученых, таких как Аль-Хорезми, разработавший алгебраическую нотацию.
 
-The operators work as you would expect from traditional mathematics: plus for addition, minus for subtraction, and so forth.
+Операторы работают так, как вы ожидаете от традиционной математики: плюс для сложения, минус для вычитания и так далее.
 
-There are several types of operators to use when performing arithmetic functions, and some are listed here:
+Существует несколько типов операторов для выполнения арифметических функций, и некоторые из них перечислены здесь:
 
-| Symbol | Description                                                              | Example                          |
+| Символ | Описание                                                                 | Пример                           |
 | ------ | ------------------------------------------------------------------------ | -------------------------------- |
-| `+`    | **Addition**: Calculates the sum of two numbers                          | `1 + 2 //expected answer is 3`   |
-| `-`    | **Subtraction**: Calculates the difference of two numbers                | `1 - 2 //expected answer is -1`  |
-| `*`    | **Multiplication**: Calculates the product of two numbers                | `1 * 2 //expected answer is 2`   |
-| `/`    | **Division**: Calculates the quotient of two numbers                     | `1 / 2 //expected answer is 0.5` |
-| `%`    | **Remainder**: Calculates the remainder from the division of two numbers | `1 % 2 //expected answer is 1`   |
+| `+`    | **Сложение**: вычисляет сумму двух чисел                                 | `1 + 2 //ожидаемый ответ 3`      |
+| `-`    | **Вычитание**: вычисляет разность двух чисел                             | `1 - 2 //ожидаемый ответ -1`     |
+| `*`    | **Умножение**: вычисляет произведение двух чисел                         | `1 * 2 //ожидаемый ответ 2`      |
+| `/`    | **Деление**: вычисляет частное двух чисел                                | `1 / 2 //ожидаемый ответ 0.5`    |
+| `%`    | **Остаток**: вычисляет остаток от деления двух чисел                     | `1 % 2 //ожидаемый ответ 1`      |
 
-✅ Try it! Try an arithmetic operation in your browser's console. Do the results surprise you?
+✅ Попробуйте! Попробуйте выполнить арифметическую операцию в консоли вашего браузера. Результаты вас удивляют?
 
-### 🧮 **Math Skills Check: Calculating with Confidence**
+### 🧮 **Проверка математических навыков: Уверенные вычисления**
 
-**Test your arithmetic understanding:**
-- What's the difference between `/` (division) and `%` (remainder)?
-- Can you predict what `10 % 3` equals? (Hint: it's not 3.33...)
-- Why might the remainder operator be useful in programming?
+**Проверьте свое понимание арифметики:**
+- В чем разница между `/` (деление) и `%` (остаток)?
+- Можете ли вы предсказать, чему равно `10 % 3`? (Подсказка: это не 3.33...)
+- Почему оператор остатка может быть полезен в программировании?
 
 ```mermaid
-pie title "JavaScript Number Operations Usage"
-    "Addition (+)" : 35
-    "Subtraction (-)" : 20
-    "Multiplication (*)" : 20
-    "Division (/)" : 15
-    "Remainder (%)" : 10
+pie title "Использование числовых операций в JavaScript"
+  "Сложение (+)" : 35
+  "Вычитание (-)" : 20
+  "Умножение (*)" : 20
+  "Деление (/)" : 15
+  "Остаток (%)" : 10
 ```
 
-> **Real-world insight**: The remainder operator (%) is super useful for checking if numbers are even/odd, creating patterns, or cycling through arrays!
+> **Инсайт из реального мира**: Оператор остатка (%) очень полезен для проверки чисел на четность/нечетность, создания шаблонов или циклического перебора массивов!
 
-### Strings
+### Строки (Strings)
 
-In JavaScript, textual data is represented as strings. The term "string" comes from the concept of characters strung together in sequence, much like the way scribes in medieval monasteries would connect letters to form words and sentences in their manuscripts.
+В JavaScript текстовые данные представляются в виде строк. Термин "строка" (string) происходит от концепции символов, "нанизанных" (strung) вместе в последовательность, подобно тому, как писцы в средневековых монастырях соединяли буквы, чтобы формировать слова и предложения в своих рукописях.
 
-Strings are fundamental to web development. Every piece of text displayed on a website – usernames, button labels, error messages, content – is handled as string data. Understanding strings is essential for creating functional user interfaces.
+Строки являются основой веб-разработки. Каждый фрагмент текста, отображаемый на веб-сайте — имена пользователей, надписи на кнопках, сообщения об ошибках, контент — обрабатывается как строковые данные. Понимание строк необходимо для создания функциональных пользовательских интерфейсов.
 
-Strings are sets of characters that reside between single or double quotes.
+Строки — это наборы символов, заключенные в одинарные или двойные кавычки.
 
 ```javascript
-'This is a string'
-"This is also a string"
-let myString = 'This is a string value stored in a variable';
+'Это строка'
+"Это тоже строка"
+let myString = 'Это строковое значение, хранящееся в переменной';
 ```
 
-**Understanding these concepts:**
-- **Uses** either single quotes `'` or double quotes `"` to define strings
-- **Stores** text data that can include letters, numbers, and symbols
-- **Assigns** string values to variables for later use
-- **Requires** quotes to distinguish text from variable names
+**Понимание этих концепций:**
+- **Использует** либо одинарные кавычки `'`, либо двойные кавычки `"` для определения строк
+- **Хранит** текстовые данные, которые могут включать буквы, цифры и символы
+- **Присваивает** строковые значения переменным для последующего использования
+- **Требует** кавычек, чтобы отличать текст от имен переменных
 
-Remember to use quotes when writing a string, or else JavaScript will assume it's a variable name.
+Не забывайте использовать кавычки при написании строки, иначе JavaScript будет считать, что это имя переменной.
 
 ```mermaid
 flowchart TD
-    A["📝 Strings"] --> B["Single Quotes"]
-    A --> C["Double Quotes"]
-    A --> D["Template Literals"]
-    
-    B --> B1["'Hello World'"]
-    C --> C1["\"Hello World\""]
-    D --> D1["`Hello \${name}`"]
-    
-    E["String Operations"] --> F["Concatenation"]
-    E --> G["Template Insertion"]
-    E --> H["Length & Methods"]
-    
-    F --> F1["'Hello' + ' ' + 'World'"]
-    G --> G1["`Hello \${firstName} \${lastName}`"]
-    H --> H1["myString.length"]
-    
-    style A fill:#e3f2fd
-    style E fill:#fff3e0
-    style D fill:#e8f5e8
-    style G fill:#e8f5e8
+  A["📝 Строки"] --> B["Одинарные кавычки"]
+  A --> C["Двойные кавычки"]
+  A --> D["Шаблонные литералы"]
+
+  B --> B1["'Привет, мир'"]
+  C --> C1["\"Привет, мир\""]
+  D --> D1["`Привет, \${имя}`"]
+
+  E["Строковые операции"] --> F["Конкатенация"]
+  E --> G["Вставка в шаблон"]
+  E --> H["Длина и методы"]
+
+  F --> F1["'Привет' + ' ' + 'мир'"]
+  G --> G1["`Привет, \${имя} \${фамилия}`"]
+  H --> H1["myString.length"]
+
+  style A fill:#e3f2fd
+  style E fill:#fff3e0
+  style D fill:#e8f5e8
+  style G fill:#e8f5e8
 ```
 
-### Formatting Strings
+### Форматирование строк
 
-String manipulation allows you to combine text elements, incorporate variables, and create dynamic content that responds to program state. This technique enables you to construct text programmatically.
+Манипулирование строками позволяет объединять текстовые элементы, включать переменные и создавать динамический контент, который реагирует на состояние программы. Эта техника позволяет вам конструировать текст программно.
 
-Often you need to join multiple strings together – this process is called concatenation.
+Часто вам нужно соединить несколько строк вместе — этот процесс называется конкатенацией.
 
-To **concatenate** two or more strings, or join them together, use the `+` operator.
+Чтобы **конкатенировать** (объединить) две или более строки, используйте оператор `+`.
 
 ```javascript
-let myString1 = "Hello";
-let myString2 = "World";
+let myString1 = "Привет";
+let myString2 = "мир";
 
-myString1 + myString2 + "!"; //HelloWorld!
-myString1 + " " + myString2 + "!"; //Hello World!
-myString1 + ", " + myString2 + "!"; //Hello, World!
+myString1 + myString2 + "!"; //Приветмир!
+myString1 + " " + myString2 + "!"; //Привет мир!
+myString1 + ", " + myString2 + "!"; //Привет, мир!
 ```
 
-**Step by step, here's what's happening:**
-- **Combines** multiple strings using the `+` operator
-- **Joins** strings directly together without spaces in the first example
-- **Adds** space characters `" "` between strings for readability
-- **Inserts** punctuation like commas to create proper formatting
+**Шаг за шагом, вот что происходит:**
+- **Объединяет** несколько строк с помощью оператора `+`
+- **Соединяет** строки напрямую без пробелов в первом примере
+- **Добавляет** пробельные символы `" "` между строками для читаемости
+- **Вставляет** знаки препинания, такие как запятые, для правильного форматирования
 
-✅ Why does `1 + 1 = 2` in JavaScript, but `'1' + '1' = 11?` Think about it. What about `'1' + 1`?
+✅ Почему в JavaScript `1 + 1 = 2`, а `'1' + '1' = 11?` Подумайте об этом. А как насчет `'1' + 1`?
 
-**Template literals** are another way to format strings, except instead of quotes, the backtick  is used. Anything that is not plain text must be placed inside placeholders `${ }`. This includes any variables that may be strings.
+**Шаблонные литералы** — это еще один способ форматирования строк, только вместо кавычек используется обратный апостроф. Все, что не является обычным текстом, должно быть помещено внутрь плейсхолдеров `${ }`. Это включает любые переменные, которые могут быть строками.
 
 ```javascript
-let myString1 = "Hello";
-let myString2 = "World";
+let myString1 = "Привет";
+let myString2 = "мир";
 
-`${myString1} ${myString2}!` //Hello World!
-`${myString1}, ${myString2}!` //Hello, World!
+`${myString1} ${myString2}!` //Привет мир!
+`${myString1}, ${myString2}!` //Привет, мир!
 ```
 
-**Let's understand each part:**
-- **Uses** backticks `` ` `` instead of regular quotes to create template literals
-- **Embeds** variables directly using `${}` placeholder syntax
-- **Preserves** spaces and formatting exactly as written
-- **Provides** a cleaner way to create complex strings with variables
+**Давайте разберем каждую часть:**
+- **Использует** обратные апострофы `` ` `` вместо обычных кавычек для создания шаблонных литералов
+- **Встраивает** переменные напрямую с помощью синтаксиса плейсхолдера `${}`
+- **Сохраняет** пробелы и форматирование в точности, как они написаны
+- **Предоставляет** более чистый способ создания сложных строк с переменными
 
-You can achieve your formatting goals with either method, but template literals will respect any spaces and line breaks.
+Вы можете достичь своих целей форматирования любым из этих методов, но шаблонные литералы будут учитывать любые пробелы и переносы строк.
 
-✅ When would you use a template literal vs. a plain string?
+✅ Когда бы вы использовали шаблонный литерал вместо обычной строки?
 
-### 🔤 **String Mastery Check: Text Manipulation Confidence**
+### 🔤 **Проверка мастерства владения строками: Уверенность в манипуляции текстом**
 
-**Evaluate your string skills:**
-- Can you explain why `'1' + '1'` equals `'11'` instead of `2`?
-- Which string method do you find more readable: concatenation or template literals?
-- What happens if you forget the quotes around a string?
+**Оцените свои навыки работы со строками:**
+- Можете ли вы объяснить, почему `'1' + '1'` равно `'11'`, а не `2`?
+- Какой метод работы со строками вы находите более читабельным: конкатенацию или шаблонные литералы?
+- Что произойдет, если вы забудете кавычки вокруг строки?
 
 ```mermaid
 stateDiagram-v2
-    [*] --> PlainText: "Hello"
-    [*] --> Variable: name = "Alice"
-    PlainText --> Concatenated: + " " + name
-    Variable --> Concatenated
-    PlainText --> Template: `Hello ${name}`
-    Variable --> Template
-    Concatenated --> Result: "Hello Alice"
-    Template --> Result
-    
-    note right of Concatenated
-        Traditional method
-        More verbose
-    end note
-    
-    note right of Template
-        Modern ES6 syntax
-        Cleaner & more readable
-    end note
+  [*] --> ПростойТекст: "Привет"
+  [*] --> Переменная: имя = "Алиса"
+  ПростойТекст --> Конкатенация: + " " + имя
+  Переменная --> Конкатенация
+  ПростойТекст --> Шаблон: `Привет, ${имя}`
+  Переменная --> Шаблон
+  Конкатенация --> Результат: "Привет, Алиса"
+  Шаблон --> Результат
+
+  note right of Конкатенация
+    Традиционный метод
+    Более многословный
+  end note
+
+  note right of Шаблон
+    Современный синтаксис ES6
+    Чище и более читабельный
+  end note
 ```
 
-> **Pro tip**: Template literals are generally preferred for complex string building because they're more readable and handle multi-line strings beautifully!
+> **Совет от профессионала**: Шаблонные литералы обычно предпочтительнее для создания сложных строк, потому что они более читабельны и прекрасно справляются с многострочными строками!
 
-### Booleans
+### Логические значения (Booleans)
 
-Booleans represent the simplest form of data: they can only hold one of two values – `true` or `false`. This binary logic system traces back to the work of George Boole, a 19th-century mathematician who developed Boolean algebra.
+Логические значения представляют простейшую форму данных: они могут содержать только одно из двух значений — `true` (истина) или `false` (ложь). Эта система двоичной логики восходит к работам Джорджа Буля, математика 19-го века, который разработал булеву алгебру.
 
-Despite their simplicity, booleans are essential for program logic. They enable your code to make decisions based on conditions – whether a user is logged in, if a button was clicked, or if certain criteria are met.
+Несмотря на свою простоту, логические значения необходимы для логики программы. Они позволяют вашему коду принимать решения на основе условий — вошел ли пользователь в систему, была ли нажата кнопка или выполнены ли определенные критерии.
 
-Booleans can be only two values: `true` or `false`. Booleans can help make decisions on which lines of code should run when certain conditions are met. In many cases, [operators](#arithmetic-operators) assist with setting the value of a Boolean and you will often notice and write variables being initialized or their values being updated with an operator.
+Логические значения могут быть только двух видов: `true` или `false`. Они помогают принимать решения о том, какие строки кода должны выполняться при выполнении определенных условий. Во многих случаях [операторы](#арифметические-операторы) помогают установить значение логического типа, и вы часто будете замечать и писать переменные, которые инициализируются или обновляются с помощью оператора.
 
 ```javascript
 let myTrueBool = true;
 let myFalseBool = false;
 ```
 
-**In the above, we've:**
-- **Created** a variable that stores the Boolean value `true`
-- **Demonstrated** how to store the Boolean value `false`
-- **Used** the exact keywords `true` and `false` (no quotes needed)
-- **Prepared** these variables for use in conditional statements
+**В примере выше мы:**
+- **Создали** переменную, которая хранит логическое значение `true`
+- **Продемонстрировали**, как хранить логическое значение `false`
+- **Использовали** точные ключевые слова `true` и `false` (кавычки не нужны)
+- **Подготовили** эти переменные для использования в условных операторах
 
-✅ A variable can be considered 'truthy' if it evaluates to a boolean `true`. Interestingly, in JavaScript, [all values are truthy unless defined as falsy](https://developer.mozilla.org/docs/Glossary/Truthy).
+✅ Переменная может считаться 'истинной' (truthy), если она преобразуется в логическое `true`. Интересно, что в JavaScript [все значения являются истинными, если они не определены как ложные (falsy)](https://developer.mozilla.org/docs/Glossary/Truthy).
 
 ```mermaid
 flowchart LR
-    A["🔘 Boolean Values"] --> B["true"]
-    A --> C["false"]
-    
-    D["Truthy Values"] --> D1["'hello'"]
-    D --> D2["42"]
-    D --> D3["[]"]
-    D --> D4["{}"]
-    
-    E["Falsy Values"] --> E1["false"]
-    E --> E2["0"]
-    E --> E3["''"]
-    E --> E4["null"]
-    E --> E5["undefined"]
-    E --> E6["NaN"]
-    
-    style B fill:#e8f5e8
-    style C fill:#ffebee
-    style D fill:#e3f2fd
-    style E fill:#fff3e0
+  A["🔘 Логические значения"] --> B["true"]
+  A --> C["false"]
+
+  D["Истинные (Truthy) значения"] --> D1["'hello'"]
+  D --> D2["42"]
+  D --> D3["[]"]
+  D --> D4["{}"]
+
+  E["Ложные (Falsy) значения"] --> E1["false"]
+  E --> E2["0"]
+  E --> E3["''"]
+  E --> E4["null"]
+  E --> E5["undefined"]
+  E --> E6["NaN"]
+
+  style B fill:#e8f5e8
+  style C fill:#ffebee
+  style D fill:#e3f2fd
+  style E fill:#fff3e0
 ```
 
-### 🎯 **Boolean Logic Check: Decision Making Skills**
+### 🎯 **Проверка логического мышления: Навыки принятия решений**
 
-**Test your boolean understanding:**
-- Why do you think JavaScript has "truthy" and "falsy" values beyond just `true` and `false`?
-- Can you predict which of these is falsy: `0`, `"0"`, `[]`, `"false"`?
-- How might booleans be useful in controlling program flow?
+**Проверьте свое понимание логических значений:**
+- Как вы думаете, почему в JavaScript есть "истинные" (truthy) и "ложные" (falsy) значения помимо просто `true` и `false`?
+- Можете ли вы предсказать, какие из этих значений являются ложными: `0`, `"0"`, `[]`, `"false"`?
+- Как логические значения могут быть полезны для управления потоком выполнения программы?
 
 ```mermaid
-pie title "Common Boolean Use Cases"
-    "Conditional Logic" : 40
-    "User State" : 25
-    "Feature Toggles" : 20
-    "Validation" : 15
+pie title "Частые случаи использования логических значений"
+  "Условная логика" : 40
+  "Состояние пользователя" : 25
+  "Переключатели функций" : 20
+  "Валидация" : 15
 ```
 
-> **Remember**: In JavaScript, only 6 values are falsy: `false`, `0`, `""`, `null`, `undefined`, and `NaN`. Everything else is truthy!
+> **Запомните**: В JavaScript только 6 значений являются ложными (falsy): `false`, `0`, `""`, `null`, `undefined` и `NaN`. Все остальное — истинное (truthy)!
 
 ---
 
-## 📊 **Your Data Types Toolkit Summary**
+## 📊 **Краткий обзор вашего набора инструментов для типов данных**
 
 ```mermaid
 graph TD
-    A["🎯 JavaScript Data Types"] --> B["📦 Variables"]
-    A --> C["🔢 Numbers"]
-    A --> D["📝 Strings"]
-    A --> E["🔘 Booleans"]
-    
-    B --> B1["let mutable"]
-    B --> B2["const immutable"]
-    
-    C --> C1["42, 3.14, -5"]
-    C --> C2["+ - * / %"]
-    
-    D --> D1["'quotes' or \\\"quotes\\\""]
-    D --> D2["`template literals`"]
-    
-    E --> E1["true or false"]
-    E --> E2["truthy vs falsy"]
-    
-    F["⚡ Key Concepts"] --> F1["Type matters for operations"]
-    F --> F2["JavaScript is dynamically typed"]
-    F --> F3["Variables can change types"]
-    F --> F4["Naming is case-sensitive"]
-    
-    style A fill:#e3f2fd
-    style B fill:#e8f5e8
-    style C fill:#fff3e0
-    style D fill:#f3e5f5
-    style E fill:#e0f2f1
-    style F fill:#fce4ec
+  A["🎯 Типы данных в JavaScript"] --> B["📦 Переменные"]
+  A --> C["🔢 Числа"]
+  A --> D["📝 Строки"]
+  A --> E["🔘 Логические значения"]
+
+  B --> B1["let (изменяемые)"]
+  B --> B2["const (неизменяемые)"]
+
+  C --> C1["42, 3.14, -5"]
+  C --> C2["+ - * / %"]
+
+  D --> D1["'кавычки' или \\\"кавычки\\\""]
+  D --> D2["`шаблонные литералы`"]
+
+  E --> E1["true или false"]
+  E --> E2["истинные (truthy) vs ложные (falsy)"]
+
+  F["⚡ Ключевые концепции"] --> F1["Тип важен для операций"]
+  F --> F2["JavaScript имеет динамическую типизацию"]
+  F --> F3["Переменные могут менять тип"]
+  F --> F4["Имена чувствительны к регистру"]
+
+  style A fill:#e3f2fd
+  style B fill:#e8f5e8
+  style C fill:#fff3e0
+  style D fill:#f3e5f5
+  style E fill:#e0f2f1
+  style F fill:#fce4ec
 ```
 
-## GitHub Copilot Agent Challenge 🚀
+## Задание от GitHub Copilot Agent 🚀
 
-Use the Agent mode to complete the following challenge:
+Используйте режим Agent, чтобы выполнить следующее задание:
 
-**Description:** Create a personal information manager that demonstrates all the JavaScript data types you've learned in this lesson while handling real-world data scenarios.
+**Описание:** Создайте менеджер личной информации, который демонстрирует все типы данных JavaScript, изученные в этом уроке, при работе с реальными сценариями данных.
 
-**Prompt:** Build a JavaScript program that creates a user profile object containing: a person's name (string), age (number), is a student status (boolean), favorite colors as an array, and an address object with street, city, and zip code properties. Include functions to display the profile information and update individual fields. Make sure to demonstrate string concatenation, template literals, arithmetic operations with the age, and boolean logic for the student status.
+**Запрос:** Создайте программу на JavaScript, которая создает объект профиля пользователя, содержащий: имя человека (строка), возраст (число), статус студента (логическое значение), любимые цвета в виде массива и объект адреса со свойствами улицы, города и почтового индекса. Включите функции для отображения информации профиля и обновления отдельных полей. Убедитесь, что вы продемонстрировали конкатенацию строк, шаблонные литералы, арифметические операции с возрастом и логические операции со статусом студента.
 
-Learn more about [agent mode](https://code.visualstudio.com/blogs/2025/02/24/introducing-copilot-agent-mode) here.
+Узнайте больше о [режиме agent](https://code.visualstudio.com/blogs/2025/02/24/introducing-copilot-agent-mode) здесь.
 
-## 🚀 Challenge
+## 🚀 Задание
 
-JavaScript has some behaviors that can catch developers off guard. Here's a classic example to explore: try typing this in your browser console: `let age = 1; let Age = 2; age == Age` and observe the result. It returns `false` – can you determine why?
+В JavaScript есть некоторые особенности поведения, которые могут застать разработчиков врасплох. Вот классический пример для изучения: попробуйте ввести в консоли вашего браузера: `let age = 1; let Age = 2; age == Age` и посмотрите на результат. Он вернет `false` — можете ли вы определить, почему?
 
-This represents one of many JavaScript behaviors worth understanding. Familiarity with these quirks will help you write more reliable code and debug issues more effectively.
+Это одна из многих особенностей поведения JavaScript, которые стоит понять. Знакомство с этими причудами поможет вам писать более надежный код и эффективнее отлаживать проблемы.
 
-## Post-Lecture Quiz
-[Post-lecture quiz](https://ff-quizzes.netlify.app)
+## Тест после лекции
+[Тест после лекции](https://ff-quizzes.netlify.app)
 
-## Review & Self Study
+## Обзор и самостоятельное изучение
 
-Take a look at [this list of JavaScript exercises](https://css-tricks.com/snippets/javascript/) and try one. What did you learn?
+Взгляните на [этот список упражнений по JavaScript](https://css-tricks.com/snippets/javascript/) и попробуйте выполнить одно из них. Что вы узнали?
 
-## Assignment
+## Домашнее задание
 
-[Data Types Practice](assignment.md)
+[Практика по типам данных](assignment.md)
 
-## 🚀 Your JavaScript Data Types Mastery Timeline
+## 🚀 Ваш путь к мастерству в типах данных JavaScript
 
-### ⚡ **What You Can Do in the Next 5 Minutes**
-- [ ] Open your browser console and create 3 variables with different data types
-- [ ] Try the challenge: `let age = 1; let Age = 2; age == Age` and figure out why it's false
-- [ ] Practice string concatenation with your name and favorite number
-- [ ] Test what happens when you add a number to a string
+### ⚡ **Что вы можете сделать в следующие 5 минут**
+- [ ] Откройте консоль браузера и создайте 3 переменные с разными типами данных
+- [ ] Попробуйте выполнить задание: `let age = 1; let Age = 2; age == Age` и выясните, почему результат `false`
+- [ ] Попрактикуйтесь в конкатенации строк с вашим именем и любимым числом
+- [ ] Проверьте, что произойдет, если сложить число со строкой
 
-### 🎯 **What You Can Accomplish This Hour**
-- [ ] Complete the post-lesson quiz and review any confusing concepts
-- [ ] Create a mini calculator that adds, subtracts, multiplies, and divides two numbers
-- [ ] Build a simple name formatter using template literals
-- [ ] Explore the differences between `==` and `===` comparison operators
-- [ ] Practice converting between different data types
+### 🎯 **Что вы можете достичь за этот час**
+- [ ] Пройдите тест после урока и разберите все непонятные концепции
+- [ ] Создайте мини-калькулятор, который складывает, вычитает, умножает и делит два числа
+- [ ] Создайте простой форматер имен с использованием шаблонных литералов
+- [ ] Изучите различия между операторами сравнения `==` и `===`
+- [ ] Попрактикуйтесь в преобразовании между различными типами данных
 
-### 📅 **Your Week-Long JavaScript Foundation**
-- [ ] Complete the assignment with confidence and creativity
-- [ ] Create a personal profile object using all data types learned
-- [ ] Practice with [JavaScript exercises from CSS-Tricks](https://css-tricks.com/snippets/javascript/)
-- [ ] Build a simple form validator using boolean logic
-- [ ] Experiment with array and object data types (preview of coming lessons)
-- [ ] Join a JavaScript community and ask questions about data types
+### 📅 **Ваш недельный фундамент в JavaScript**
+- [ ] Выполните домашнее задание уверенно и творчески
+- [ ] Создайте объект личного профиля, используя все изученные типы данных
+- [ ] Попрактикуйтесь с [упражнениями по JavaScript от CSS-Tricks](https://css-tricks.com/snippets/javascript/)
+- [ ] Создайте простой валидатор форм, используя логические операции
+- [ ] Поэкспериментируйте с типами данных массив и объект (анонс будущих уроков)
+- [ ] Присоединитесь к сообществу JavaScript и задавайте вопросы о типах данных
 
-### 🌟 **Your Month-Long Transformation**
-- [ ] Integrate data type knowledge into larger programming projects
-- [ ] Understand when and why to use each data type in real applications
-- [ ] Help other beginners understand JavaScript fundamentals
-- [ ] Build a small application that manages different types of user data
-- [ ] Explore advanced data type concepts like type coercion and strict equality
-- [ ] Contribute to open source JavaScript projects with documentation improvements
+### 🌟 **Ваша трансформация за месяц**
+- [ ] Интегрируйте знания о типах данных в более крупные программные проекты
+- [ ] Поймите, когда и почему использовать каждый тип данных в реальных приложениях
+- [ ] Помогайте другим новичкам понять основы JavaScript
+- [ ] Создайте небольшое приложение, которое управляет различными типами пользовательских данных
+- [ ] Изучите продвинутые концепции типов данных, такие как приведение типов и строгое равенство
+- [ ] Вносите вклад в открытые проекты JavaScript, улучшая документацию
 
-### 🧠 **Final Data Types Mastery Check-in**
+### 🧠 **Финальная проверка мастерства владения типами данных**
 
-**Celebrate your JavaScript foundation:**
-- Which data type surprised you the most in terms of its behavior?
-- How comfortable do you feel explaining variables vs. constants to a friend?
-- What's the most interesting thing you discovered about JavaScript's type system?
-- Which real-world application can you imagine building with these fundamentals?
+**Отпразднуйте свой фундамент в JavaScript:**
+- Какой тип данных удивил вас больше всего своим поведением?
+- Насколько уверенно вы можете объяснить разницу между переменными и константами другу?
+- Что самое интересное вы узнали о системе типов в JavaScript?
+- Какое реальное приложение вы можете представить себе, созданное на этих основах?
 
 ```mermaid
 journey
-    title Your JavaScript Confidence Journey
-    section Today
-      Confused: 3: You
-      Curious: 4: You
-      Excited: 5: You
-    section This Week
-      Practicing: 4: You
-      Understanding: 5: You
-      Building: 5: You
-    section Next Month
-      Problem Solving: 5: You
-      Teaching Others: 5: You
-      Real Projects: 5: You
+  title Ваш путь к уверенности в JavaScript
+  section Сегодня
+    В замешательстве: 3: Вы
+    Любопытно: 4: Вы
+    В восторге: 5: Вы
+  section На этой неделе
+    Практика: 4: Вы
+    Понимание: 5: Вы
+    Создание: 5: Вы
+  section В следующем месяце
+    Решение проблем: 5: Вы
+    Обучение других: 5: Вы
+    Реальные проекты: 5: Вы
 ```
 
-> 💡 **You've built the foundation!** Understanding data types is like learning the alphabet before writing stories. Every JavaScript program you'll ever write will use these fundamental concepts. You now have the building blocks to create interactive websites, dynamic applications, and solve real-world problems with code. Welcome to the wonderful world of JavaScript! 🎉
+> 💡 **Вы заложили фундамент!** Понимание типов данных — это как изучение алфавита перед написанием историй. Каждая программа на JavaScript, которую вы когда-либо напишете, будет использовать эти фундаментальные концепции. Теперь у вас есть строительные блоки для создания интерактивных веб-сайтов, динамических приложений и решения реальных проблем с помощью кода. Добро пожаловать в удивительный мир JavaScript! 🎉
