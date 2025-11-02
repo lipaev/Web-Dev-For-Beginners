@@ -1,771 +1,769 @@
-# Introduction to GitHub
+# Введение в GitHub
 
-Hey there, future developer! 👋 Ready to join millions of coders around the world? I'm genuinely excited to introduce you to GitHub – think of it as the social media platform for programmers, except instead of sharing photos of your lunch, we're sharing code and building incredible things together!
+Привет, будущий разработчик! Готовы присоединиться к миллионам программистов по всему миру? Я искренне рад представить вам GitHub – думайте о нем как о социальной сети для программистов, только вместо того, чтобы делиться фотографиями своего обеда, мы делимся кодом и вместе создаем невероятные вещи!
 
-Here's what absolutely blows my mind: every app on your phone, every website you visit, and most of the tools you'll learn to use were built by teams of developers collaborating on platforms just like GitHub. That music app you love? Someone like you contributed to it. That game you can't put down? Yep, probably built with GitHub collaboration. And now YOU'RE going to learn how to be part of that amazing community!
+Вот что меня абсолютно поражает: каждое приложение на вашем телефоне, каждый сайт, который вы посещаете, и большинство инструментов, которыми вы научитесь пользоваться, были созданы командами разработчиков, сотрудничающих на платформах, подобных GitHub. То музыкальное приложение, которое вы любите? Кто-то вроде вас внес в него свой вклад. Та игра, от которой вы не можете оторваться? Да, вероятно, она была создана при помощи совместной работы на GitHub. И теперь ВЫ научитесь быть частью этого удивительного сообщества!
 
-I know this might feel like a lot at first – heck, I remember staring at my first GitHub page thinking "What on earth does any of this mean?" But here's the thing: every single developer started exactly where you are right now. By the end of this lesson, you'll have your very own GitHub repository (think of it as your personal project showcase in the cloud), and you'll know how to save your work, share it with others, and even contribute to projects that millions of people use. 
+Я знаю, что поначалу это может показаться сложным – черт, я помню, как смотрел на свою первую страницу GitHub и думал: «Что, черт возьми, все это значит?» Но вот в чем дело: каждый разработчик начинал именно там, где вы находитесь сейчас. К концу этого урока у вас будет свой собственный репозиторий на GitHub (думайте о нем как о вашей личной витрине проектов в облаке), и вы будете знать, как сохранять свою работу, делиться ею с другими и даже вносить вклад в проекты, которыми пользуются миллионы людей.
 
-We're going to take this journey together, one step at a time. No rushing, no pressure – just you, me, and some really cool tools that are about to become your new best friends!
+Мы пройдем этот путь вместе, шаг за шагом. Без спешки, без давления – только вы, я и несколько действительно крутых инструментов, которые вот-вот станут вашими новыми лучшими друзьями!
 
-![Intro to GitHub](../../sketchnotes/webdev101-github.png)
-> Sketchnote by [Tomomi Imura](https://twitter.com/girlie_mac)
+![Введение в GitHub](../../sketchnotes/webdev101-github.png)
+> Скетчноут от [Tomomi Imura](https://twitter.com/girlie_mac)
 
 ```mermaid
 journey
-    title Your GitHub Adventure Today
-    section Setup
-      Install Git: 4: You
-      Create Account: 5: You
-      First Repository: 5: You
-    section Master Git
-      Local Changes: 4: You
-      Commits & Pushes: 5: You
-      Branching: 4: You
-    section Collaborate
-      Fork Projects: 4: You
-      Pull Requests: 5: You
-      Open Source: 5: You
+   title Ваше сегодняшнее приключение на GitHub
+   section Настройка
+     Установка Git: 4: Вы
+     Создание аккаунта: 5: Вы
+     Первый репозиторий: 5: Вы
+   section Освоение Git
+     Локальные изменения: 4: Вы
+     Коммиты и пуши: 5: Вы
+     Ветвление: 4: Вы
+   section Совместная работа
+     Форк проектов: 4: Вы
+     Pull Requests: 5: Вы
+     Open Source: 5: Вы
 ```
 
-## Pre-Lecture Quiz
-[Pre-lecture quiz](https://ff-quizzes.netlify.app)
+## Квиз перед лекцией
+[Квиз перед лекцией](https://ff-quizzes.netlify.app)
 
-## Introduction
+## Введение
 
-Before we dive into the really exciting stuff, let's get your computer ready for some GitHub magic! Think of this like organizing your art supplies before creating a masterpiece – having the right tools ready makes everything so much smoother and way more fun.
+Прежде чем мы погрузимся в действительно захватывающие вещи, давайте подготовим ваш компьютер к магии GitHub! Думайте об этом как об организации художественных принадлежностей перед созданием шедевра – наличие готовых инструментов делает все намного проще и веселее.
 
-I'm going to walk you through each setup step personally, and I promise it's not nearly as intimidating as it might look at first glance. If something doesn't click right away, that's completely normal! I remember setting up my first development environment and feeling like I was trying to read ancient hieroglyphics. Every single developer has been exactly where you are right now, wondering if they're doing it right. Spoiler alert: if you're here learning, you're already doing it right! 🌟
+Я лично проведу вас через каждый шаг настройки, и я обещаю, что это не так страшно, как может показаться на первый взгляд. Если что-то не получается с первого раза, это совершенно нормально! Я помню, как настраивал свою первую среду разработки и чувствовал, будто пытаюсь читать древние иероглифы. Каждый разработчик был именно там, где вы сейчас, и задавался вопросом, все ли он делает правильно. Спойлер: если вы здесь и учитесь, вы уже все делаете правильно!
 
-In this lesson, we'll cover:
+В этом уроке мы рассмотрим:
 
-- tracking the work you do on your machine
-- working on projects with others
-- how to contribute to open source software
+- отслеживание работы, которую вы делаете на своем компьютере
+- работа над проектами с другими людьми
+- как вносить вклад в программное обеспечение с открытым исходным кодом
 
-### Prerequisites
+### Предварительные требования
 
-Let's get your computer ready for some GitHub magic! Don't worry – this setup is something you only need to do once, and then you'll be all set for your entire coding journey.
+Давайте подготовим ваш компьютер к магии GitHub! Не волнуйтесь – эту настройку нужно сделать всего один раз, и после этого вы будете готовы ко всему вашему пути в программировании.
 
-Alright, let's start with the foundation! First, we need to check if Git is already hanging out on your computer. Git is basically like having a super-smart assistant that remembers every single change you make to your code – way better than frantically hitting Ctrl+S every two seconds (we've all been there!).
+Итак, начнем с основ! Сначала нам нужно проверить, установлен ли Git на вашем компьютере. Git — это, по сути, как супер-умный ассистент, который помнит каждое изменение, которое вы вносите в свой код – гораздо лучше, чем судорожно нажимать Ctrl+S каждые две секунды (мы все там были!).
 
-Let's see if Git is already installed by typing this magic command in your terminal:
+Давайте посмотрим, установлен ли Git, введя эту волшебную команду в вашем терминале:
 `git --version`
 
-If Git isn't there yet, no worries! Just head over to [download Git](https://git-scm.com/downloads) and grab it. Once you've got it installed, we need to introduce Git to you properly:
+Если Git еще не установлен, не беда! Просто перейдите на [страницу загрузки Git](https://git-scm.com/downloads) и скачайте его. После установки нам нужно правильно представить вас Git:
 
-> 💡 **First Time Setup**: These commands tell Git who you are. This information will be attached to every commit you make, so choose a name and email you're comfortable sharing publicly.
+>  **Первоначальная настройка**: Эти команды сообщают Git, кто вы. Эта информация будет прикреплена к каждому вашему коммиту, поэтому выберите имя и адрес электронной почты, которыми вы готовы делиться публично.
 
 ```bash
-git config --global user.name "your-name"
-git config --global user.email "your-email"
+git config --global user.name "ваше-имя"
+git config --global user.email "ваша-почта"
 ```
 
-To check if Git is already configured you can type:
+Чтобы проверить, настроен ли Git, вы можете ввести:
 ```bash
 git config --list
 ```
 
-You'll also need a GitHub account, a code editor (like Visual Studio Code), and you'll need to open your terminal (or: command prompt).
+Вам также понадобится аккаунт на GitHub, редактор кода (например, Visual Studio Code) и открыть терминал (или командную строку).
 
-Navigate to [github.com](https://github.com/) and create an account if you haven't already, or log in and fill out your profile. 
+Перейдите на [github.com](https://github.com/) и создайте аккаунт, если у вас его еще нет, или войдите и заполните свой профиль.
 
-💡 **Modern tip**: Consider setting up [SSH keys](https://docs.github.com/en/authentication/connecting-to-github-with-ssh) or using [GitHub CLI](https://cli.github.com/) for easier authentication without passwords. 
+**Современный совет**: Рассмотрите возможность настройки [SSH-ключей](https://docs.github.com/en/authentication/connecting-to-github-with-ssh) или использования [GitHub CLI](https://cli.github.com/) для более простой аутентификации без паролей.
 
-✅ GitHub isn't the only code repository in the world; there are others, but GitHub is the best known
+ GitHub — не единственный в мире репозиторий кода; есть и другие, но GitHub — самый известный.
 
-### Preparation
+### Подготовка
 
-You'll need both a folder with a code project on your local machine (laptop or PC), and a public repository on GitHub, which will serve as an example for how to contribute to the projects of others.  
+Вам понадобится папка с проектом на вашем локальном компьютере (ноутбуке или ПК) и публичный репозиторий на GitHub, который будет служить примером того, как вносить вклад в проекты других людей.
 
-### Keeping Your Code Safe
+### Сохранение вашего кода в безопасности
 
-Let's talk about security for a moment – but don't worry, we're not going to overwhelm you with scary stuff! Think of these security practices like locking your car or your house. They're simple habits that become second nature and keep your hard work protected.
+Давайте поговорим о безопасности на мгновение – но не волнуйтесь, мы не будем перегружать вас страшными вещами! Думайте об этих практиках безопасности как о запирании машины или дома. Это простые привычки, которые становятся второй натурой и защищают вашу тяжелую работу.
 
-We'll show you the modern, secure ways to work with GitHub right from the start. This way, you'll develop good habits that will serve you well throughout your coding career.
+Мы покажем вам современные и безопасные способы работы с GitHub с самого начала. Таким образом, вы выработаете хорошие привычки, которые сослужат вам хорошую службу на протяжении всей вашей карьеры в программировании.
 
-When working with GitHub, it's important to follow security best practices:
+При работе с GitHub важно соблюдать лучшие практики безопасности:
 
-When working with GitHub, it's important to follow security best practices:
-
-| Security Area | Best Practice | Why It Matters |
+| Область безопасности | Лучшая практика | Почему это важно |
 |---------------|---------------|----------------|
-| **Authentication** | Use SSH keys or Personal Access Tokens | Passwords are less secure and being phased out |
-| **Two-Factor Authentication** | Enable 2FA on your GitHub account | Adds an extra layer of account protection |
-| **Repository Security** | Never commit sensitive information | API keys and passwords should never be in public repos |
-| **Dependency Management** | Enable Dependabot for updates | Keeps your dependencies secure and up-to-date |
+| **Аутентификация** | Используйте SSH-ключи или Personal Access Tokens | Пароли менее безопасны и постепенно выводятся из употребления |
+| **Двухфакторная аутентификация** | Включите 2FA в своем аккаунте GitHub | Добавляет дополнительный уровень защиты аккаунта |
+| **Безопасность репозитория** | Никогда не коммитьте конфиденциальную информацию | API-ключи и пароли никогда не должны находиться в публичных репозиториях |
+| **Управление зависимостями** | Включите Dependabot для обновлений | Поддерживает ваши зависимости в безопасности и актуальном состоянии |
 
-> ⚠️ **Critical Security Reminder**: Never commit API keys, passwords, or other sensitive information to any repository. Use environment variables and `.gitignore` files to protect sensitive data.
+> **Критическое напоминание о безопасности**: Никогда не коммитьте API-ключи, пароли или другую конфиденциальную информацию в любой репозиторий. Используйте переменные окружения и файлы `.gitignore` для защиты конфиденциальных данных.
 
-**Modern Authentication Setup:**
+**Настройка современной аутентификации:**
 
 ```bash
-# Generate SSH key (modern ed25519 algorithm)
+# Генерация SSH-ключа (современный алгоритм ed25519)
 ssh-keygen -t ed25519 -C "your_email@example.com"
 
-# Set up Git to use SSH
+# Настройка Git для использования SSH
 git remote set-url origin git@github.com:username/repository.git
 ```
 
-> 💡 **Pro Tip**: SSH keys eliminate the need to enter passwords repeatedly and are more secure than traditional authentication methods.
+> **Совет от профессионала**: SSH-ключи избавляют от необходимости многократно вводить пароли и являются более безопасными, чем традиционные методы аутентификации.
 
 ---
 
-## Managing Your Code Like a Pro
+## Управляйте своим кодом как профессионал
 
-Okay, THIS is where things get really exciting! 🎉 We're about to learn how to track and manage your code like the pros do, and honestly, this is one of my favorite things to teach because it's such a game-changer.
+Хорошо, ИМЕННО здесь все становится по-настоящему захватывающим!  Мы собираемся научиться отслеживать и управлять вашим кодом так, как это делают профессионалы, и, честно говоря, это одна из моих любимых тем для обучения, потому что она кардинально меняет все.
 
-Picture this: you're writing an amazing story, and you want to keep track of every draft, every brilliant edit, and every "wait, that's genius!" moment along the way. That's exactly what Git does for your code! It's like having the most incredible time-traveling notebook that remembers EVERYTHING – every keystroke, every change, every "oops, that broke everything" moment that you can instantly undo.
+Представьте себе: вы пишете удивительную историю и хотите отслеживать каждый черновик, каждую блестящую правку и каждый момент «подождите, это гениально!». Именно это Git делает для вашего кода! Это как иметь самый невероятный блокнот для путешествий во времени, который помнит ВСЁ – каждое нажатие клавиши, каждое изменение, каждый момент «ой, это все сломало», который вы можете мгновенно отменить.
 
-I'll be honest – this might feel overwhelming at first. When I started, I thought "Why can't I just save my files like normal?" But trust me on this: once Git clicks for you (and it will!), you'll have one of those lightbulb moments where you think "How did I EVER code without this?" It's like discovering you can fly when you've been walking everywhere your whole life!
+Буду честен – поначалу это может показаться ошеломляющим. Когда я начинал, я думал: «Почему я не могу просто сохранять файлы как обычно?» Но поверьте мне: как только вы поймете Git (а вы поймете!), у вас будет один из тех моментов прозрения, когда вы подумаете: «Как я ВООБЩЕ раньше кодил без этого?» Это как обнаружить, что вы можете летать, когда всю жизнь ходили пешком!
 
-Let's say you have a folder locally with some code project and you want to start tracking your progress using git - the version control system. Some people compare using git to writing a love letter to your future self. Reading your commit messages days or weeks or months later you'll be able to recall why you made a decision, or "rollback" a change - that is, when you write good "commit messages".
+Допустим, у вас есть локальная папка с каким-то кодовым проектом, и вы хотите начать отслеживать свой прогресс с помощью git - системы контроля версий. Некоторые сравнивают использование git с написанием любовного письма самому себе в будущем. Читая свои сообщения коммитов через дни, недели или месяцы, вы сможете вспомнить, почему вы приняли то или иное решение, или «откатить» изменение - то есть, когда вы пишете хорошие «сообщения коммитов».
 
 ```mermaid
 flowchart TD
-    A[📁 Your Project Files] --> B{Is it a Git Repository?}
-    B -->|No| C[git init]
-    B -->|Yes| D[Make Changes]
-    C --> D
-    D --> E[git add .]
-    E --> F["git commit -m 'message'"]
-    F --> G[git push]
-    G --> H[🌟 Code on GitHub!]
-    
-    H --> I{Want to collaborate?}
-    I -->|Yes| J[Fork & Clone]
-    I -->|No| D
-    J --> K[Create Branch]
-    K --> L[Make Changes]
-    L --> M[Pull Request]
-    M --> N[🎉 Contributing!]
-    
-    style A fill:#fff59d
-    style H fill:#c8e6c9
-    style N fill:#ff4081,color:#fff
+   A[📁 Файлы вашего проекта] --> B{Это Git-репозиторий?}
+   B -->|Нет| C[git init]
+   B -->|Да| D[Внести изменения]
+   C --> D
+   D --> E[git add .]
+   E --> F["git commit -m 'сообщение'"]
+   F --> G[git push]
+   G --> H[ Код на GitHub!]
+
+   H --> I{Хотите сотрудничать?}
+   I -->|Да| J[Форк и клонирование]
+   I -->|Нет| D
+   J --> K[Создать ветку]
+   K --> L[Внести изменения]
+   L --> M[Pull Request]
+   M --> N[ Вклад сделан!]
+
+   style A fill:#fff59d
+   style H fill:#c8e6c9
+   style N fill:#ff4081,color:#fff
 ```
 
-### Task: Create Your First Repository!
+### Задание: Создайте свой первый репозиторий!
 
-> 🎯 **Your Mission (and I'm so excited for you!)**: We're going to create your very first GitHub repository together! By the time we're done here, you'll have your own little corner of the internet where your code lives, and you'll have made your first "commit" (that's developer speak for saving your work in a really smart way). 
+> 🎯 **Ваша миссия (и я так рад за вас!)**: Мы вместе создадим ваш первый репозиторий на GitHub! К тому времени, как мы закончим, у вас будет свой собственный уголок в интернете, где живет ваш код, и вы сделаете свой первый «коммит» (на языке разработчиков это означает сохранение вашей работы очень умным способом).
 >
-> This is honestly such a special moment – you're about to officially join the global community of developers! I still remember the thrill of creating my first repo and thinking "Wow, I'm really doing this!"
+> Это действительно особенный момент – вы вот-вот официально присоединитесь к мировому сообществу разработчиков! Я до сих пор помню трепет от создания своего первого репозитория и мысль: «Ух ты, я действительно это делаю!»
 
-Let's walk through this adventure together, step by step. Take your time with each part – there's no prize for rushing, and I promise every single step will make sense. Remember, every coding superstar you admire was once sitting exactly where you are, about to create their first repository. How cool is that?
+Давайте пройдем это приключение вместе, шаг за шагом. Не торопитесь с каждой частью – здесь нет призов за спешку, и я обещаю, что каждый шаг будет понятен. Помните, каждая звезда программирования, которой вы восхищаетесь, когда-то сидела именно там, где вы сейчас, собираясь создать свой первый репозиторий. Как это круто, правда?
 
-> Check out video
-> 
-> [![Git and GitHub basics video](https://img.youtube.com/vi/9R31OUPpxU4/0.jpg)](https://www.youtube.com/watch?v=9R31OUPpxU4)
+> Посмотрите видео
+>
+> [![Видео об основах Git и GitHub](https://img.youtube.com/vi/9R31OUPpxU4/0.jpg)](https://www.youtube.com/watch?v=9R31OUPpxU4)
 
-**Let's Do This Together:**
+**Давайте сделаем это вместе:**
 
-1. **Create your repository on GitHub**. Head over to GitHub.com and look for that bright green **New** button (or the **+** sign in the top right corner). Click it and select **New repository**.
+1. **Создайте свой репозиторий на GitHub**. Перейдите на GitHub.com и найдите ярко-зеленую кнопку **New** (или знак **+** в правом верхнем углу). Нажмите на нее и выберите **New repository**.
 
-   Here's what to do:
-   1. Give your repository a name – make it something meaningful to you!
-   1. Add a description if you want (this helps others understand what your project is about)
-   1. Decide if you want it public (everyone can see it) or private (just for you)
-   1. I recommend checking the box to add a README file – it's like the front page of your project
-   1. Click **Create repository** and celebrate – you just created your first repo! 🎉
+   Вот что нужно сделать:
+   1. Дайте вашему репозиторию имя – пусть оно будет значимым для вас!
+   1. Добавьте описание, если хотите (это поможет другим понять, о чем ваш проект)
+   1. Решите, хотите ли вы сделать его публичным (все могут его видеть) или приватным (только для вас)
+   1. Я рекомендую отметить галочкой добавление файла README – это как главная страница вашего проекта
+   1. Нажмите **Create repository** и празднуйте – вы только что создали свой первый репозиторий!
 
-2. **Navigate to your project folder**. Now let's open up your terminal (don't worry, it's not as scary as it looks!). We need to tell your computer where your project files are. Type this command:
+2. **Перейдите в папку вашего проекта**. Теперь давайте откроем ваш терминал (не волнуйтесь, он не такой страшный, как кажется!). Нам нужно сказать вашему компьютеру, где находятся файлы вашего проекта. Введите эту команду:
 
    ```bash
-   cd [name of your folder]
+   cd [имя вашей папки]
    ```
 
-   **What we're doing here:**
-   - We're basically saying "Hey computer, take me to my project folder"
-   - This is like opening a specific folder on your desktop, but we're doing it with text commands
-   - Replace `[name of your folder]` with the actual name of your project folder
+   **Что мы здесь делаем:**
+   - Мы, по сути, говорим: «Эй, компьютер, перенеси меня в папку моего проекта»
+   - Это как открытие определенной папки на рабочем столе, но мы делаем это с помощью текстовых команд
+   - Замените `[имя вашей папки]` на фактическое имя папки вашего проекта
 
-3. **Turn your folder into a Git repository**. This is where the magic happens! Type:
+3. **Превратите вашу папку в Git-репозиторий**. Здесь и происходит волшебство! Введите:
 
    ```bash
    git init
    ```
 
-   **Here's what just happened (pretty cool stuff!):**
-   - Git just created a hidden `.git` folder in your project – you won't see it, but it's there!
-   - Your regular folder is now a "repository" that can track every change you make
-   - Think of it like giving your folder superpowers to remember everything
+   **Вот что только что произошло (довольно круто!):**
+   - Git только что создал скрытую папку `.git` в вашем проекте – вы ее не увидите, но она там есть!
+   - Ваша обычная папка теперь стала «репозиторием», который может отслеживать каждое ваше изменение
+   - Думайте об этом, как о наделении вашей папки суперспособностями все запоминать
 
-4. **Check what's happening**. Let's see what Git thinks about your project right now:
+4. **Проверьте, что происходит**. Давайте посмотрим, что Git думает о вашем проекте прямо сейчас:
 
    ```bash
    git status
    ```
 
-   **Understanding what Git is telling you:**
-   
-   You might see something that looks like this:
+   **Понимание того, что говорит вам Git:**
+
+   Вы можете увидеть что-то вроде этого:
 
    ```output
    Changes not staged for commit:
    (use "git add <file>..." to update what will be committed)
    (use "git restore <file>..." to discard changes in working directory)
 
-        modified:   file.txt
-        modified:   file2.txt
+      modified:   file.txt
+      modified:   file2.txt
    ```
 
-   **Don't panic! Here's what this means:**
-   - Files in **red** are files that have changes but aren't ready to be saved yet
-   - Files in **green** (when you see them) are ready to be saved
-   - Git is being helpful by telling you exactly what you can do next
+   **Не паникуйте! Вот что это значит:**
+   - Файлы **красного** цвета — это файлы с изменениями, которые еще не готовы к сохранению
+   - Файлы **зеленого** цвета (когда вы их увидите) готовы к сохранению
+   - Git помогает вам, точно указывая, что вы можете сделать дальше
 
-   > 💡 **Pro tip**: The `git status` command is your best friend! Use it anytime you're confused about what's going on. It's like asking Git "Hey, what's the situation right now?"
+   > **Совет от профессионала**: команда `git status` — ваш лучший друг! Используйте ее всякий раз, когда вы не уверены, что происходит. Это как спросить у Git: «Эй, какая сейчас ситуация?»
 
-5. **Get your files ready to save** (this is called "staging"):
+5. **Подготовьте файлы к сохранению** (это называется «индексация» или "staging"):
 
    ```bash
    git add .
    ```
 
-   **What we just did:**
-   - We told Git "Hey, I want to include ALL my files in the next save"
-   - The `.` is like saying "everything in this folder"
-   - Now your files are "staged" and ready for the next step
+   **Что мы только что сделали:**
+   - Мы сказали Git: «Эй, я хочу включить ВСЕ мои файлы в следующее сохранение»
+   - `.` означает «все в этой папке»
+   - Теперь ваши файлы «проиндексированы» и готовы к следующему шагу
 
-   **Want to be more selective?** You can add just specific files:
+   **Хотите быть более избирательными?** Вы можете добавлять только определенные файлы:
 
    ```bash
-   git add [file or folder name]
+   git add [имя файла или папки]
    ```
 
-   **Why might you want to do this?**
-   - Sometimes you want to save related changes together
-   - It helps you organize your work into logical chunks
-   - Makes it easier to understand what changed and when
+   **Зачем это может понадобиться?**
+   - Иногда вы хотите сохранить связанные изменения вместе
+   - Это помогает организовать вашу работу в логические блоки
+   - Упрощает понимание того, что и когда изменилось
 
-   **Changed your mind?** No worries! You can unstage files like this:
+   **Передумали?** Не беда! Вы можете отменить индексацию файлов так:
 
    ```bash
-   # Unstage everything
+   # Отменить индексацию всего
    git reset
-   
-   # Unstage just one file
-   git reset [file name]
+
+   # Отменить индексацию одного файла
+   git reset [имя файла]
    ```
 
-   Don't worry – this doesn't delete your work, it just takes files out of the "ready to save" pile.
+   Не волнуйтесь – это не удаляет вашу работу, а просто убирает файлы из стопки «готово к сохранению».
 
-6. **Save your work permanently** (making your first commit!):
+6. **Сохраните свою работу навсегда** (делаем первый коммит!):
 
    ```bash
-   git commit -m "first commit"
+   git commit -m "первый коммит"
    ```
 
-   **🎉 Congratulations! You just made your first commit!**
-   
-   **Here's what just happened:**
-   - Git took a "snapshot" of all your staged files at this exact moment
-   - Your commit message "first commit" explains what this save point is about
-   - Git gave this snapshot a unique ID so you can always find it later
-   - You've officially started tracking your project's history!
+   ** Поздравляю! Вы только что сделали свой первый коммит!**
 
-   > 💡 **Future commit messages**: For your next commits, be more descriptive! Instead of "updated stuff", try "Add contact form to homepage" or "Fix navigation menu bug". Your future self will thank you!
+   **Вот что только что произошло:**
+   - Git сделал «снимок» всех ваших проиндексированных файлов в этот самый момент
+   - Ваше сообщение коммита «первый коммит» объясняет, что это за точка сохранения
+   - Git присвоил этому снимку уникальный ID, чтобы вы всегда могли его найти
+   - Вы официально начали отслеживать историю вашего проекта!
 
-7. **Connect your local project to GitHub**. Right now, your project exists only on your computer. Let's connect it to your GitHub repository so you can share it with the world!
+   >  **Сообщения для будущих коммитов**: для следующих коммитов будьте более описательными! Вместо «обновил всякое», попробуйте «Добавил контактную форму на главную страницу» или «Исправил ошибку в меню навигации». Ваше будущее «я» скажет вам спасибо!
 
-   First, go to your GitHub repository page and copy the URL. Then come back here and type:
+7. **Подключите ваш локальный проект к GitHub**. Прямо сейчас ваш проект существует только на вашем компьютере. Давайте подключим его к вашему репозиторию на GitHub, чтобы вы могли поделиться им со всем миром!
+
+   Сначала перейдите на страницу вашего репозитория на GitHub и скопируйте URL. Затем вернитесь сюда и введите:
 
    ```bash
    git remote add origin https://github.com/username/repository_name.git
    ```
-   
-   (Replace that URL with your actual repository URL!)
 
-   **What we just did:**
-   - We created a connection between your local project and your GitHub repository
-   - "Origin" is just a nickname for your GitHub repository – it's like adding a contact to your phone
-   - Now your local Git knows where to send your code when you're ready to share it
+   (Замените этот URL на URL вашего реального репозитория!)
 
-   💡 **Easier way**: If you have GitHub CLI installed, you can do this in one command:
+   **Что мы только что сделали:**
+   - Мы создали связь между вашим локальным проектом и вашим репозиторием на GitHub
+   - «Origin» — это просто псевдоним для вашего репозитория GitHub – это как добавить контакт в телефонную книгу
+   - Теперь ваш локальный Git знает, куда отправлять ваш код, когда вы будете готовы им поделиться
+
+    **Более простой способ**: Если у вас установлен GitHub CLI, вы можете сделать это одной командой:
    ```bash
    gh repo create my-repo --public --push --source=.
    ```
 
-8. **Send your code to GitHub** (the big moment!):
+8. **Отправьте ваш код на GitHub** (важный момент!):
 
    ```bash
    git push -u origin main
    ```
 
-   **🚀 This is it! You're uploading your code to GitHub!**
-   
-   **What's happening:**
-   - Your commits are traveling from your computer to GitHub
-   - The `-u` flag sets up a permanent connection so future pushes are easier
-   - "main" is the name of your primary branch (like the main folder)
-   - After this, you can just type `git push` for future uploads!
+   ** Вот оно! Вы загружаете свой код на GitHub!**
 
-   💡 **Quick note**: If your branch is called something else (like "master"), use that name instead. You can check with `git branch --show-current`.
+   **Что происходит:**
+   - Ваши коммиты перемещаются с вашего компьютера на GitHub
+   - Флаг `-u` устанавливает постоянную связь, чтобы будущие отправки были проще
+   - «main» — это название вашей основной ветки (как главная папка)
+   - После этого для будущих загрузок вы можете просто вводить `git push`!
 
-9. **Your new daily coding rhythm** (this is where it gets addictive!):
+    **Краткое примечание**: если ваша ветка называется иначе (например, «master»), используйте это имя. Вы можете проверить это с помощью `git branch --show-current`.
 
-   From now on, whenever you make changes to your project, you've got this simple three-step dance:
+9. **Ваш новый ежедневный ритм кодирования** (здесь это становится затягивающим!):
+
+   С этого момента, когда вы вносите изменения в свой проект, у вас есть этот простой трехшаговый танец:
 
    ```bash
    git add .
-   git commit -m "describe what you changed"
+   git commit -m "опишите, что вы изменили"
    git push
    ```
 
-   **This becomes your coding heartbeat:**
-   - Make some awesome changes to your code ✨
-   - Stage them with `git add` ("Hey Git, pay attention to these changes!")
-   - Save them with `git commit` and a descriptive message (future you will thank you!)
-   - Share them with the world using `git push` 🚀
-   - Rinse and repeat – seriously, this becomes as natural as breathing!
+   **Это становится вашим пульсом кодирования:**
+   - Внесите крутые изменения в свой код ✨
+   - Подготовьте их с помощью `git add` («Эй, Git, обрати внимание на эти изменения!»)
+   - Сохраните их с помощью `git commit` и описательного сообщения (ваше будущее «я» скажет вам спасибо!)
+   - Поделитесь ими с миром с помощью `git push`
+   - Повторяйте — серьезно, это становится таким же естественным, как дыхание!
 
-   I love this workflow because it's like having multiple save points in a video game. Made a change you love? Commit it! Want to try something risky? No problem – you can always go back to your last commit if things go sideways!
+   Я люблю этот рабочий процесс, потому что это как иметь несколько точек сохранения в видеоигре. Сделали изменение, которое вам нравится? Закоммитьте его! Хотите попробовать что-то рискованное? Нет проблем – вы всегда можете вернуться к последнему коммиту, если что-то пойдет не так!
 
-   > 💡 **Tip**: You might also want to adopt a `.gitignore` file to prevent files you don't want to track from showing up on GitHub - like that notes file you store in the same folder but has no place on a public repository. You can find templates for `.gitignore` files at [.gitignore templates](https://github.com/github/gitignore) or create one using [gitignore.io](https://www.toptal.com/developers/gitignore).
+   >  **Совет**: вы также можете использовать файл `.gitignore`, чтобы файлы, которые вы не хотите отслеживать, не появлялись на GitHub - например, тот файл с заметками, который вы храните в той же папке, но которому не место в публичном репозитории. Вы можете найти шаблоны для файлов `.gitignore` на [.gitignore templates](https://github.com/github/gitignore) или создать его с помощью [gitignore.io](https://www.toptal.com/developers/gitignore).
 
-### 🧠 **First Repository Check-in: How Did That Feel?**
+### 🧠 Проверка первого репозитория: как это было?
 
-**Take a moment to celebrate and reflect:**
-- How did it feel to see your code appear on GitHub for the first time?
-- Which step felt the most confusing, and which felt surprisingly easy?
-- Can you explain the difference between `git add`, `git commit`, and `git push` in your own words?
+**Найдите минутку, чтобы отпраздновать и поразмыслить:**
+- Каково было увидеть свой код на GitHub в первый раз?
+- Какой шаг показался самым запутанным, а какой — удивительно легким?
+- Можете ли вы объяснить разницу между `git add`, `git commit` и `git push` своими словами?
 
 ```mermaid
 stateDiagram-v2
-    [*] --> LocalFiles: Create project
-    LocalFiles --> Staged: git add .
-    Staged --> Committed: git commit
-    Committed --> GitHub: git push
-    GitHub --> [*]: Success! 🎉
-    
-    note right of Staged
-        Files ready to save
-    end note
-    
-    note right of Committed
-        Snapshot created
-    end note
+   [*] --> LocalFiles: Создать проект
+   LocalFiles --> Staged: git add .
+   Staged --> Committed: git commit
+   Committed --> GitHub: git push
+   GitHub --> [*]: Успех!
+
+   note right of Staged
+      Файлы готовы к сохранению
+   end note
+
+   note right of Committed
+      Снимок создан
+   end note
 ```
 
-> **Remember**: Even experienced developers sometimes forget the exact commands. Having this workflow become muscle memory takes practice - you're doing great!
+> **Помните**: даже опытные разработчики иногда забывают точные команды. Чтобы этот рабочий процесс стал мышечной памятью, нужна практика - вы отлично справляетесь!
 
-#### Modern Git workflows
+#### Современные рабочие процессы Git
 
-Consider adopting these modern practices:
+Рассмотрите возможность внедрения этих современных практик:
 
-- **Conventional Commits**: Use a standardized commit message format like `feat:`, `fix:`, `docs:`, etc. Learn more at [conventionalcommits.org](https://www.conventionalcommits.org/)
-- **Atomic commits**: Make each commit represent a single logical change
-- **Frequent commits**: Commit often with descriptive messages rather than large, infrequent commits
+- **Семантические коммиты (Conventional Commits)**: Используйте стандартизированный формат сообщений коммитов, такой как `feat:`, `fix:`, `docs:` и т.д. Узнайте больше на [conventionalcommits.org](https://www.conventionalcommits.org/)
+- **Атомарные коммиты**: Каждый коммит должен представлять одно логическое изменение
+- **Частые коммиты**: Делайте коммиты часто с описательными сообщениями, а не большими и редкими
 
-#### Commit messages
+#### Сообщения коммитов
 
-A great Git commit subject line completes the following sentence:
-If applied, this commit will <your subject line here>
+Отличная тема коммита в Git завершает следующее предложение:
+Если применить этот коммит, он <ваша тема здесь>
 
-For the subject use the imperative, present tense: "change" not "changed" nor "changes". 
-As in the subject, in the body (optional) also use the imperative, present tense. The body should include the motivation for the change and contrast this with previous behavior. You're explaining the `why`, not the `how`.
+Для темы используйте повелительное наклонение в настоящем времени: «изменить», а не «изменил» или «изменения».
+Как и в теме, в теле (необязательно) также используйте повелительное наклонение в настоящем времени. Тело должно включать мотивацию для изменения и сравнивать это с предыдущим поведением. Вы объясняете `почему`, а не `как`.
 
-✅ Take a few minutes to surf around GitHub. Can you find a really great commit message? Can you find a really minimal one? What information do you think is the most important and useful to convey in a commit message?
+ Потратьте несколько минут на изучение GitHub. Можете ли вы найти действительно отличное сообщение коммита? А очень минималистичное? Какую информацию, по вашему мнению, наиболее важно и полезно передавать в сообщении коммита?
 
-## Working with Others (The Fun Part!)
+## Работа с другими (самое интересное!)
 
-Hold onto your hat because THIS is where GitHub becomes absolutely magical! 🪄 You've mastered managing your own code, but now we're diving into my absolute favorite part – collaborating with amazing people from all over the world.
+Держитесь крепче, потому что ИМЕННО здесь GitHub становится абсолютно волшебным! 🪄 Вы освоили управление собственным кодом, но теперь мы погружаемся в мою самую любимую часть – сотрудничество с удивительными людьми со всего мира.
 
-Picture this: you wake up tomorrow and see that someone in Tokyo improved your code while you were sleeping. Then someone in Berlin fixes a bug you've been stuck on. By afternoon, a developer in São Paulo has added a feature you never even thought of. That's not science fiction – that's just Tuesday in the GitHub universe!
+Представьте себе: вы просыпаетесь завтра и видите, что кто-то в Токио улучшил ваш код, пока вы спали. Затем кто-то в Берлине исправляет ошибку, с которой вы застряли. К полудню разработчик из Сан-Паулу добавил функцию, о которой вы даже не думали. Это не научная фантастика — это просто вторник во вселенной GitHub!
 
-What gets me really excited is that the collaboration skills you're about to learn? These are the EXACT same workflows that teams at Google, Microsoft, and your favorite startups use every single day. You're not just learning a cool tool – you're learning the secret language that makes the entire software world work together. 
+Что меня действительно волнует, так это то, что навыки совместной работы, которые вы вот-вот изучите? Это ТОЧНО ТЕ ЖЕ рабочие процессы, которые команды в Google, Microsoft и ваших любимых стартапах используют каждый день. Вы не просто изучаете крутой инструмент — вы изучаете секретный язык, который заставляет весь мир программного обеспечения работать вместе.
 
-Seriously, once you experience the rush of having someone merge your first pull request, you'll understand why developers get so passionate about open source. It's like being part of the world's biggest, most creative team project!
+Серьезно, как только вы испытаете восторг от того, что кто-то принял ваш первый pull request, вы поймете, почему разработчики так увлечены открытым исходным кодом. Это как быть частью самого большого и креативного командного проекта в мире!
 
-> Check out video
+> Посмотрите видео
 >
-> [![Git and GitHub basics video](https://img.youtube.com/vi/bFCM-PC3cu8/0.jpg)](https://www.youtube.com/watch?v=bFCM-PC3cu8)
+> [![Видео об основах Git и GitHub](https://img.youtube.com/vi/bFCM-PC3cu8/0.jpg)](https://www.youtube.com/watch?v=bFCM-PC3cu8)
 
-The main reason for putting things on GitHub was to make it possible to collaborate with other developers.
+Основная причина размещения проектов на GitHub — это возможность сотрудничать с другими разработчиками.
 
 ```mermaid
 flowchart LR
-    A[🔍 Find Project] --> B[🍴 Fork Repository]
-    B --> C[📥 Clone to Local]
-    C --> D[🌿 Create Branch]
-    D --> E[✏️ Make Changes]
-    E --> F[💾 Commit Changes]
-    F --> G[📤 Push Branch]
-    G --> H[🔄 Create Pull Request]
-    H --> I{Maintainer Review}
-    I -->|✅ Approved| J[🎉 Merge!]
-    I -->|❓ Changes Requested| K[📝 Make Updates]
-    K --> F
-    J --> L[🧹 Clean Up Branches]
-    
-    style A fill:#e3f2fd
-    style J fill:#e8f5e8
-    style L fill:#fff3e0
+   A[🔍 Найти проект] --> B[🍴 Сделать форк репозитория]
+   B --> C[📥 Клонировать локально]
+   C --> D[🌿 Создать ветку]
+   D --> E[✏️ Внести изменения]
+   E --> F[💾 Закоммитить изменения]
+   F --> G[📤 Отправить ветку (push)]
+   G --> H[🔄 Создать Pull Request]
+   H --> I{Ревью мейнтейнера}
+   I -->| Одобрено| J[ Слияние!]
+   I -->|❓ Запрошены изменения| K[📝 Внести обновления]
+   K --> F
+   J --> L[🧹 Очистить ветки]
+
+   style A fill:#e3f2fd
+   style J fill:#e8f5e8
+   style L fill:#fff3e0
 ```
 
-In your repository, navigate to `Insights > Community` to see how your project compares to recommended community standards.
+В вашем репозитории перейдите в `Insights > Community`, чтобы увидеть, как ваш проект соответствует рекомендуемым стандартам сообщества.
 
-Want to make your repository look professional and welcoming? Head over to your repository and click on `Insights > Community`. This cool feature shows you how your project compares to what the GitHub community considers "good repository practices."
+Хотите, чтобы ваш репозиторий выглядел профессионально и гостеприимно? Перейдите в свой репозиторий и нажмите `Insights > Community`. Эта крутая функция показывает, как ваш проект соответствует тому, что сообщество GitHub считает «хорошими практиками для репозитория».
 
-> 🎯 **Making Your Project Shine**: A well-organized repository with good documentation is like having a clean, welcoming storefront. It tells people you care about your work and makes others want to contribute!
+> 🎯 **Как сделать ваш проект сияющим**: Хорошо организованный репозиторий с хорошей документацией — это как чистая, гостеприимная витрина. Это говорит людям, что вы заботитесь о своей работе, и побуждает других вносить свой вклад!
 
-**Here's what makes a repository awesome:**
+**Вот что делает репозиторий потрясающим:**
 
-| What to Add | Why It's Important | What It Does for You |
+| Что добавить | Почему это важно | Что это дает вам |
 |-------------|-------------------|---------------------|
-| **Description** | First impression matters! | People know instantly what your project does |
-| **README** | Your project's front page | Like a friendly tour guide for new visitors |
-| **Contributing Guidelines** | Shows you welcome help | People know exactly how they can help you |
-| **Code of Conduct** | Creates a friendly space | Everyone feels welcome to participate |
-| **License** | Legal clarity | Others know how they can use your code |
-| **Security Policy** | Shows you're responsible | Demonstrates professional practices |
+| **Описание** | Первое впечатление имеет значение! | Люди сразу понимают, что делает ваш проект |
+| **README** | Главная страница вашего проекта | Как дружелюбный гид для новых посетителей |
+| **Правила для контрибьюторов** | Показывает, что вы приветствуете помощь | Люди точно знают, как они могут вам помочь |
+| **Кодекс поведения** | Создает дружелюбную атмосферу | Каждый чувствует себя желанным участником |
+| **Лицензия** | Юридическая ясность | Другие знают, как они могут использовать ваш код |
+| **Политика безопасности** | Показывает вашу ответственность | Демонстрирует профессиональные практики |
 
-> 💡 **Pro Tip**: GitHub provides templates for all of these files. When creating a new repository, check the boxes to automatically generate these files.
+>  **Совет от профессионала**: GitHub предоставляет шаблоны для всех этих файлов. При создании нового репозитория отметьте галочками автоматическое создание этих файлов.
 
-**Modern GitHub Features to Explore:**
+**Современные функции GitHub для изучения:**
 
-🤖 **Automation & CI/CD:**
-- **GitHub Actions** for automated testing and deployment
-- **Dependabot** for automatic dependency updates
+🤖 **Автоматизация и CI/CD:**
+- **GitHub Actions** для автоматического тестирования и развертывания
+- **Dependabot** для автоматического обновления зависимостей
 
-💬 **Community & Project Management:**
-- **GitHub Discussions** for community conversations beyond issues
-- **GitHub Projects** for kanban-style project management
-- **Branch protection rules** to enforce code quality standards
-
-
-All these resources will benefit onboarding new team members. And those are typically the kind of things new contributors look at before even looking at your code, to find out if your project is the right place for them to be spending their time.
-
-✅ README files, although they take time to prepare, are often neglected by busy maintainers. Can you find an example of a particularly descriptive one? Note: there are some [tools to help create good READMEs](https://www.makeareadme.com/) that you might like to try.
-
-### Task: Merge some code
-
-Contributing docs help people contribute to the project. It explains what types of contributions you're looking for and how the process works. Contributors will need to go through a series of steps to be able to contribute to your repo on GitHub:
+💬 **Сообщество и управление проектами:**
+- **GitHub Discussions** для общения с сообществом вне рамок issues
+- **GitHub Projects** для управления проектами в стиле канбан-доски
+- **Правила защиты веток** для обеспечения стандартов качества кода
 
 
-1. **Forking your repo** You will probably want people to _fork_ your project. Forking means creating a replica of your repository on their GitHub profile.
-1. **Clone**. From there they will clone the project to their local machine. 
-1. **Create a branch**. You will want to ask them to create a _branch_ for their work. 
-1. **Focus their change on one area**. Ask contributors to concentrate their contributions on one thing at a time - that way the chances that you can _merge_ in their work is higher. Imagine they write a bug fix, add a new feature, and update several tests - what if you want to, or can only implement 2 out of 3, or 1 out of 3 changes?
+Все эти ресурсы помогут при адаптации новых членов команды. И это, как правило, те вещи, на которые новые контрибьюторы смотрят еще до того, как взглянуть на ваш код, чтобы понять, является ли ваш проект подходящим местом для них, чтобы тратить свое время.
 
-✅ Imagine a situation where branches are particularly critical to writing and shipping good code. What use cases can you think of?
+ Файлы README, хотя и требуют времени на подготовку, часто игнорируются занятыми мейнтейнерами. Можете ли вы найти пример особенно описательного README? Примечание: есть некоторые [инструменты, помогающие создавать хорошие README](https://www.makeareadme.com/), которые вы, возможно, захотите попробовать.
 
-> Note, be the change you want to see in the world, and create branches for your own work as well. Any commits you make will be made on the branch you’re currently “checked out” to. Use `git status` to see which branch that is.
+### Задание: Слейте немного кода
 
-Let's go through a contributor workflow. Assume the contributor has already _forked_ and _cloned_ the repo so they have a Git repo ready to be worked on, on their local machine:
+Документация для контрибьюторов помогает людям вносить вклад в проект. Она объясняет, какие типы вкладов вы ищете и как работает процесс. Контрибьюторам нужно будет пройти ряд шагов, чтобы иметь возможность внести свой вклад в ваш репозиторий на GitHub:
 
-1. **Create a branch**. Use the command `git branch` to create a branch that will contain the changes they mean to contribute:
 
-   ```bash
-   git branch [branch-name]
-   ```
+1. **Форк вашего репозитория** Вероятно, вы захотите, чтобы люди делали _форк_ вашего проекта. Форк означает создание копии вашего репозитория в их профиле на GitHub.
+1. **Клонирование**. Оттуда они клонируют проект на свой локальный компьютер.
+1. **Создание ветки**. Вы захотите попросить их создать _ветку_ для своей работы.
+1. **Сконцентрируйте их изменения на одной области**. Попросите контрибьюторов концентрировать свои вклады на чем-то одном за раз - так шансы на то, что вы сможете _слить_ их работу, будут выше. Представьте, что они исправляют ошибку, добавляют новую функцию и обновляют несколько тестов - что, если вы хотите или можете реализовать только 2 из 3, или 1 из 3 изменений?
 
-   > 💡 **Modern Approach**: You can also create and switch to the new branch in one command:
-   ```bash
-   git switch -c [branch-name]
-   ```
+ Представьте ситуацию, в которой ветки особенно важны для написания и выпуска качественного кода. Какие варианты использования вы можете придумать?
 
-1. **Switch to working branch**. Switch to the specified branch and update the working directory with `git switch`:
+> Примечание: будьте теми изменениями, которые вы хотите видеть в мире, и создавайте ветки для своей собственной работы. Любые коммиты, которые вы делаете, будут сделаны в той ветке, в которой вы в данный момент находитесь («checked out»). Используйте `git status`, чтобы увидеть, какая это ветка.
+
+Давайте пройдемся по рабочему процессу контрибьютора. Предположим, контрибьютор уже сделал _форк_ и _клонировал_ репозиторий, так что у него есть готовый к работе Git-репозиторий на локальной машине:
+
+1. **Создайте ветку**. Используйте команду `git branch` для создания ветки, которая будет содержать изменения, которые они собираются внести:
 
    ```bash
-   git switch [branch-name]
+   git branch [имя-ветки]
    ```
 
-   > 💡 **Modern Note**: `git switch` is the modern replacement for `git checkout` when changing branches. It's clearer and safer for beginners.
+   >  **Современный подход**: Вы также можете создать и переключиться на новую ветку одной командой:
+   ```bash
+   git switch -c [имя-ветки]
+   ```
 
-1. **Do work**. At this point you want to add your changes. Don't forget to tell Git about it with the following commands:
+1. **Переключитесь на рабочую ветку**. Переключитесь на указанную ветку и обновите рабочий каталог с помощью `git switch`:
+
+   ```bash
+   git switch [имя-ветки]
+   ```
+
+   >  **Современное примечание**: `git switch` — это современная замена `git checkout` при смене веток. Она более понятна и безопасна для новичков.
+
+1. **Выполните работу**. На этом этапе вы хотите добавить свои изменения. Не забудьте сообщить об этом Git с помощью следующих команд:
 
    ```bash
    git add .
-   git commit -m "my changes"
+   git commit -m "мои изменения"
    ```
 
-   > ⚠️ **Commit Message Quality**: Ensure you give your commit a good name, both for your sake and the maintainer of the repo you are helping on. Be specific about what you changed!
+   >  **Качество сообщения коммита**: Убедитесь, что вы дали своему коммиту хорошее имя, как для себя, так и для мейнтейнера репозитория, которому вы помогаете. Будьте конкретны в том, что вы изменили!
 
-1. **Combine your work with the `main` branch**. At some point you are done working and you want to combine your work with that of the `main` branch. The `main` branch might have changed meanwhile so make sure you first update it to the latest with the following commands:
+2. **Объедините вашу работу с веткой `main`**. В какой-то момент вы заканчиваете работу и хотите объединить свою работу с работой в ветке `main`. Ветка `main` могла тем временем измениться, поэтому убедитесь, что вы сначала обновили ее до последней версии с помощью следующих команд:
 
    ```bash
    git switch main
    git pull
    ```
 
-   At this point you want to make sure that any _conflicts_, situations where Git can't easily _combine_ the changes happens in your working branch. Therefore run the following commands:
+   На этом этапе вы хотите убедиться, что любые _конфликты_, ситуации, когда Git не может легко _объединить_ изменения, происходят в вашей рабочей ветке. Поэтому выполните следующие команды:
 
    ```bash
-   git switch [branch_name]
+   git switch [имя_ветки]
    git merge main
    ```
 
-   The `git merge main` command will bring in all changes from `main` into your branch. Hopefully you can just continue. If not, VS Code will tell you where Git is _confused_ and you just alter the affected files to say which content is the most accurate.
+   Команда `git merge main` перенесет все изменения из `main` в вашу ветку. Надеюсь, вы сможете просто продолжить. Если нет, VS Code покажет вам, где Git _запутался_, и вы просто измените затронутые файлы, чтобы указать, какой контент является наиболее точным.
 
-   💡 **Modern alternative**: Consider using `git rebase` for a cleaner history:
+    **Современная альтернатива**: Рассмотрите использование `git rebase` для более чистой истории:
    ```bash
    git rebase main
    ```
-   This replays your commits on top of the latest main branch, creating a linear history.
+   Это воспроизводит ваши коммиты поверх последней версии ветки main, создавая линейную историю.
 
-1. **Send your work to GitHub**. Sending your work to GitHub means two things. Pushing your branch to your repo and then open up a PR, Pull Request.
+3. **Отправьте вашу работу на GitHub**. Отправка вашей работы на GitHub означает две вещи. Отправка вашей ветки в ваш репозиторий, а затем открытие PR, Pull Request.
 
    ```bash
-   git push --set-upstream origin [branch-name]
+   git push --set-upstream origin [имя-ветки]
    ```
 
-   The above command creates the branch on your forked repo.
+   Приведенная выше команда создает ветку в вашем форкнутом репозитории.
 
-### 🤝 **Collaboration Skills Check: Ready to Work with Others?**
+###  Проверка навыков совместной работы: готовы работать с другими?
 
-**Let's see how you're feeling about collaboration:**
-- Does the idea of forking and pull requests make sense to you now?
-- What's one thing about working with branches that you want to practice more?
-- How comfortable do you feel about contributing to someone else's project?
+**Давайте посмотрим, как вы относитесь к совместной работе:**
+- Понятна ли вам теперь идея форков и pull request'ов?
+- Что одно в работе с ветками вы хотите попрактиковать больше?
+- Насколько комфортно вы себя чувствуете, внося вклад в чужой проект?
 
 ```mermaid
 mindmap
-  root((Git Collaboration))
-    Branching
-      Feature branches
-      Bug fix branches
-      Experimental work
-    Pull Requests
-      Code review
-      Discussion
-      Testing
-    Best Practices
-      Clear commit messages
-      Small focused changes
-      Good documentation
+  root((Совместная работа в Git))
+   Ветвление
+     Ветки для новых функций
+     Ветки для исправления ошибок
+     Экспериментальная работа
+   Pull Requests
+     Ревью кода
+     Обсуждение
+     Тестирование
+   Лучшие практики
+     Четкие сообщения коммитов
+     Маленькие сфокусированные изменения
+     Хорошая документация
 ```
 
-> **Confidence booster**: Every single developer you admire was once nervous about their first pull request. The GitHub community is incredibly welcoming to newcomers!
+> **Для уверенности**: каждый разработчик, которым вы восхищаетесь, когда-то нервничал перед своим первым pull request'ом. Сообщество GitHub невероятно гостеприимное к новичкам!
 
-1. **Open a PR**. Next, you want to open up a PR. You do that by navigating to the forked repo on GitHub. You will see an indication on GitHub where it asks whether you want to create a new PR, you click that and you are taken to an interface where you can change commit message title, give it a more suitable description. Now the maintainer of the repo you forked will see this PR and _fingers crossed_ they will appreciate and _merge_ your PR. You are now a contributor, yay :)
+1. **Откройте PR**. Далее, вы хотите открыть PR. Вы делаете это, перейдя в форкнутый репозиторий на GitHub. Вы увидите на GitHub уведомление с вопросом, хотите ли вы создать новый PR, вы нажимаете на него, и вас перенаправляют в интерфейс, где вы можете изменить заголовок сообщения коммита, дать ему более подходящее описание. Теперь мейнтейнер репозитория, который вы форкнули, увидит этот PR и, _скрестим пальцы_, они оценят и _сольют_ ваш PR. Теперь вы контрибьютор, ура :)
 
-   💡 **Modern tip**: You can also create PRs using GitHub CLI:
+    **Современный совет**: Вы также можете создавать PR с помощью GitHub CLI:
    ```bash
-   gh pr create --title "Your PR title" --body "Description of changes"
+   gh pr create --title "Заголовок вашего PR" --body "Описание изменений"
    ```
 
-   🔧 **Best practices for PRs**:
-   - Link to related issues using keywords like "Fixes #123"
-   - Add screenshots for UI changes
-   - Request specific reviewers
-   - Use draft PRs for work-in-progress
-   - Ensure all CI checks pass before requesting review
+   🔧 **Лучшие практики для PR**:
+   - Ссылайтесь на связанные issues, используя ключевые слова, такие как "Fixes #123"
+   - Добавляйте скриншоты для изменений в UI
+   - Запрашивайте конкретных ревьюеров
+   - Используйте черновики PR для работы в процессе
+   - Убедитесь, что все проверки CI проходят, прежде чем запрашивать ревью
 
-1. **Clean up**. It's considered good practice to _clean up_ after you successfully merge a PR. You want to clean up both your local branch and the branch you pushed to GitHub. First let's delete it locally with the following command: 
+1. **Приберитесь**. Считается хорошей практикой «прибираться» после успешного слияния PR. Вы хотите очистить как вашу локальную ветку, так и ветку, которую вы отправили на GitHub. Сначала давайте удалим ее локально с помощью следующей команды:
 
    ```bash
-   git branch -d [branch-name]
+   git branch -d [имя-ветки]
    ```
 
-   Ensure you go the GitHub page for the forked repo next and remove the remote branch you just pushed to it.
+   Убедитесь, что вы затем перешли на страницу GitHub для форкнутого репозитория и удалили удаленную ветку, которую вы только что туда отправили.
 
-`Pull request` seems like a silly term because really you want to push your changes to the project. But the maintainer (project owner) or core team needs to consider your changes before merging it with the project's "main" branch, so you're really requesting a change decision from a maintainer.  
+`Pull request` кажется странным термином, потому что на самом деле вы хотите отправить свои изменения в проект. Но мейнтейнер (владелец проекта) или основная команда должны рассмотреть ваши изменения перед слиянием их с «основной» веткой проекта, поэтому вы на самом деле запрашиваете решение об изменении у мейнтейнера.
 
-A pull request is the place to compare and discuss the differences introduced on a branch with reviews, comments, integrated tests, and more. A good pull request follows roughly the same rules as a commit message. You can add a reference to an issue in the issue tracker, when your work for instance fixes an issue. This is done using a `#` followed by the number of your issue. For example `#97`.
+Pull request — это место для сравнения и обсуждения различий, внесенных в ветку, с помощью ревью, комментариев, интегрированных тестов и многого другого. Хороший pull request следует примерно тем же правилам, что и сообщение коммита. Вы можете добавить ссылку на issue в трекере задач, когда ваша работа, например, исправляет issue. Это делается с помощью `#`, за которым следует номер вашего issue. Например, `#97`.
 
-🤞Fingers crossed that all checks pass and the project owner(s) merge your changes into the project🤞
+Скрестим пальцы, чтобы все проверки прошли, и владелец(ы) проекта слили ваши изменения в проект
 
-Update your current local working branch with all new commits from the corresponding remote branch on GitHub:
+Обновите вашу текущую локальную рабочую ветку всеми новыми коммитами из соответствующей удаленной ветки на GitHub:
 
 `git pull`
 
-## Contributing to Open Source (Your Chance to Make an Impact!)
+## Вклад в Open Source (ваш шанс изменить мир!)
 
-Are you ready for something that's going to absolutely blow your mind? 🤯 Let's talk about contributing to open source projects – and I'm getting goosebumps just thinking about sharing this with you!
+Готовы к чему-то, что абсолютно взорвет ваш мозг? 🤯 Давайте поговорим о вкладе в проекты с открытым исходным кодом – и у меня мурашки по коже, просто думая о том, чтобы поделиться этим с вами!
 
-This is your chance to become part of something truly extraordinary. Imagine improving the tools that millions of developers use every day, or fixing a bug in an app that your friends love. That's not just a dream – that's what open source contribution is all about!
+Это ваш шанс стать частью чего-то действительно экстраординарного. Представьте, что вы улучшаете инструменты, которыми пользуются миллионы разработчиков каждый день, или исправляете ошибку в приложении, которое любят ваши друзья. Это не просто мечта — в этом и заключается суть вклада в open source!
 
-Here's what gives me chills every time I think about it: every single tool you've been learning with – your code editor, the frameworks we'll explore, even the browser you're reading this in – started with someone exactly like you making their very first contribution. That brilliant developer who built your favorite VS Code extension? They were once a beginner clicking "create pull request" with shaky hands, just like you're about to do.
+Вот что вызывает у меня трепет каждый раз, когда я об этом думаю: каждый инструмент, с которым вы учились – ваш редактор кода, фреймворки, которые мы будем изучать, даже браузер, в котором вы это читаете – начался с того, что кто-то, точно такой же, как вы, сделал свой первый вклад. Тот блестящий разработчик, который создал ваше любимое расширение для VS Code? Он когда-то был новичком, с дрожащими руками нажимавшим «создать pull request», точно так же, как вы собираетесь это сделать.
 
-And here's the most beautiful part: the open source community is like the internet's biggest group hug. Most projects actively look for newcomers and have issues tagged "good first issue" specifically for people like you! Maintainers genuinely get excited when they see new contributors because they remember their own first steps.
+И вот самая прекрасная часть: сообщество open source — это как самые большие объятия в интернете. Большинство проектов активно ищут новичков и имеют задачи с тегом «good first issue» специально для таких людей, как вы! Мейнтейнеры искренне радуются, когда видят новых контрибьюторов, потому что они помнят свои собственные первые шаги.
 
 ```mermaid
 flowchart TD
-    A[🔍 Explore GitHub] --> B[🏷️ Find "good first issue"]
-    B --> C[📖 Read Contributing Guidelines]
-    C --> D[🍴 Fork Repository]
-    D --> E[💻 Set Up Local Environment]
-    E --> F[🌿 Create Feature Branch]
-    F --> G[✨ Make Your Contribution]
-    G --> H[🧪 Test Your Changes]
-    H --> I[📝 Write Clear Commit]
-    I --> J[📤 Push & Create PR]
-    J --> K[💬 Engage with Feedback]
-    K --> L[🎉 Merged! You're a Contributor!]
-    L --> M[🌟 Find Next Issue]
-    
-    style A fill:#e1f5fe
-    style L fill:#c8e6c9
-    style M fill:#fff59d
+   A[🔍 Исследуйте GitHub] --> B[🏷️ Найдите "good first issue"]
+   B --> C[📖 Прочтите руководство для контрибьюторов]
+   C --> D[🍴 Сделайте форк репозитория]
+   D --> E[💻 Настройте локальное окружение]
+   E --> F[🌿 Создайте ветку для фичи]
+   F --> G[✨ Сделайте свой вклад]
+   G --> H[🧪 Протестируйте изменения]
+   H --> I[📝 Напишите четкий коммит]
+   I --> J[📤 Отправьте (push) и создайте PR]
+   J --> K[💬 Обсудите обратную связь]
+   K --> L[ Слито! Вы — контрибьютор!]
+   L --> M[ Найдите следующую задачу]
+
+   style A fill:#e1f5fe
+   style L fill:#c8e6c9
+   style M fill:#fff59d
 ```
 
-You're not just learning to code here – you're preparing to join a global family of builders who wake up every day thinking "How can we make the digital world a little bit better?" Welcome to the club! 🌟
+Вы здесь не просто учитесь кодить — вы готовитесь присоединиться к глобальной семье создателей, которые просыпаются каждый день с мыслью: «Как мы можем сделать цифровой мир немного лучше?» Добро пожаловать в клуб!
 
-First, let's find a repository (or **repo**) on GitHub of interest to you and to which you'd like to contribute a change. You will want to copy its contents to your machine.
+Сначала давайте найдем на GitHub репозиторий (или **репо**), который вас интересует и в который вы хотели бы внести изменение. Вам нужно будет скопировать его содержимое на свой компьютер.
 
-✅ A good way to find 'beginner-friendly' repos is to [search by the tag 'good-first-issue'](https://github.blog/2020-01-22-browse-good-first-issues-to-start-contributing-to-open-source/).
+ Хороший способ найти репозитории, дружелюбные к новичкам, — это [поиск по тегу «good-first-issue»](https://github.blog/2020-01-22-browse-good-first-issues-to-start-contributing-to-open-source/).
 
-![Copy a repo locally](images/clone_repo.png)
+![Копирование репозитория локально](images/clone_repo.png)
 
-There are several ways of copying code. One way is to "clone" the contents of the repository, using HTTPS, SSH, or using the GitHub CLI (Command Line Interface). 
+Есть несколько способов копирования кода. Один из них — «клонировать» содержимое репозитория, используя HTTPS, SSH или GitHub CLI (интерфейс командной строки).
 
-Open your terminal and clone the repository like so:
+Откройте свой терминал и клонируйте репозиторий следующим образом:
 ```bash
-# Using HTTPS
+# Используя HTTPS
 git clone https://github.com/ProjectURL
 
-# Using SSH (requires SSH key setup)
+# Используя SSH (требуется настройка SSH-ключа)
 git clone git@github.com:username/repository.git
 
-# Using GitHub CLI
+# Используя GitHub CLI
 gh repo clone username/repository
 ```
 
-To work on the project, switch to the right folder:
+Чтобы работать над проектом, перейдите в нужную папку:
 `cd ProjectURL`
 
-You can also open the entire project using:
-- **[GitHub Codespaces](https://github.com/features/codespaces)** - GitHub's cloud development environment with VS Code in the browser
-- **[GitHub Desktop](https://desktop.github.com/)** - A GUI application for Git operations  
-- **[GitHub.dev](https://github.dev)** - Press the `.` key on any GitHub repo to open VS Code in the browser
-- **VS Code** with the GitHub Pull Requests extension
+Вы также можете открыть весь проект, используя:
+- **[GitHub Codespaces](https://github.com/features/codespaces)** - облачная среда разработки GitHub с VS Code в браузере
+- **[GitHub Desktop](https://desktop.github.com/)** - графическое приложение для операций Git
+- **[GitHub.dev](https://github.dev)** - нажмите клавишу `.` в любом репозитории GitHub, чтобы открыть VS Code в браузере
+- **VS Code** с расширением GitHub Pull Requests
 
-Lastly, you can download the code in a zipped folder. 
+Наконец, вы можете скачать код в виде zip-архива.
 
-### A few more interesting things about GitHub
+### Еще несколько интересных вещей о GitHub
 
-You can star, watch and/or "fork" any public repository on GitHub. You can find your starred repositories in the top-right drop-down menu. It's like bookmarking, but for code. 
+Вы можете отметить звездочкой, отслеживать и/или «форкнуть» любой публичный репозиторий на GitHub. Вы можете найти свои отмеченные звездочкой репозитории в выпадающем меню в правом верхнем углу. Это как закладки, но для кода.
 
-Projects have an issue tracker, mostly on GitHub in the "Issues" tab unless indicated otherwise, where people discuss issues related to the project. And the Pull Requests tab is where people discuss and review changes that are in progress.
+У проектов есть трекер задач, в основном на GitHub во вкладке «Issues», если не указано иное, где люди обсуждают проблемы, связанные с проектом. А вкладка Pull Requests — это место, где люди обсуждают и рецензируют изменения, находящиеся в процессе разработки.
 
-Projects might also have discussion in forums, mailing lists, or chat channels like Slack, Discord or IRC.
+Проекты также могут иметь обсуждения на форумах, в списках рассылки или в чат-каналах, таких как Slack, Discord или IRC.
 
-🔧 **Modern GitHub features**:
-- **GitHub Discussions** - Built-in forum for community conversations
-- **GitHub Sponsors** - Support maintainers financially  
-- **Security tab** - Vulnerability reports and security advisories
-- **Actions tab** - See automated workflows and CI/CD pipelines
-- **Insights tab** - Analytics about contributors, commits, and project health
-- **Projects tab** - GitHub's built-in project management tools
+🔧 **Современные функции GitHub**:
+- **GitHub Discussions** - встроенный форум для общения с сообществом
+- **GitHub Sponsors** - финансовая поддержка мейнтейнеров
+- **Вкладка Security** - отчеты об уязвимостях и рекомендации по безопасности
+- **Вкладка Actions** - просмотр автоматизированных рабочих процессов и CI/CD пайплайнов
+- **Вкладка Insights** - аналитика о контрибьюторах, коммитах и состоянии проекта
+- **Вкладка Projects** - встроенные инструменты управления проектами от GitHub
 
-✅ Take a look around your new GitHub repo and try a few things, like editing settings, adding information to your repo, creating a project (like a Kanban board), and setting up GitHub Actions for automation. There's a lot you can do!
+ Осмотрите свой новый репозиторий на GitHub и попробуйте несколько вещей, например, отредактировать настройки, добавить информацию в репозиторий, создать проект (например, канбан-доску) и настроить GitHub Actions для автоматизации. Вы можете сделать очень многое!
 
 ---
 
-## 🚀 Challenge 
+##  Испытание
 
-Alright, it's time to put your shiny new GitHub superpowers to the test! 🚀 Here's a challenge that's going to make everything click in the most satisfying way:
+Что ж, пришло время испытать ваши новые суперспособности GitHub!  Вот испытание, которое поможет вам все понять самым приятным образом:
 
-Grab a friend (or that family member who's always asking what you're up to with all this "computer stuff") and embark on a collaborative coding adventure together! This is where the real magic happens – create a project, let them fork it, make some branches, and merge changes like the pros you're becoming.
+Возьмите друга (или того члена семьи, который всегда спрашивает, чем вы занимаетесь со всеми этими «компьютерными штуками») и отправляйтесь вместе в совместное приключение по программированию! Здесь и происходит настоящая магия – создайте проект, позвольте им сделать форк, создайте несколько веток и сливайте изменения, как настоящие профессионалы, которыми вы становитесь.
 
-I'm not gonna lie – you'll probably laugh at some point (especially when you both try to change the same line), maybe scratch your heads in confusion, but you'll definitely have those amazing "aha!" moments that make all the learning worth it. Plus, there's something special about sharing that first successful merge with someone else – it's like a tiny celebration of how far you've come!
+Не буду врать – вы, вероятно, в какой-то момент посмеетесь (особенно когда вы оба попытаетесь изменить одну и ту же строку), возможно, почешете затылки в замешательстве, но у вас определенно будут те удивительные моменты «ага!», которые делают все обучение стоящим. К тому же, есть что-то особенное в том, чтобы разделить первое успешное слияние с кем-то еще – это как маленькое празднование того, как далеко вы продвинулись!
 
-Don't have a coding buddy yet? No worries at all! The GitHub community is packed with incredibly welcoming people who remember what it was like to be new. Look for repositories with "good first issue" labels – they're basically saying "Hey beginners, come learn with us!" How awesome is that?
+Еще нет напарника по кодингу? Никаких проблем! Сообщество GitHub полно невероятно гостеприимных людей, которые помнят, каково это быть новичком. Ищите репозитории с метками «good first issue» – они, по сути, говорят: «Эй, новички, приходите учиться с нами!» Разве это не здорово?
 
-## Post-Lecture Quiz
-[Post-lecture quiz](https://ff-quizzes.netlify.app/web/en/)
+## Квиз после лекции
+[Квиз после лекции](https://ff-quizzes.netlify.app/web/ru/)
 
-## Review & Keep Learning
+## Обзор и дальнейшее обучение
 
-Whew! 🎉 Look at you – you've just conquered GitHub basics like an absolute champion! If your brain feels a little full right now, that's completely normal and honestly a good sign. You've just learned tools that took me weeks to feel comfortable with when I started.
+Ух!  Посмотрите на себя – вы только что освоили основы GitHub как абсолютный чемпион! Если ваш мозг сейчас кажется немного переполненным, это совершенно нормально и, честно говоря, хороший знак. Вы только что изучили инструменты, на освоение которых у меня ушли недели, когда я начинал.
 
-Git and GitHub are incredibly powerful (like, seriously powerful), and every developer I know – including the ones who seem like wizards now – had to practice and stumble around a bit before it all clicked. The fact that you've made it through this lesson means you're already on your way to mastering some of the most important tools in a developer's toolkit.
+Git и GitHub невероятно мощные (серьезно, очень мощные), и каждый разработчик, которого я знаю – включая тех, кто сейчас кажется волшебником – должен был практиковаться и немного спотыкаться, прежде чем все стало на свои места. Тот факт, что вы прошли этот урок, означает, что вы уже на пути к овладению одними из самых важных инструментов в арсенале разработчика.
 
-Here are some absolutely fantastic resources to help you practice and become even more awesome:
+Вот несколько абсолютно фантастических ресурсов, которые помогут вам практиковаться и стать еще круче:
 
-- [Contributing to open source software guide](https://opensource.guide/how-to-contribute/#how-to-submit-a-contribution) – Your roadmap to making a difference
-- [Git cheatsheet](https://training.github.com/downloads/github-git-cheat-sheet/) – Keep this handy for quick reference!
+- [Руководство по вкладу в программное обеспечение с открытым исходным кодом](https://opensource.guide/how-to-contribute/#how-to-submit-a-contribution) – Ваш путеводитель к тому, чтобы изменить мир
+- [Шпаргалка по Git](https://training.github.com/downloads/github-git-cheat-sheet/) – Держите ее под рукой для быстрой справки!
 
-And remember: practice makes progress, not perfection! The more you use Git and GitHub, the more natural it becomes. GitHub has created some amazing interactive courses that let you practice in a safe environment:
+И помните: практика ведет к прогрессу, а не к совершенству! Чем больше вы используете Git и GitHub, тем более естественным это становится. GitHub создал несколько удивительных интерактивных курсов, которые позволяют вам практиковаться в безопасной среде:
 
-- [Introduction to GitHub](https://github.com/skills/introduction-to-github)
-- [Communicate using Markdown](https://github.com/skills/communicate-using-markdown)  
+- [Введение в GitHub](https://github.com/skills/introduction-to-github)
+- [Общение с помощью Markdown](https://github.com/skills/communicate-using-markdown)
 - [GitHub Pages](https://github.com/skills/github-pages)
-- [Managing merge conflicts](https://github.com/skills/resolve-merge-conflicts)
+- [Управление конфликтами слияния](https://github.com/skills/resolve-merge-conflicts)
 
-**Feeling adventurous? Check out these modern tools:**
-- [GitHub CLI documentation](https://cli.github.com/manual/) – For when you want to feel like a command-line wizard
-- [GitHub Codespaces documentation](https://docs.github.com/en/codespaces) – Code in the cloud!
-- [GitHub Actions documentation](https://docs.github.com/en/actions) – Automate all the things
-- [Git best practices](https://www.atlassian.com/git/tutorials/comparing-workflows) – Level up your workflow game 
+**Чувствуете тягу к приключениям? Ознакомьтесь с этими современными инструментами:**
+- [Документация GitHub CLI](https://cli.github.com/manual/) – Для тех, кто хочет почувствовать себя волшебником командной строки
+- [Документация GitHub Codespaces](https://docs.github.com/en/codespaces) – Программируйте в облаке!
+- [Документация GitHub Actions](https://docs.github.com/en/actions) – Автоматизируйте все подряд
+- [Лучшие практики Git](https://www.atlassian.com/git/tutorials/comparing-workflows) – Прокачайте свои рабочие процессы
 
-## GitHub Copilot Agent Challenge 🚀
+## Задание для GitHub Copilot Agent
 
-Use the Agent mode to complete the following challenge:
+Используйте режим Agent для выполнения следующего задания:
 
-**Description:** Create a collaborative web development project that demonstrates the complete GitHub workflow you've learned in this lesson. This challenge will help you practice repository creation, collaboration features, and modern Git workflows in a real-world scenario.
+**Описание:** Создайте совместный проект по веб-разработке, который демонстрирует полный рабочий процесс GitHub, изученный в этом уроке. Это задание поможет вам попрактиковаться в создании репозитория, функциях совместной работы и современных рабочих процессах Git в реальном сценарии.
 
-**Prompt:** Create a new public GitHub repository for a simple "Web Development Resources" project. The repository should include a well-structured README.md file listing useful web development tools and resources, organized by categories (HTML, CSS, JavaScript, etc.). Set up the repository with proper community standards including a license, contributing guidelines, and a code of conduct. Create at least two feature branches: one for adding CSS resources and another for JavaScript resources. Make commits to each branch with descriptive commit messages, then create pull requests to merge the changes back to main. Enable GitHub features like Issues, Discussions, and set up a basic GitHub Actions workflow for automated checks.
+**Промпт:** Создайте новый публичный репозиторий GitHub для простого проекта «Ресурсы для веб-разработки». Репозиторий должен включать хорошо структурированный файл README.md со списком полезных инструментов и ресурсов для веб-разработки, организованных по категориям (HTML, CSS, JavaScript и т.д.). Настройте репозиторий с надлежащими стандартами сообщества, включая лицензию, руководство для контрибьюторов и кодекс поведения. Создайте как минимум две ветки для новых функций: одну для добавления ресурсов по CSS и другую для ресурсов по JavaScript. Сделайте коммиты в каждую ветку с описательными сообщениями, затем создайте pull request'ы для слияния изменений обратно в main. Включите такие функции GitHub, как Issues, Discussions, и настройте базовый рабочий процесс GitHub Actions для автоматических проверок.
 
-## Assignment 
+## Задание
 
-Your mission, should you choose to accept it: Complete the [Introduction to GitHub](https://github.com/skills/introduction-to-github) course on GitHub Skills. This interactive course will let you practice everything you've learned in a safe, guided environment. Plus, you'll get a cool badge when you finish! 🏅
+Ваша миссия, если вы решите ее принять: пройдите курс [Введение в GitHub](https://github.com/skills/introduction-to-github) на GitHub Skills. Этот интерактивный курс позволит вам попрактиковаться во всем, что вы изучили, в безопасной, управляемой среде. К тому же, по окончании вы получите крутой значок! 
 
-**Feeling ready for more challenges?**
-- Set up SSH authentication for your GitHub account (no more passwords!)
-- Try using GitHub CLI for your daily Git operations
-- Create a repository with a GitHub Actions workflow
-- Explore GitHub Codespaces by opening this very repository in a cloud-based editor
+**Готовы к новым испытаниям?**
+- Настройте SSH-аутентификацию для своего аккаунта GitHub (больше никаких паролей!)
+- Попробуйте использовать GitHub CLI для ежедневных операций с Git
+- Создайте репозиторий с рабочим процессом GitHub Actions
+- Исследуйте GitHub Codespaces, открыв этот самый репозиторий в облачном редакторе
 
 ---
 
-## 🚀 Your GitHub Mastery Timeline
+##  Ваш путь к мастерству в GitHub
 
-### ⚡ **What You Can Do in the Next 5 Minutes**
-- [ ] Star this repository and 3 other projects that interest you
-- [ ] Set up two-factor authentication on your GitHub account
-- [ ] Create a simple README for your first repository
-- [ ] Follow 5 developers whose work inspires you
+### ⚡ Что вы можете сделать в следующие 5 минут
+- [ ] Отметить звездочкой этот репозиторий и 3 других проекта, которые вас интересуют
+- [ ] Настроить двухфакторную аутентификацию в своем аккаунте GitHub
+- [ ] Создать простой README для своего первого репозитория
+- [ ] Подписаться на 5 разработчиков, чья работа вас вдохновляет
 
-### 🎯 **What You Can Accomplish This Hour**
-- [ ] Complete the post-lesson quiz and reflect on your GitHub journey
-- [ ] Set up SSH keys for password-free GitHub authentication
-- [ ] Create your first meaningful commit with a great commit message
-- [ ] Explore GitHub's "Explore" tab to discover trending projects
-- [ ] Practice forking a repository and making a small change
+### 🎯 Чего вы можете достичь за этот час
+- [ ] Пройти квиз после урока и поразмыслить о своем пути на GitHub
+- [ ] Настроить SSH-ключи для беспарольной аутентификации на GitHub
+- [ ] Сделать свой первый осмысленный коммит с отличным сообщением
+- [ ] Изучить вкладку «Explore» на GitHub, чтобы найти популярные проекты
+- [ ] Попрактиковаться в форке репозитория и внесении небольшого изменения
 
-### 📅 **Your Week-Long GitHub Adventure**
-- [ ] Complete the GitHub Skills courses (Introduction to GitHub, Markdown)
-- [ ] Make your first pull request to an open source project
-- [ ] Set up a GitHub Pages site to showcase your work
-- [ ] Join GitHub Discussions on projects you're interested in
-- [ ] Create a repository with proper community standards (README, License, etc.)
-- [ ] Try GitHub Codespaces for cloud-based development
+### 📅 Ваше недельное приключение на GitHub
+- [ ] Пройти курсы GitHub Skills (Введение в GitHub, Markdown)
+- [ ] Сделать свой первый pull request в проект с открытым исходным кодом
+- [ ] Настроить сайт на GitHub Pages, чтобы продемонстрировать свою работу
+- [ ] Присоединиться к обсуждениям на GitHub в интересующих вас проектах
+- [ ] Создать репозиторий с надлежащими стандартами сообщества (README, лицензия и т.д.)
+- [ ] Попробовать GitHub Codespaces для облачной разработки
 
-### 🌟 **Your Month-Long Transformation**
-- [ ] Contribute to 3 different open source projects
-- [ ] Mentor someone new to GitHub (pay it forward!)
-- [ ] Set up automated workflows with GitHub Actions
-- [ ] Build a portfolio showcasing your GitHub contributions
-- [ ] Participate in Hacktoberfest or similar community events
-- [ ] Become a maintainer of your own project that others contribute to
+###  Ваша трансформация за месяц
+- [ ] Внести вклад в 3 разных проекта с открытым исходным кодом
+- [ ] Стать наставником для кого-то нового на GitHub (передайте добро дальше!)
+- [ ] Настроить автоматизированные рабочие процессы с помощью GitHub Actions
+- [ ] Создать портфолио, демонстрирующее ваш вклад на GitHub
+- [ ] Принять участие в Hacktoberfest или подобных мероприятиях сообщества
+- [ ] Стать мейнтейнером собственного проекта, в который вносят вклад другие
 
-### 🎓 **Final GitHub Mastery Check-in**
+### 🎓 Финальная проверка мастерства в GitHub
 
-**Celebrate how far you've come:**
-- What's your favorite thing about using GitHub?
-- Which collaboration feature excites you most?
-- How confident do you feel about contributing to open source now?
-- What's the first project you want to contribute to?
+**Отпразднуйте, как далеко вы продвинулись:**
+- Что вам больше всего нравится в использовании GitHub?
+- Какая функция совместной работы вас больше всего волнует?
+- Насколько уверенно вы теперь себя чувствуете, внося вклад в open source?
+- В какой проект вы хотите внести свой вклад в первую очередь?
 
 ```mermaid
 journey
-    title Your GitHub Confidence Journey
-    section Today
-      Nervous: 3: You
-      Curious: 4: You
-      Excited: 5: You
-    section This Week
-      Practicing: 4: You
-      Contributing: 5: You
-      Connecting: 5: You
-    section Next Month
-      Collaborating: 5: You
-      Leading: 5: You
-      Inspiring Others: 5: You
+   title Ваш путь к уверенности на GitHub
+   section Сегодня
+     Нервничаете: 3: Вы
+     Любопытны: 4: Вы
+     В восторге: 5: Вы
+   section На этой неделе
+     Практикуетесь: 4: Вы
+     Вносите вклад: 5: Вы
+     Налаживаете связи: 5: Вы
+   section В следующем месяце
+     Сотрудничаете: 5: Вы
+     Ведете за собой: 5: Вы
+     Вдохновляете других: 5: Вы
 ```
 
-> 🌍 **Welcome to the global developer community!** You now have the tools to collaborate with millions of developers worldwide. Your first contribution might seem small, but remember - every major open source project started with someone making their very first commit. The question isn't if you'll make an impact, but what amazing project will benefit from your unique perspective first! 🚀
+> 🌍 **Добро пожаловать в мировое сообщество разработчиков!** Теперь у вас есть инструменты для сотрудничества с миллионами разработчиков по всему миру. Ваш первый вклад может показаться незначительным, но помните - каждый крупный проект с открытым исходным кодом начинался с того, что кто-то делал свой самый первый коммит. Вопрос не в том, окажете ли вы влияние, а в том, какой удивительный проект первым выиграет от вашего уникального взгляда!
 
-Remember: every expert was once a beginner. You've got this! 💪
+Помните: каждый эксперт когда-то был новичком. У вас все получится! 💪
